@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<component name="TiledBackground" extends="Rectangle">
+    <interface>
+        <field id="imgUri" type="uri" onChange="onImageSet" alwaysNotify="false"/>
+    </interface>
+    <script type="text/brightscript" uri="pkg:/components/styled-components/TiledBackground/TiledBackground.brs"/>
+</component>
