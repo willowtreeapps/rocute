@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<component name="MainListPanel" extends="ListPanel" >
+  <script type="text/brightscript" uri="pkg:/components/examples/MainListPanel.brs"/>
+  <children>
+    <LabelList id="componentList">
+      <ContentNode role="Content">
+        <ContentNode title="TiledBackground" />
+      </ContentNode>
+    </LabelList>
+  </children>
+</component>

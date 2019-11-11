@@ -5,5 +5,8 @@
   </interface>
 	<script type="text/brightscript" uri="@{components}/AppScene.brs"/>
   <children>
+    <PanelSet id="panelSet" >
+      <MainListPanel id="list"/>
+    </PanelSet>
   </children>
 </component>
