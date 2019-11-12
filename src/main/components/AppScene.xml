@@ -5,7 +5,7 @@
   </interface>
 	<script type="text/brightscript" uri="@{components}/AppScene.brs"/>
   <children>
-    <MaskGroup maskSize="[0,0.4492]" maskUri="pkg:/images/bottomFade.bmp">
+    <MaskGroup id="mask" maskUri="pkg:/images/fullsizeFade.bmp">
       <Overhang id="overhang" title="rocute" color="#70C835FF" />
     </MaskGroup>
     <PanelSet id="panelSet" >
