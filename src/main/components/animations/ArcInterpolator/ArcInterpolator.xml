@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<component name="ArcInterpolator" extends="Vector2DFieldInterpolator">
+    <interface>
+        <field id="start" type="vector2d" onChange="onCoordinateSet"/>
+        <field id="middle" type="vector2d" onChange="onCoordinateSet"/>
+        <field id="end" type="vector2d" onChange="onCoordinateSet"/>
+        <field id="numberOfKeys" type="integer" value="11" onChange="onCoordinateSet"/>
+    </interface>
+    <script type="text/brightscript" uri="pkg:/components/animations/ArcInterpolator/ArcInterpolator.brs"/>
+</component>
