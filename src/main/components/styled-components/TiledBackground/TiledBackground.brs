@@ -23,16 +23,11 @@ sub onImageLoad(event as object)
     m.rectWidth = m.top.width
     m.rectHeight = m.top.height
 
-    m.posterArray = createObject("roArray", 0, true)
-
-    index = 0
     for x = 0 to m.rectWidth step m.imgWidth
         for y = 0 to m.rectHeight step m.imgHeight
             bgPoster = createObject("roSGNode", "Poster")
             bgPoster.uri = m.top.imgUri
             bgPoster.translation = [x,y]
-            m.posterArray[index] = bgPoster
-            index += 1
             m.top.appendChild(bgPoster)
         end for
     end for
