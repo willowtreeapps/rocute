@@ -7,6 +7,8 @@
       <ContentNode role="Content">
         <ContentNode title="TiledBackground" />
         <ContentNode title="StyledListOne" />
+        <ContentNode title="StyledListTwo" />
+        <ContentNode title="StyledListThree" />
       </ContentNode>
     </LabelList>
   </children>
