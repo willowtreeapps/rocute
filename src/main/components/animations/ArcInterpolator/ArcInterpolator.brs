@@ -1,8 +1,24 @@
 sub init()
   m.pi = 3.1415927
   m.top.observeField("fraction", "calculateValue")
-  m.top.observeField("key", "createKeyValueArray")
-  m.nodeToMove = m.top.findNode("animateMe")
+  m.top.observeField("fieldToInterp", "findNodeToMove")
+end sub
+
+sub findNodeToMove(event as object)
+    nodeAndField = event.getData()
+    if right(nodeAndField, 12) <> ".translation" then return
+    length = len(nodeAndField)
+    nodeName = left(nodeAndField, length - 12)
+    
+    currentNode = m.top
+    while currentNode.getParent() <> invalid
+        currentNode = currentNode.getParent()
+        node = currentNode.findNode(nodeName)
+        if node <> invalid
+            m.nodeToMove = node
+            return
+        end if
+    end while
 end sub
 
 sub onCoordinateSet()
@@ -45,49 +61,14 @@ sub setValues()
     end if
 end sub
 
-sub createKeyValueArray(event as object)
-    newKeys = event.getData()
-    keyCount = newKeys.count()
-    dim values[keyCount-1, 0]
-    dim valuesAreSet[keyCount-1]
-
-    if keyCount > 0 then
-        for i = 0 to keyCount-1
-            values[i] = [i, i]
-            valuesAreSet[i] = false
-        end for
-    end if
-    m.top.keyValue = values
-    m.valuesAreSet = valuesAreSet
-end sub
-
 sub calculateValue(event as object)    
     fraction = event.getData()
-    keyIndex = indexOf(m.top.key, fraction)
-    if keyIndex < 0 then return
-    if m.valuesAreSet[keyIndex] = true then return
     angle = fraction * m.totalAngle + m.startAngle
     dim position[1]
     position[0] = m.center[0] + m.radius * cos(angle)
     position[1] = m.center[1] + m.radius * sin(angle)
-    'keys[i] = i * 1/(numOfPoints-1)
-    m.top.keyValue[keyIndex] = position
-    m.valuesAreSet[keyIndex] = true
-    if keyIndex = m.top.key.count()-1 then
-        m.top.unobserveField("fraction")
-        m.top.isKeyValueSet_RDO = true
-    end if
-    print keyIndex
-    'm.top.nodeToMove.translation = position
+    m.nodeToMove.translation = position
 end sub
-
-function indexOf(anArray as object, value as object) as integer
-    for i = 0 to anArray.count()-1
-        if abs(anArray[i] - value) < 0.01 then return i
-    end for
-
-    return -1
-end function
 
 function calcAngle(edgePoint as object, center as object) as double
     if edgePoint[0] - center[0] = 0 then
