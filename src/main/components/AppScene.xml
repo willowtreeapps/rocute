@@ -5,6 +5,9 @@
   </interface>
 	<script type="text/brightscript" uri="@{components}/AppScene.brs"/>
   <children>
+    <MaskGroup id="mask" maskUri="pkg:/images/fullsizeFadeBottom.png">
+        <Overhang id="overhang" title="rocute" backgrounduri="pkg:/images/greenbackground.png"/>
+    </MaskGroup>
     <PanelSet id="panelSet" >
       <MainListPanel id="list"/>
     </PanelSet>
