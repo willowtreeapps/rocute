@@ -1,5 +1,8 @@
 sub init()
   m.pi = 3.1415927
+  m.top.observeField("fraction", "calculateValue")
+  m.top.observeField("key", "createKeyValueArray")
+  m.nodeToMove = m.top.findNode("animateMe")
 end sub
 
 sub onCoordinateSet()
@@ -15,50 +18,76 @@ sub setValues()
     startpoint = m.top.start
     midpoint = m.top.middle
     endpoint = m.top.end
-    numOfPoints = m.top.numberOfKeys
 
     dim center[1]
     center[0] = getCircleCoordX(startpoint[0], startpoint[1], midpoint[0], midpoint[1], endpoint[0], endpoint[1])
     center[1] = getCircleCoordY(startpoint[0], startpoint[1], midpoint[0], midpoint[1], endpoint[0], endpoint[1])
-    dim keys[numOfPoints-1]
-    dim values[numOfPoints-1]
-    keys[0] = 0.0
-    keys[numOfPoints-1] = 1.0
-    values[0] = startpoint
-    values[numOfPoints-1] = endpoint
+    m.center = center
 
-    radius = sqr(Abs((startpoint[0] - center[0])^2 + (startpoint[1] - center[1])^2))
+    m.radius = sqr(Abs((startpoint[0] - m.center[0])^2 + (startpoint[1] - m.center[1])^2))
 
-    startAngle = calcAngle(startpoint, center)
-    midAngle = calcAngle(midpoint, center)
-    endAngle = calcAngle(endpoint, center)
+    m.startAngle = calcAngle(startpoint, m.center)
+    midAngle = calcAngle(midpoint, m.center)
+    endAngle = calcAngle(endpoint, m.center)
 
     bigAngle = true
 
-    totalAngle = endAngle - startAngle
-    if (startAngle < midAngle and midAngle < endAngle) or (endAngle < midAngle and midAngle < startAngle) then
+    m.totalAngle = endAngle - m.startAngle
+    if (m.startAngle < midAngle and midAngle < endAngle) or (endAngle < midAngle and midAngle < m.startAngle) then
         bigAngle = false
     end if
     if bigAngle = true then
-        if totalAngle > 0 then
-            totalAngle = -(2*m.pi - totalAngle)
+        if m.totalAngle > 0 then
+            m.totalAngle = -(2*m.pi - m.totalAngle)
         else
-            totalAngle = 2*m.pi + totalAngle
+            m.totalAngle = 2*m.pi + m.totalAngle
         end if
     end if
-
-    for i=1 to numOfPoints-2
-        angle = i * (totalAngle/(numOfPoints-1)) + startAngle
-        dim position[1]
-        position[0] = center[0] + radius * cos(angle)
-        position[1] = center[1] + radius * sin(angle)
-        keys[i] = i * 1/(numOfPoints-1)
-        values[i] = position
-    end for
-    
-    m.top.key = keys
-    m.top.keyValue = values
 end sub
+
+sub createKeyValueArray(event as object)
+    newKeys = event.getData()
+    keyCount = newKeys.count()
+    dim values[keyCount-1, 0]
+    dim valuesAreSet[keyCount-1]
+
+    if keyCount > 0 then
+        for i = 0 to keyCount-1
+            values[i] = [i, i]
+            valuesAreSet[i] = false
+        end for
+    end if
+    m.top.keyValue = values
+    m.valuesAreSet = valuesAreSet
+end sub
+
+sub calculateValue(event as object)    
+    fraction = event.getData()
+    keyIndex = indexOf(m.top.key, fraction)
+    if keyIndex < 0 then return
+    if m.valuesAreSet[keyIndex] = true then return
+    angle = fraction * m.totalAngle + m.startAngle
+    dim position[1]
+    position[0] = m.center[0] + m.radius * cos(angle)
+    position[1] = m.center[1] + m.radius * sin(angle)
+    'keys[i] = i * 1/(numOfPoints-1)
+    m.top.keyValue[keyIndex] = position
+    m.valuesAreSet[keyIndex] = true
+    if keyIndex = m.top.key.count()-1 then
+        m.top.unobserveField("fraction")
+        m.top.isKeyValueSet_RDO = true
+    end if
+    print keyIndex
+    'm.top.nodeToMove.translation = position
+end sub
+
+function indexOf(anArray as object, value as object) as integer
+    for i = 0 to anArray.count()-1
+        if abs(anArray[i] - value) < 0.01 then return i
+    end for
+
+    return -1
+end function
 
 function calcAngle(edgePoint as object, center as object) as double
     if edgePoint[0] - center[0] = 0 then
