@@ -6,6 +6,7 @@
     <LabelList id="componentList">
       <ContentNode role="Content">
         <ContentNode title="TiledBackground" />
+        <ContentNode title="StyledListOne" />
       </ContentNode>
     </LabelList>
   </children>
