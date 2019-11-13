@@ -5,8 +5,14 @@ sub onImageSet(event as object)
     m.firstPoster = createObject("roSGNode", "Poster")
     m.firstPoster.uri = m.top.imgUri
     m.top.appendChild(m.firstPoster)
-    m.firstPoster.observeField("bitmapWidth", "onImageLoad")
-    m.firstPoster.observeField("bitmapHeight", "onImageLoad")
+    if areFieldsInitialized() = true then
+        onImageLoad(invalid)
+    else
+        m.top.observeField("width", "onImageLoad")
+        m.top.observeField("height", "onImageLoad")
+        m.firstPoster.observeField("bitmapWidth", "onImageLoad")
+        m.firstPoster.observeField("bitmapHeight", "onImageLoad")
+    end if
 end sub
 
 sub onImageLoad(event as object)
@@ -29,5 +35,5 @@ sub onImageLoad(event as object)
 end sub
 
 function areFieldsInitialized() as boolean
-    return m.firstPoster.bitmapWidth > 0 and m.firstPoster.bitmapHeight > 0
+    return m.firstPoster.bitmapWidth > 0 and m.firstPoster.bitmapHeight > 0 and m.top.width > 0 and m.top.height > 0
 end function
