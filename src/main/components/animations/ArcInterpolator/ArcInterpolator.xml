@@ -4,7 +4,6 @@
         <field id="start" type="vector2d" onChange="onCoordinateSet"/>
         <field id="middle" type="vector2d" onChange="onCoordinateSet"/>
         <field id="end" type="vector2d" onChange="onCoordinateSet"/>
-        <field id="isKeyValueSet_RDO" type="boolean" value="false"/>
     </interface>
     <script type="text/brightscript" uri="pkg:/components/animations/ArcInterpolator/ArcInterpolator.brs"/>
 </component>
