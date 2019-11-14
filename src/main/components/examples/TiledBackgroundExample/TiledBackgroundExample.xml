@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="utf-8" ?>
 
 <component name="TiledBackgroundExample" extends="Panel" >
-  <script type="text/brightscript" uri="pkg:/components/examples/TiledBackgroundExample/TiledBackgroundExample.brs"/>
   <children>
     <TiledBackground
       id="tiledBG"
       imgUri = "pkg:/components/examples/images/pattern-with-deformed-shapes.jpg"
+      width = "500"
+      height = "500"
+      translation = "[10,10]"
     />
   </children>
 </component>
