@@ -3,10 +3,20 @@ sub init()
     m.rowList.numRows = 1
     m.rowList.showRowLabel = [false]
     m.rowList.showRowCounter = [false]
+    ' setup readonly fields
     m.rowList.observeField("currFocusFeedbackOpacity", "readOnlyFieldChanged")
     m.rowList.observeField("rowItemSelected", "readOnlyFieldChanged")
     m.rowList.observeField("rowItemFocused", "readOnlyFieldChanged")
     m.rowList.setFocus(true)
+    ' set content node if it already exists
+    childCount = m.rowList.getChildCount()
+    for i = 0 to childCount-1 step 1
+        child = m.rowList.getChild(i)
+        if child.role = "content" then
+            m.top.content = child
+            exit for
+        end if
+    end for
 end sub
 
 sub showPanel(event as Object)
@@ -40,7 +50,6 @@ end sub
 sub setArrayField(event as Object)
     fieldName = event.getField()
     if fieldName = "itemSize" then fieldName = "row" + fieldName
-    fieldName = getArrayFieldName(fieldName)
     value = event.getData()
     valueAsArray = [value]
     m.rowList[fieldName] = valueAsArray

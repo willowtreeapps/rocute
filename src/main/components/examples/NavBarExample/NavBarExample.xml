@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<component name="NavBarExample" extends="Scene">
+    <children>
+        <NavBar
+            id = "navBar"
+            itemComponentName="Label"
+            variableWidthItems="true"
+        >
+            <ContentNode role="content">
+                <ContentNode title="Home"/>
+                <ContentNode title="Movies"/>
+                <ContentNode title="TV"/>
+                <ContentNode title="Settings"/>
+                <ContentNode title="Account"/>
+            </ContentNode>
+        </NavBar>
+        <PanelSet id="panelSet"/>
+    </children>
+</component>
