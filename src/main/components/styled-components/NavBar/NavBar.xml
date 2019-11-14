@@ -25,6 +25,10 @@
         <field id="itemSelected_RDO" type="integer" />
         <field id="itemFocused_RDO" type="integer" />
         <field id="jumpToItem" type="integer" value="0" onChange="setJumpToItem" alwaysNotify="false"/>
+        <field id="createNextPanelIndex" type="integer" />
+        <field id="nextPanel" type="node" onChange="showPanel" alwaysNotify="true"/>
+        <field id="createNextPanelOnItemFocus" type="boolean" value="true" />
+        <field id="createNextPanelOnItemSelect" type="boolean" value="true" />
         <field id="panelSet" type="node" />
     </interface>
     <children>
