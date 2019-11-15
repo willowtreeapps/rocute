@@ -21,7 +21,7 @@
         <field id="animateToItem" type="integer" onChange="setInnerField" alwaysNotify="false"/>
         <field id="createNextPanelIndex" type="integer" />
         <field id="nextPanel" type="node" onChange="showPanel" alwaysNotify="true"/>
-        <field id="createNextPanelOnItemFocus" type="boolean" value="true" />
+        <field id="createNextPanelOnItemFocus" type="boolean" value="false" />
         <field id="createNextPanelOnItemSelect" type="boolean" value="true" />
         <field id="panelSet" type="node" />
     </interface>

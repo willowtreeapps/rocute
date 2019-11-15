@@ -3,27 +3,26 @@ sub init()
     m.grid.numColumns = 5
     'm.grid.rowSpacings = [0]
     ' setup readonly fields
-    'm.grid.observeField("currFocusFeedbackOpacity", "readOnlyFieldChanged")
-    'm.grid.observeField("rowItemSelected", "readOnlyFieldChanged")
-    'm.grid.observeField("rowItemFocused", "readOnlyFieldChanged")
-    'childCount = m.top.getChildCount()
-    'm.children = m.top.getChildren(childCount, 0)
-    'm.top.observeField("[[children]]", "childrenChanged")
+    m.grid.observeField("itemUnfocused", "readOnlyFieldChanged")
+    m.grid.observeField("itemSelected", "readOnlyFieldChanged")
+    m.grid.observeField("itemFocused", "readOnlyFieldChanged")
+    'm.grid.observeField("createNextPanelIndex", "readOnlyFieldChanged")
     m.grid.setFocus(true)
 end sub
 
-sub childrenChanged(event as object)
-    children = event.getData()
-    for each child in children
-        if child.role = "content" then
-            m.grid.content = child
-            return
-        end if
-    end for
+sub readOnlyFieldChanged(event as object)
+    fieldName = event.getField()
+    value = event.getData()
+    m.top[fieldName] = value
+    if fieldName="itemFocused" and m.top.createNextPanelOnItemFocus = true then
+        m.top.createNextPanelIndex = value
+    else if fieldName="itemSelected" and m.top.createNextPanelOnItemSelect = true then
+        m.top.createNextPanelIndex = value
+    end if
 end sub
 
 sub showPanel(event as Object)
-    if m.top.createNextPanelOnItemFocus = false or m.top.createNextPanelOnItemSelect = false then return
+    if m.top.createNextPanelOnItemFocus = false and m.top.createNextPanelOnItemSelect = false then return
     panel = event.getData()
     if m.panelSet = invalid then
         m.panelSet = createObject("roSGNode", "PanelSet")
