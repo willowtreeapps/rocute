@@ -3,19 +3,6 @@
 <component name="StyledListOneListPanelExample" extends="ListPanel" >
   <script type="text/brightscript" uri="pkg:/components/examples/StyledListOneExample/StyledListOneExample.brs"/>
   <children>
-    <LabelList
-      id="StyledListOneExample"
-      vertFocusAnimationStyle = "floatingFocus" 
-      drawFocusFeedback = "true"     
-    >
-      <ContentNode role="Content">
-        <ContentNode title="Item 1" />
-        <ContentNode title="Item 2" />
-        <ContentNode title="Item 3" />
-        <ContentNode title="Item 4" />
-        <ContentNode title="Item 5" />
-        <ContentNode title="Item 6" />
-      </ContentNode>
-    </LabelList>
+    <StyledListOne id="StyledListOneExample"/>
   </children>
 </component>
