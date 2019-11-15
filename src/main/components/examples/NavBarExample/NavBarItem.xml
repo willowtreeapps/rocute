@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<component name="NavBarItem" extends="Group">
+    <interface>
+        <field id="itemContent" type="node" onChange="setItemContent" alwaysNotify="false" />
+    </interface>
+    <children>
+        <Poster id="poster" />
+        <Label id="label" text="Hello World!"/>
+    </children>
+    <script type="text/brightscript" uri="pkg:/components/examples/NavBarExample/NavBarItem.brs" />
+</component>

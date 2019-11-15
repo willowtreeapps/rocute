@@ -3,17 +3,17 @@
     <children>
         <NavBar
             id = "navBar"
-            itemComponentName="Label"
-            variableWidthItems="true"
+            itemComponentName="NavBarItem"
         >
-            <ContentNode role="content">
-                <ContentNode title="Home"/>
-                <ContentNode title="Movies"/>
-                <ContentNode title="TV"/>
-                <ContentNode title="Settings"/>
-                <ContentNode title="Account"/>
+            <ContentNode id="content" role="content">
+                <ContentNode title="Home" hdPosterUrl="pkg:/components/examples/images/pattern-with-deformed-shapes.jpg"/>
+                <ContentNode title="Movies" hdPosterUrl="pkg:/components/examples/images/pattern-with-deformed-shapes.jpg"/>
+                <ContentNode title="TV" hdPosterUrl="pkg:/components/examples/images/pattern-with-deformed-shapes.jpg"/>
+                <ContentNode title="Settings" hdPosterUrl="pkg:/components/examples/images/pattern-with-deformed-shapes.jpg"/>
+                <ContentNode title="Account" hdPosterUrl="pkg:/components/examples/images/pattern-with-deformed-shapes.jpg"/>
             </ContentNode>
         </NavBar>
         <PanelSet id="panelSet"/>
     </children>
+    <script type="text/brightscript" uri="pkg:/components/examples/NavBarExample/NavBarExample.brs"/>
 </component>

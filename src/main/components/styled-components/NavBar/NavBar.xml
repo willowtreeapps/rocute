@@ -2,29 +2,23 @@
 <component name="NavBar" extends="Group">
     <interface>
         <field id="itemComponentName" type="string" value="ContentNode" onChange="setInnerField" alwaysNotify="false"/>
-        <field id="content" type="node" onChange="setContent" alwaysNotify="false"/>
-        <field id="width" type="float" value="1080" onChange="setSize" alwaysNotify="false"/>
-        <field id="height" type="float" value="115" onChange="setSize" alwaysNotify="false"/>
-        <field id="itemSize" type="vector2d" value="[0,0]" onChange="setArrayField" alwaysNotify="false"/>
-        <field id="itemSpacing" type="float" value="10" onChange="setItemSpacing" alwaysNotify="false"/>
-        <field id="focusXOffset" type="float" value="0" onChange="setArrayField" alwaysNotify="false"/>
-        <field id="variableWidthItems" type="boolean" value="false" onChange="setArrayField" alwaysNotify="false"/>
-        <field id="focusAnimationStyle" type="string" value="floatingFocus" onChange="setInnerField" alwaysNotify="false"/>
-        <field id="fadeFocusFeedbackWhenAutoScrolling" type="boolean" value="false" onChange="setInnerField" alwaysNotify="false"/>
-        <field id="currFocusFeedbackOpacity_RDO" type="float" />
-        <field id="drawFocusFeedbackOnTop" type="boolean" value="false" onChange="setInnerField" alwaysNotify="false"/>
+        <field id="content" type="node" onChange="setInnerField" alwaysNotify="false"/>
+        <field id="itemSize" type="vector2d" value="[0,0]" onChange="setInnerField" alwaysNotify="false"/>
+        <field id="numItems" type="integer" value="12" onChange="setInnerField" alwaysNotify="false"/>
+        <field id="height" type="float" value="115" onChange="setHeight" alwaysNotify="false"/>
+        <field id="itemWidths" type="floatArray" onChange="setInnerField" alwaysNotify="false"/>
+        <field id="itemSpacings" type="floatArray" onChange="setInnerField" alwaysNotify="false"/>
         <field id="drawFocusFeedback" type="boolean" value="true" onChange="setInnerField" alwaysNotify="false"/>
+        <field id="drawFocusFeedbackOnTop" type="boolean" value="false" onChange="setInnerField" alwaysNotify="false"/>
         <field id="focusBitmapUri" type="uri" onChange="setInnerField" alwaysNotify="false"/>
         <field id="focusFootprintBitmapUri" type="uri" onChange="setInnerField" alwaysNotify="false"/>
         <field id="focusBitmapBlendColor" type="color" value="#FFFFFFFF" onChange="setInnerField" alwaysNotify="false"/>
         <field id="focusFootprintBlendColor" type="color" value="#FFFFFFFF" onChange="setInnerField" alwaysNotify="false"/>
-        <field id="loadingBitmapUri" type="uri" onChange="setInnerField" alwaysNotify="false"/>
-        <field id="loadingBitmapOpacity" type="float" value="1.0" onChange="setInnerField" alwaysNotify="false"/>
-        <field id="failedBitmapUri" type="uri" onChange="setInnerField" alwaysNotify="false"/>
-        <field id="failedBitmapOpacity" type="float" value="1.0" onChange="setInnerField" alwaysNotify="false"/>
-        <field id="itemSelected_RDO" type="integer" />
-        <field id="itemFocused_RDO" type="integer" />
-        <field id="jumpToItem" type="integer" value="0" onChange="setJumpToItem" alwaysNotify="false"/>
+        <field id="itemSelected" type="integer" />
+        <field id="itemFocused" type="integer" />
+        <field id="itemUnfocused" type="integer" />
+        <field id="jumpToItem" type="integer" value="0" onChange="setInnerField" alwaysNotify="false"/>
+        <field id="animateToItem" type="integer" onChange="setInnerField" alwaysNotify="false"/>
         <field id="createNextPanelIndex" type="integer" />
         <field id="nextPanel" type="node" onChange="showPanel" alwaysNotify="true"/>
         <field id="createNextPanelOnItemFocus" type="boolean" value="true" />
@@ -32,7 +26,7 @@
         <field id="panelSet" type="node" />
     </interface>
     <children>
-        <RowList id="rowList"/>
+        <MarkupGrid id="grid"/>
     </children>
     <script type="text/brightscript" uri="pkg:/components/styled-components/NavBar/NavBar.brs"/>
 </component>
