@@ -3,6 +3,9 @@
 <component name="StyledListThreeListPanelExample" extends="ListPanel" >
   <script type="text/brightscript" uri="pkg:/components/examples/StyledListThreeExample/StyledListThreeExample.brs"/>
   <children>
-    <StyledListThree id="StyledListThreeExample"/>
+    <StyledListThree
+      id="StyledListThreeExample"
+      colors= "[0xFF0000FF, 0x00FF00FF,  0x0000FFFF]"
+    />
   </children>
 </component>

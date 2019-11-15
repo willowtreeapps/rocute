@@ -4,8 +4,8 @@ sub init()
 end sub
 
 sub colorRand()
-    colorArray = ["FF0000", "#FFFF00", "#0033CC", "#FF9900", "#00CC00", "#660099"]
-    color = m.top.focusedColor
-    color = colorArray[Rnd(5)]
+    colorArray = m.top.colors
+    colorArrayLength = colorArray.count()
+    color = colorArray[Rnd(colorArrayLength) - 1]
     m.top.focusedColor = color
 end sub
