@@ -1,10 +1,11 @@
 sub init()
     m.navBar = m.top.findNode("navBar")
-    'm.panelSet = m.top.findNode("panelSet")
-    'm.navBar.panelSet = panelSet
+    'm.content = m.top.findNode("content")
+    m.panelSet = m.top.findNode("panelSet")
+    m.navBar.panelSet = m.panelSet
     'm.navBar.observeField("itemSelected_RDO", "setPanel")
-    content = createObject("roSGNode", "navBarItem")
-    m.navBar.content = content
+    'content = createObject("roSGNode", "navBarItem")
+    'm.navBar.content = content
 end sub
 
 sub setPanel(event as object)

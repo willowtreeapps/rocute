@@ -1,13 +1,25 @@
 sub init()
     m.grid = m.top.findNode("grid")
-    m.grid.numRows = 1
-    m.grid.rowSpacings = [0]
+    m.grid.numColumns = 5
+    'm.grid.rowSpacings = [0]
     ' setup readonly fields
     'm.grid.observeField("currFocusFeedbackOpacity", "readOnlyFieldChanged")
     'm.grid.observeField("rowItemSelected", "readOnlyFieldChanged")
     'm.grid.observeField("rowItemFocused", "readOnlyFieldChanged")
-
+    'childCount = m.top.getChildCount()
+    'm.children = m.top.getChildren(childCount, 0)
+    'm.top.observeField("[[children]]", "childrenChanged")
     m.grid.setFocus(true)
+end sub
+
+sub childrenChanged(event as object)
+    children = event.getData()
+    for each child in children
+        if child.role = "content" then
+            m.grid.content = child
+            return
+        end if
+    end for
 end sub
 
 sub showPanel(event as Object)
@@ -30,7 +42,7 @@ sub setInnerField(event as Object)
     else if fieldName = "itemWidths" then
         fieldName = "columnWidths"
     else if fieldName = "itemSpacings" then
-        fieldName = "columnSpacings"
+        fieldName = "colummSpacings"
     end if
     print m.grid[fieldName]
     m.grid[fieldName] = value

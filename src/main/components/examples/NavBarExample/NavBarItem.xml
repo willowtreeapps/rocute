@@ -1,7 +1,13 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <component name="NavBarItem" extends="Group">
     <interface>
-        <field id="itemContent" type="node" onChange="setItemContent" alwaysNotify="false" />
+        <field id="itemContent" type="node" />
+        <field id="width" type="float"/>
+        <field id="height" type="float"/>
+        <field id="index" type="integer"/>
+        <field id="gridHasFocus" type="boolean"/>
+        <field id="focusPercent" type="float"/>
+        <field id="itemHasFocus" type="boolean"/>
     </interface>
     <children>
         <Poster id="poster" />

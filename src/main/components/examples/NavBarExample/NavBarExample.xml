@@ -4,8 +4,10 @@
         <NavBar
             id = "navBar"
             itemComponentName="NavBarItem"
+            itemSize="[250,250]"
+            translation = "[20,20]"
         >
-            <ContentNode id="content" role="content">
+            <ContentNode role="content">
                 <ContentNode title="Home" hdPosterUrl="pkg:/components/examples/images/pattern-with-deformed-shapes.jpg"/>
                 <ContentNode title="Movies" hdPosterUrl="pkg:/components/examples/images/pattern-with-deformed-shapes.jpg"/>
                 <ContentNode title="TV" hdPosterUrl="pkg:/components/examples/images/pattern-with-deformed-shapes.jpg"/>
