@@ -1,11 +1,15 @@
 sub init()
-    ' Setup
     m.top.observeField("itemFocused", "colorRand")
+    m.top.content = m.top.listContents
 end sub
 
 sub colorRand()
-    colorArray = ["FF0000", "#FFFF00", "#0033CC", "#FF9900", "#00CC00", "#660099"]
-    color = m.top.focusBitmapBlendColor
-    color = colorArray[Rnd(5)]
+    colorArray = m.top.colors
+    colorArrayLength = colorArray.count()
+    color = colorArray[Rnd(colorArrayLength) - 1]
     m.top.focusBitmapBlendColor = color
+end sub
+
+sub updateContents()
+    m.top.content = m.top.listContents
 end sub

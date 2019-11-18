@@ -2,13 +2,8 @@
 
 <component name="StyledListTwo" extends="LabelList" >
   <script type="text/brightscript" uri="pkg:/components/styled-components/StyledListTwo/StyledListTwo.brs"/>
-  <children>
-      <ContentNode role="Content">
-        <ContentNode title="Item 1" />
-        <ContentNode title="Item 2" />
-        <ContentNode title="Item 3" />
-        <ContentNode title="Item 4" />
-        <ContentNode title="Item 5" />
-      </ContentNode>
-  </children>
+  <interface>
+    <field id="colors" type="colorarray"/>
+    <field id="listContents" type="node" onChange="updateContents"/>
+  </interface>
 </component>

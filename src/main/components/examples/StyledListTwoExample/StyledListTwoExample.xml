@@ -3,6 +3,10 @@
 <component name="StyledListTwoListPanelExample" extends="ListPanel" >
   <script type="text/brightscript" uri="pkg:/components/examples/StyledListTwoExample/StyledListTwoExample.brs"/>
   <children>
-    <StyledListTwo id="StyledListTwoExample"/>
+    <StyledListTwo
+      id="StyledListTwoExample"
+      colors= "[0xFF0000FF, 0x00FF00FF,  0x0000FFFF]"
+      listContents = "[]"
+    />
   </children>
 </component>
