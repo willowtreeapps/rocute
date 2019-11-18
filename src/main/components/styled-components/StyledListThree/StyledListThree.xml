@@ -5,9 +5,8 @@
   <interface>
     <field id="colors" type="colorarray"/>
     <field
-      id="listContents"
+      id="content"
       type="node"
-      onChange="updateContents"
       value = "[]"
     />
   </interface>

@@ -14,6 +14,6 @@ sub init()
     itemFive = content.createChild("ContentNode")
     itemFive.title = "Item 5"
     ' Set content
-    list.listContents = content
+    list.content = content
     m.top.list = list
 end sub
