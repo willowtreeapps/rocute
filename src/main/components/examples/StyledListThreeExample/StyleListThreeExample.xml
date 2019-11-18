@@ -6,7 +6,6 @@
     <StyledListThree
       id="StyledListThreeExample"
       colors= "[0xFF0000FF, 0x00FF00FF,  0x0000FFFF]"
-      listContents = "[]"
     />
   </children>
 </component>

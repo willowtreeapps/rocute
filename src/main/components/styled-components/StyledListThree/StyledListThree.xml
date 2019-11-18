@@ -4,6 +4,11 @@
   <script type="text/brightscript" uri="pkg:/components/styled-components/StyledListThree/StyledListThree.brs"/>
   <interface>
     <field id="colors" type="colorarray"/>
-    <field id="listContents" type="node" onChange="updateContents"/>
+    <field
+      id="listContents"
+      type="node"
+      onChange="updateContents"
+      value = "[]"
+    />
   </interface>
 </component>

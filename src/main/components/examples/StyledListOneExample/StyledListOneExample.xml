@@ -6,7 +6,6 @@
     <StyledListOne
       id="StyledListOneExample"
       expandedHeight= "100"
-      listContents = "[]"
     />
   </children>
 </component>
