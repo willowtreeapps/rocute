@@ -20,10 +20,10 @@
         <field id="jumpToItem" type="integer" value="0" onChange="setInnerField" alwaysNotify="false"/>
         <field id="animateToItem" type="integer" onChange="setInnerField" alwaysNotify="false"/>
         <field id="createNextPanelIndex" type="integer" />
-        <field id="nextPanel" type="node" onChange="showPanel" />
+        <!--<field id="nextPanel" type="node" onChange="showPanel" />-->
         <field id="createNextPanelOnItemFocus" type="boolean" value="false" />
         <field id="createNextPanelOnItemSelect" type="boolean" value="true" />
-        <field id="panelSet" type="node" />
+        <!--<field id="panelSet" type="node" />-->
     </interface>
     <children>
         <MarkupGrid id="grid"/>

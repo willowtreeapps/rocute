@@ -15,7 +15,7 @@
                 <ContentNode title="Account" hdPosterUrl="pkg:/components/examples/images/pattern-with-deformed-shapes.jpg"/>
             </ContentNode>
         </NavBar>
-        <PanelSet id="panelSet"/>
+        <Group id="panelSet" translation = "[20,135]"/>
     </children>
     <script type="text/brightscript" uri="pkg:/components/examples/NavBarExample/NavBarExample.brs"/>
 </component>

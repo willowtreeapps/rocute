@@ -1,6 +1,7 @@
 sub init()
-    m.list = m.top.findNode("list")
-    'm.top.setFocus(true)
+    'm.list = m.top.findNode("list")
+    m.top.setFocus(true)
+    m.top.vertFocusAnimationStyle = "floatingFocus"
 end sub
 
 sub changeText(event as object)
@@ -12,5 +13,5 @@ sub changeText(event as object)
         innerContent.title = value
         content.appendChild(innerContent)
     end for
-    m.list.content = content
+    m.top.content = content
 end sub
