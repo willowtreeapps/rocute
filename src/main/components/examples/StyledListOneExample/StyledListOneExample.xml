@@ -3,6 +3,10 @@
 <component name="StyledListOneListPanelExample" extends="ListPanel" >
   <script type="text/brightscript" uri="pkg:/components/examples/StyledListOneExample/StyledListOneExample.brs"/>
   <children>
-    <StyledListOne id="StyledListOneExample"/>
+    <StyledListOne
+      id="StyledListOneExample"
+      expandedHeight= "100"
+      listContents = "[]"
+    />
   </children>
 </component>
