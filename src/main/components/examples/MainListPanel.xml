@@ -7,6 +7,9 @@
       <ContentNode role="Content">
         <ContentNode title="TiledBackground" />
         <ContentNode title="ArcInterpolator" /> 
+        <ContentNode title="ResizeList" />
+        <ContentNode title="RandomColoredList" />
+        <ContentNode title="RandomColoredFontList" />
       </ContentNode>
     </LabelList>
   </children>

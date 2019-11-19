@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<component name="RandomColoredFontList" extends="LabelList" >
+  <script type="text/brightscript" uri="pkg:/components/styled-components/RandomColoredFontList/RandomColoredFontList.brs"/>
+  <interface>
+    <field id="colors" type="colorarray"/>
+    <field
+      id="content"
+      type="node"
+      value = "[]"
+    />
+  </interface>
+</component>
