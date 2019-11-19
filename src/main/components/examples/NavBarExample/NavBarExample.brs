@@ -1,13 +1,13 @@
 sub init()
     m.navBar = m.top.findNode("navBar")
-    m.panelSet = m.top.findNode("panelSet")
+    m.container = m.top.findNode("container")
     ' set focus when we enter this panel
     m.top.observeField("focusedChild", "setDefaultFocus")
     m.navBar.observeField("createNextPanelIndex", "setPanel")
     ' show a default panel
     m.panel = createObject("roSGNode", "ExamplePanel")
     m.panel.text = "HOME"
-    m.panelSet.appendChild(m.panel)
+    m.container.appendChild(m.panel)
 end sub
 
 sub setDefaultFocus(event as object)
@@ -32,7 +32,7 @@ sub setPanel(event as object)
     else if index = 4 then
         m.panel.text="ACCOUNT"
     end if
-    m.panelSet.replaceChild(m.panel, 0)
+    m.container.replaceChild(m.panel, 0)
     m.panel.setFocus(true)
 end sub
 

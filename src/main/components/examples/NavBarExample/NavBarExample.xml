@@ -4,20 +4,20 @@
         <NavBar
             id = "navBar"
             itemComponentName="NavBarItem"
-            itemSize="[120,40]"
+            itemSize="[120, 36]"
             translation = "[20,20]"
             itemWidths = "[100, 100, 60, 120, 120]"
             itemSpacings = "[20, 20, 20, 20, 0]"
         >
             <ContentNode role="content">
-                <ContentNode title="Home"/>
+                <ContentNode title="Home" />
                 <ContentNode title="Movies" />
                 <ContentNode title="TV" />
                 <ContentNode title="Settings" />
                 <ContentNode title="Account" />
             </ContentNode>
         </NavBar>
-        <Group id="panelSet" translation = "[20,60]"/>
+        <Group id="container" translation = "[20,60]"/>
     </children>
     <script type="text/brightscript" uri="pkg:/components/examples/NavBarExample/NavBarExample.brs"/>
 </component>
