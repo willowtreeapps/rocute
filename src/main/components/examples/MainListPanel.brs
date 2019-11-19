@@ -4,17 +4,20 @@ sub init()
     m.top.observeField("createNextPanelIndex", "createNextPanel")
 end sub
 
-sub createNextPanel()
-    if m.top.createNextPanelIndex = 0 then
+sub createNextPanel(event as object)
+    index = event.getData()
+    if index = 0 then
         m.top.nextPanel = createObject("roSGNode", "TiledBackgroundExample")
-    else if m.top.createNextPanelIndex = 1 then
+    else if index = 1 then
         m.top.nextPanel = createObject("roSGNode", "ArcInterpolatorExample")
-    else if m.top.createNextPanelIndex = 2 then
+    else if index = 2 then
         m.top.nextPanel = createObject("roSGNode", "ResizeListListPanelExample")
-    else if m.top.createNextPanelIndex = 3 then
+    else if index = 3 then
         m.top.nextPanel = createObject("roSGNode", "RandomColoredListListPanelExample")
-    else if m.top.createNextPanelIndex = 4 then
+    else if index = 4 then
         m.top.nextPanel = createObject("roSGNode", "RandomColoredFontListListPanelExample")
+    else if index = 5 then
+        m.top.nextPanel = createObject("roSGNode", "NavBarExample")
         ' else if index = NUMBERHERE then
         '     m.top.nextPanel = createObject("roSGNode", "NextExampleComponent")
     end if

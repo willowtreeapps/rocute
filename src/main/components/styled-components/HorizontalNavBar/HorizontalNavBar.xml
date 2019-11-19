@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<component name="HorizontalNavBar" extends="Group">
+    <interface>
+        <field id="itemComponentName" type="string" value="ContentNode" onChange="setInnerField" />
+        <field id="content" type="node" onChange="setInnerField" />
+        <field id="itemSize" type="vector2d" value="[0,0]" onChange="setInnerField" />
+        <field id="numItems" type="integer" value="12" onChange="setInnerField" />
+        <field id="height" type="float" value="115" onChange="setHeight" alwaysNotify="false"/>
+        <field id="itemWidths" type="floatArray" onChange="setInnerField" />
+        <field id="itemSpacings" type="floatArray" onChange="setInnerField" />
+        <field id="drawFocusFeedback" type="boolean" value="true" onChange="setInnerField" />
+        <field id="drawFocusFeedbackOnTop" type="boolean" value="false" onChange="setInnerField" />
+        <field id="focusBitmapUri" type="uri" onChange="setInnerField" />
+        <field id="focusFootprintBitmapUri" type="uri" onChange="setInnerField" />
+        <field id="focusBitmapBlendColor" type="color" value="#FFFFFFFF" onChange="setInnerField" />
+        <field id="focusFootprintBlendColor" type="color" value="#FFFFFFFF" onChange="setInnerField" />
+        <field id="itemSelected" type="integer" />
+        <field id="itemFocused" type="integer" />
+        <field id="itemUnfocused" type="integer" />
+        <field id="jumpToItem" type="integer" value="0" onChange="setInnerField" />
+        <field id="animateToItem" type="integer" onChange="setInnerField" />
+        <field id="createNextPanelIndex" type="integer" />
+        <field id="createNextPanelOnItemFocus" type="boolean" value="false" />
+        <field id="createNextPanelOnItemSelect" type="boolean" value="true" />
+    </interface>
+    <children>
+        <MarkupGrid id="grid"/>
+    </children>
+    <script type="text/brightscript" uri="pkg:/components/styled-components/HorizontalNavBar/HorizontalNavBar.brs"/>
+</component>
