@@ -1,21 +1,23 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<component name="NavBarExample" extends="Scene">
+<component name="NavBarExample" extends="Panel">
     <children>
         <NavBar
             id = "navBar"
             itemComponentName="NavBarItem"
-            itemSize="[200,115]"
+            itemSize="[120,40]"
             translation = "[20,20]"
+            itemWidths = "[100, 100, 60, 120, 120]"
+            itemSpacings = "[20, 20, 20, 20, 0]"
         >
             <ContentNode role="content">
-                <ContentNode title="Home" hdPosterUrl="pkg:/components/examples/images/pattern-with-deformed-shapes.jpg"/>
-                <ContentNode title="Movies" hdPosterUrl="pkg:/components/examples/images/pattern-with-deformed-shapes.jpg"/>
-                <ContentNode title="TV" hdPosterUrl="pkg:/components/examples/images/pattern-with-deformed-shapes.jpg"/>
-                <ContentNode title="Settings" hdPosterUrl="pkg:/components/examples/images/pattern-with-deformed-shapes.jpg"/>
-                <ContentNode title="Account" hdPosterUrl="pkg:/components/examples/images/pattern-with-deformed-shapes.jpg"/>
+                <ContentNode title="Home"/>
+                <ContentNode title="Movies" />
+                <ContentNode title="TV" />
+                <ContentNode title="Settings" />
+                <ContentNode title="Account" />
             </ContentNode>
         </NavBar>
-        <Group id="panelSet" translation = "[20,135]"/>
+        <Group id="panelSet" translation = "[20,60]"/>
     </children>
     <script type="text/brightscript" uri="pkg:/components/examples/NavBarExample/NavBarExample.brs"/>
 </component>

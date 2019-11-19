@@ -25,7 +25,7 @@ sub readOnlyFieldChanged(event as object)
     end if
 end sub
 
-sub setInnerField(event as Object)
+sub setInnerField(event as object)
     fieldName = event.getField()
     value = event.getData()
     if fieldName = "numItems" then
@@ -38,7 +38,7 @@ sub setInnerField(event as Object)
     m.grid[fieldName] = value
 end sub
 
-sub setHeight(event as Object)
+sub setHeight(event as object)
     value = event.getData()
     m.grid.rowHeights = [value]
 end sub
