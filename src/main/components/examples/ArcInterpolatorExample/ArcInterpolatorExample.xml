@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<component name="ArcInterpolatorExample" extends="Panel" >
+  <script type="text/brightscript" uri="pkg:/components/examples/ArcInterpolatorExample/ArcInterpolatorExample.brs"/>
+  <children>
+    <Rectangle
+        id = "animateMe"
+        height = "20"
+        width = "20"
+        color="#ffff00ff"
+        translation="[250,250]"
+    />
+    <Label
+        id="labelA"
+        text="A"
+        translation="[250,250]"
+    />
+    <Label
+        id="labelB"
+        text="B"
+        translation="[125,250]"
+    />
+    <Label
+        id="labelC"
+        text="C"
+        translation="[75,180]"
+    />
+    <Animation 
+      id="animate" 
+      easeFunction="inOutQuad"
+      repeat = "true"
+      duration="4">
+        <ArcInterpolator 
+          id="arcInterpol" 
+          start="[250,250]" 
+          middle="[125,250]" 
+          end="[75,180]" 
+          fieldToInterp="animateMe.translation"
+        />
+    </Animation>
+  </children>
+</component>
