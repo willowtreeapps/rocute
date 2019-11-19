@@ -1,6 +1,6 @@
 sub init()
     ' Setup
-    list = m.top.findNode("StyledListTwoExample")
+    list = m.top.findNode("ResizeListExample")
     ' Generate content for list
     content = createObject("RoSGNode", "ContentNode")
     itemOne = content.createChild("ContentNode")
@@ -14,6 +14,6 @@ sub init()
     itemFive = content.createChild("ContentNode")
     itemFive.title = "Item 5"
     ' Set content
-    list.content = content
+    list.listContents = content
     m.top.list = list
 end sub

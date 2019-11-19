@@ -8,10 +8,10 @@ sub createNextPanel()
     if m.top.createNextPanelIndex = 0 then
         m.top.nextPanel = createObject("roSGNode", "TiledBackgroundExample")
     else if m.top.createNextPanelIndex = 1 then
-        m.top.nextPanel = createObject("roSGNode", "StyledListOneListPanelExample")
+        m.top.nextPanel = createObject("roSGNode", "ResizeListListPanelExample")
     else if m.top.createNextPanelIndex = 2 then
-        m.top.nextPanel = createObject("roSGNode", "StyledListTwoListPanelExample")
+        m.top.nextPanel = createObject("roSGNode", "RandomColoredListListPanelExample")
     else if m.top.createNextPanelIndex = 3 then
-        m.top.nextPanel = createObject("roSGNode", "StyledListThreeListPanelExample")
+        m.top.nextPanel = createObject("roSGNode", "RandomColoredFontListListPanelExample")
     end if
 end sub

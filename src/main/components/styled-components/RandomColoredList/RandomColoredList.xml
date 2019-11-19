@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 
-<component name="StyledListTwo" extends="LabelList" >
-  <script type="text/brightscript" uri="pkg:/components/styled-components/StyledListTwo/StyledListTwo.brs"/>
+<component name="RandomColoredList" extends="LabelList" >
+  <script type="text/brightscript" uri="pkg:/components/styled-components/RandomColoredList/RandomColoredList.brs"/>
   <interface>
     <field id="colors" type="colorarray"/>
     <field

@@ -6,9 +6,9 @@
     <LabelList id="componentList">
       <ContentNode role="Content">
         <ContentNode title="TiledBackground" />
-        <ContentNode title="StyledListOne" />
-        <ContentNode title="StyledListTwo" />
-        <ContentNode title="StyledListThree" />
+        <ContentNode title="ResizeList" />
+        <ContentNode title="RandomColoredList" />
+        <ContentNode title="RandomColoredFontList" />
       </ContentNode>
     </LabelList>
   </children>

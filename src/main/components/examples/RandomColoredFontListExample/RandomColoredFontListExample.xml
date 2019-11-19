@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<component name="RandomColoredFontListListPanelExample" extends="ListPanel" >
+  <script type="text/brightscript" uri="pkg:/components/examples/RandomColoredFontListExample/RandomColoredFontListExample.brs"/>
+  <children>
+    <RandomColoredFontList
+      id="RandomColoredFontListExample"
+      colors= "[0xFF0000FF, 0x00FF00FF,  0x0000FFFF]"
+    />
+  </children>
+</component>

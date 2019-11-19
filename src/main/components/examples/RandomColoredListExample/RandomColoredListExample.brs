@@ -1,6 +1,6 @@
 sub init()
     ' Setup
-    list = m.top.findNode("StyledListOneExample")
+    list = m.top.findNode("RandomColoredListExample")
     ' Generate content for list
     content = createObject("RoSGNode", "ContentNode")
     itemOne = content.createChild("ContentNode")
@@ -14,6 +14,6 @@ sub init()
     itemFive = content.createChild("ContentNode")
     itemFive.title = "Item 5"
     ' Set content
-    list.listContents = content
+    list.content = content
     m.top.list = list
 end sub
