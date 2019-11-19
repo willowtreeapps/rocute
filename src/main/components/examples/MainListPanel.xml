@@ -10,7 +10,7 @@
         <ContentNode title="ResizeList" />
         <ContentNode title="RandomColoredList" />
         <ContentNode title="RandomColoredFontList" />
-        <ContentNode title="NavBar" />
+        <ContentNode title="HorizontalNavBar" />
         <!-- <ContentNode title="Next" /> -->
       </ContentNode>
     </LabelList>

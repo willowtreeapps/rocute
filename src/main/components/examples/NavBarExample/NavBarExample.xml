@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <component name="NavBarExample" extends="Panel">
     <children>
-        <NavBar
+        <HorizontalNavBar
             id = "navBar"
             itemComponentName="NavBarItem"
             itemSize="[120, 36]"
@@ -16,7 +16,7 @@
                 <ContentNode title="Settings" />
                 <ContentNode title="Account" />
             </ContentNode>
-        </NavBar>
+        </HorizontalNavBar>
         <Group id="container" translation = "[20,60]"/>
     </children>
     <script type="text/brightscript" uri="pkg:/components/examples/NavBarExample/NavBarExample.brs"/>

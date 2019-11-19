@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<component name="NavBar" extends="Group">
+<component name="HorizontalNavBar" extends="Group">
     <interface>
         <field id="itemComponentName" type="string" value="ContentNode" onChange="setInnerField" />
         <field id="content" type="node" onChange="setInnerField" />
@@ -26,5 +26,5 @@
     <children>
         <MarkupGrid id="grid"/>
     </children>
-    <script type="text/brightscript" uri="pkg:/components/styled-components/NavBar/NavBar.brs"/>
+    <script type="text/brightscript" uri="pkg:/components/styled-components/HorizontalNavBar/HorizontalNavBar.brs"/>
 </component>
