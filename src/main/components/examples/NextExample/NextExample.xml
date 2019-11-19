@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" ?>
 
-<component name="NextExampleComponent" extends="Node" >
+<component name="NextExampleComponent" extends="Panel" >
   <script type="text/brightscript" uri="pkg:/components/examples/NextExample/NextExample.brs"/>
   <children>
     <Next id="NextExample" />

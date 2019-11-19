@@ -15,7 +15,7 @@ sub createNextPanel()
         m.top.nextPanel = createObject("roSGNode", "RandomColoredListListPanelExample")
     else if m.top.createNextPanelIndex = 4 then
         m.top.nextPanel = createObject("roSGNode", "RandomColoredFontListListPanelExample")
-        ' else if m.top.createNextPanelIndex = NUMBERHERE then
+        ' else if index = NUMBERHERE then
         '     m.top.nextPanel = createObject("roSGNode", "NextExampleComponent")
     end if
 end sub
