@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<component name="DisappearingLogo" extends="Group" >
+  <script type="text/brightscript" uri="pkg:/components/video-overlays/DisappearingLogo/DisappearingLogo.brs"/>
+  <interface>
+    <field id = "logoUri" type = "uri" />
+    <field id = "logoSize" type = "vector2d" value = "[30, 30]" />
+    <field id = "logoOpacity" type = "double" value = "1" />
+    <field id = "displayTime" type = "double" value = "10" />
+    <field id = "fadeTime" type = "double" value = "1" />
+    <field id = "position" type = "string" value = "bottomRight" />
+    <field id = "fixedPosition" type = "boolean" value = "false" />
+    <field id = "logoTranslation" type = "vector2d" />
+    <field id = "videoId" type = "string" />
+  </interface>
+  <children>
+    <Poster id="logo" />
+    <Animation id = "fadeAnimation" duration = "10" />
+  </children>
+</component>
