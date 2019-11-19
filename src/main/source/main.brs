@@ -3,7 +3,7 @@ sub main(params as object)
   screen = CreateObject("roSGScreen")
   m.port = CreateObject("roMessagePort")
   screen.setMessagePort(m.port)
-  scene = screen.CreateScene("NavBarExample")
+  scene = screen.CreateScene("AppScene")
   screen.show()
 
   while(true)
