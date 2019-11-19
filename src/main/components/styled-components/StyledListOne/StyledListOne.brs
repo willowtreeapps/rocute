@@ -4,7 +4,7 @@ sub init()
     m.top.observeField("itemFocused", "focusControl")
 end sub
 
-sub focusControl()
+sub focusControl(event as object)
     focused = m.top.itemFocused
     unfocused = m.top.itemUnfocused
     heights = m.top.rowHeights
@@ -13,7 +13,7 @@ sub focusControl()
     m.top.rowHeights = heights
 end sub
 
-sub updateContents()
+sub updateContents(event as object)
     contentsLength = m.top.listContents.count()
     generateRowHeights = []
     for incrementVal = 0 to contentsLength
