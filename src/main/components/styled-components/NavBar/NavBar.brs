@@ -1,13 +1,10 @@
 sub init()
     m.grid = m.top.findNode("grid")
     m.grid.numColumns = 5
-    'm.grid.rowSpacings = [0]
     ' setup readonly fields
     m.grid.observeField("itemUnfocused", "readOnlyFieldChanged")
     m.grid.observeField("itemSelected", "readOnlyFieldChanged")
     m.grid.observeField("itemFocused", "readOnlyFieldChanged")
-    'm.grid.observeField("createNextPanelIndex", "readOnlyFieldChanged")
-    m.grid.setFocus(true)
     m.top.observeField("focusedChild", "focusChanged")
 end sub
 
@@ -26,16 +23,6 @@ sub readOnlyFieldChanged(event as object)
     else if fieldName="itemSelected" and m.top.createNextPanelOnItemSelect = true then
         m.top.createNextPanelIndex = value
     end if
-end sub
-
-sub showPanel(event as Object)
-    if m.top.createNextPanelOnItemFocus = false and m.top.createNextPanelOnItemSelect = false then return
-    panel = event.getData()
-    if m.panelSet = invalid then
-        m.panelSet = createObject("roSGNode", "PanelSet")
-        m.top.appendChild(m.panelSet)
-    end if
-    m.panelSet.appendChild(panel)
 end sub
 
 sub setInnerField(event as Object)
