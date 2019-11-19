@@ -3,47 +3,44 @@ sub init()
     m.container = m.top.findNode("container")
     ' set focus when we enter this panel
     m.top.observeField("focusedChild", "setDefaultFocus")
+    ' create and show the displayed node when navigation changes
     m.navBar.observeField("createNextPanelIndex", "setPanel")
-    ' show a default panel
-    m.panel = createObject("roSGNode", "ExamplePanel")
-    m.panel.text = "HOME"
-    m.container.appendChild(m.panel)
+    ' show a default node
+    m.displayedNode = createObject("roSGNode", "ExampleNode")
+    m.displayedNode.text = "HOME"
+    m.container.appendChild(m.displayedNode)
 end sub
 
 sub setDefaultFocus(event as object)
     print event.getField()
     print event.getData()
-    if m.top.isInFocusChain() = true and m.panel.isInFocusChain() = false and m.navBar.isInFocusChain() = false then
-        m.panel.setFocus(true)
+    if m.top.isInFocusChain() = true and m.displayedNode.isInFocusChain() = false and m.navBar.isInFocusChain() = false then
+        m.displayedNode.setFocus(true)
     end if
 end sub
 
 sub setPanel(event as object)
     index = event.getData()
-    m.panel = createObject("roSGNode", "ExamplePanel")
+    m.displayedNode = createObject("roSGNode", "ExampleNode")
     if index = 0 then
-        m.panel.text="HOME"        
+        m.displayedNode.text="HOME"        
     else if index = 1 then
-        m.panel.text="MOVIES"
+        m.displayedNode.text="MOVIES"
     else if index = 2 then
-        m.panel.text="TELEVISION"
+        m.displayedNode.text="TELEVISION"
     else if index = 3 then
-        m.panel.text="SETTINGS"
+        m.displayedNode.text="SETTINGS"
     else if index = 4 then
-        m.panel.text="ACCOUNT"
+        m.displayedNode.text="ACCOUNT"
     end if
-    m.container.replaceChild(m.panel, 0)
-    m.panel.setFocus(true)
+    m.container.replaceChild(m.displayedNode, 0)
+    m.displayedNode.setFocus(true)
 end sub
 
-function defaultData() as integer
-    return 0
-end function
-
 sub onKeyEvent(key as string, press as boolean)
-    if m.panel.isInFocusChain() = true and key = "up" and press = true then
+    if m.displayedNode.isInFocusChain() = true and key = "up" and press = true then
         m.navBar.setFocus(true)
     else if m.navBar.isInFocusChain() = true and (key = "down" or key = "OK") and press = true then
-        m.panel.setFocus(true)
+        m.displayedNode.setFocus(true)
     end if
  end sub
