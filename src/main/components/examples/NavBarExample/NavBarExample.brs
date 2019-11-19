@@ -1,8 +1,11 @@
 sub init()
     m.navBar = m.top.findNode("navBar")
     m.panelSet = m.top.findNode("panelSet")
-    'm.navBar.panelSet = m.panelSet
     m.navBar.observeField("createNextPanelIndex", "setPanel")
+    ' show a default panel
+    event = createObject("roAssociativeArray")
+    event.getData = defaultData
+    setPanel(event)
 end sub
 
 sub setPanel(event as object)
@@ -27,11 +30,15 @@ sub setPanel(event as object)
     m.panel.setFocus(true)
 end sub
 
+function defaultData() as integer
+    return 0
+end function
+
 sub onKeyEvent(key as string, press as boolean)
     if m.panel <> invalid and m.panel.hasFocus() = true and key = "up" and press = true then
         print "Set focus on m.navBar"
         m.navBar.setFocus(true)
-    else if m.panel <> invalid and m.navBar.isInFocusChain() = true and key = "down" and press = true then
+    else if m.panel <> invalid and m.navBar.isInFocusChain() = true and (key = "down" or key = "OK") and press = true then
         m.panel.setFocus(true)
     end if
  end sub
