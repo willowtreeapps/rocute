@@ -4,7 +4,4 @@
     <interface>
         <field id="text" type="string" value="hello world!" onChange="changeText"/>
     </interface>
-    <children>
-        <!--<LabelList id="list"/>-->
-    </children>
 </component>

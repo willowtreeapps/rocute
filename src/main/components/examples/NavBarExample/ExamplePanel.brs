@@ -1,5 +1,4 @@
 sub init()
-    'm.list = m.top.findNode("list")
     m.top.setFocus(true)
     m.top.vertFocusAnimationStyle = "floatingFocus"
 end sub
