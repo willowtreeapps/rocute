@@ -11,6 +11,7 @@
         <ContentNode title="RandomColoredList" />
         <ContentNode title="RandomColoredFontList" />
         <ContentNode title="HorizontalNavBar" />
+        <ContentNode title="DisappearingLogo" />
         <!-- <ContentNode title="Next" /> -->
       </ContentNode>
     </LabelList>

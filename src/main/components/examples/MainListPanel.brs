@@ -18,6 +18,8 @@ sub createNextPanel(event as object)
         m.top.nextPanel = createObject("roSGNode", "RandomColoredFontListListPanelExample")
     else if index = 5 then
         m.top.nextPanel = createObject("roSGNode", "NavBarExample")
+    else if index = 6 then
+        m.top.nextPanel = createObject("roSGNode", "DisappearingLogoExample")
         ' else if index = NUMBERHERE then
         '     m.top.nextPanel = createObject("roSGNode", "NextExampleComponent")
     end if

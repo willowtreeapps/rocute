@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<component name="DisappearingLogoExample" extends="Panel" >
+  <script type="text/brightscript" uri="pkg:/components/examples/DisappearingLogoExample/DisappearingLogoExample.brs"/>
+  <children>
+    <Video id = "video" width = "540" height = "360" />
+    <DisappearingLogo id = "logoOverlay" videoid = "video" logoSize = "[128,34]" logoUri = "pkg:/images/blender_logo_no_socket_white.png"/>
+  </children>
+</component>
