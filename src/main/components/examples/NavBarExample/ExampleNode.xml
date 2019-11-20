@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<component name="ExamplePanel" extends="LabelList">
+<component name="ExampleNode" extends="LabelList">
     <script type="text/brightscript" uri="pkg:/components/examples/NavBarExample/ExampleNode.brs"/>
     <interface>
         <field id="text" type="string" value="hello world!" onChange="changeText"/>
