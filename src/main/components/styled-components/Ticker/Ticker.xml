@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<component name="Ticker" extends="Group" >
+  <script type="text/brightscript" uri="pkg:/components/styled-components/Ticker/Ticker.brs"/>
+  <interface>
+    <function name="setText" />
+    <function name="addText" />
+    <field id="text" type="string"/>
+    <field id="scrollDuration" type="float" value="10"/>
+    <field id="width" type="float" value="500" />
+  </interface>
+  <children>
+    <Label id="label" enableRenderTracking="true"/>
+    <Animation id="animation" easeFunction="linear" duration="10">
+        <Vector2dFieldInterpolator id="interpolator" fieldToInterp = "label.translation" key="[0,1]" keyValue="[[1920,0],[-1920,0]]"/>
+    </Animation>
+  </children>
+</component>

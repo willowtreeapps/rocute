@@ -26,6 +26,8 @@ sub createNextPanel(event as object)
         m.top.nextPanel = createObject("roSGNode", "ResizeListListPanelExample")
     else if index = 9 then
         m.top.nextPanel = createObject("roSGNode", "TiledBackgroundExample")
+    else if index = 10 then
+        m.top.nextPanel = createObject("roSGNode", "TickerExample")
         ' else if index = NUMBERHERE then
         '     m.top.nextPanel = createObject("roSGNode", "NextExampleComponent")
     end if
