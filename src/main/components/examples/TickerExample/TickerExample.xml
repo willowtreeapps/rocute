@@ -3,10 +3,12 @@
 <component name="TickerExample" extends="Panel" >
   <script type="text/brightscript" uri="pkg:/components/examples/TickerExample/TickerExample.brs"/>
   <children>
+    <Video id = "video" width = "540" height = "360" />
     <Ticker 
         id="ticker" 
-        width="500" 
-        scrollDuration="10"
+        translation = "[0, 330]"
+        width="540" 
+        scrollDuration="10.8"
         text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."/>
   </children>
 </component>
