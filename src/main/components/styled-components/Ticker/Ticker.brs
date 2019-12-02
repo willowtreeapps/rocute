@@ -3,27 +3,40 @@ sub init()
     m.label = m.top.findNode("label")
     m.animation = m.top.findNode("animation")
     m.interpolator = m.top.findNode("interpolator")
-    ' fix these so that they are set at the appropriate time
-    m.animation.duration = m.top.scrollDuration
-    m.text = m.top.text
-    m.width = m.top.width
-    'm.height = m.top.height
-    'm.label.height = m.height
-    dim startPos[1]
-    startPos[0] = m.width
-    startPos[1] = 0
-    m.interpolator.keyValue[0] = startPos
-    dim endPos[1]
-    endPos[0] = -m.width
-    endPos[1] = 0
-    dim values[1]
-    values[0] = startPos
-    values[1] = endPos
-    m.interpolator.keyValue = values
-    m.top.observeField("text", "setText")
-    m.label.observeField("renderTracking", "restartAnimation")
-    'm.label.observeField("visible", "restartAnimation")
-    m.animation.observeField("state", "continueAnimation")
+    
+   ' m.top.observeField("text", "setText")
+    
+end sub
+
+sub setInitialValues(event as object)
+    if event.getField() = "scrollDuration" then
+        m.animation.duration = event.getData()
+    else if event.getField() = "width" then
+        m.width = m.top.width
+        clippingRect = createObject("roAssociativeArray")
+        clippingRect["x"] = m.top.clippingRect.x
+        clippingRect["y"] = m.top.clippingRect.y
+        clippingRect["height"] = m.top.clippingRect.height
+        clippingRect["width"] = m.width
+        'm.top.clippingRect = clippingRect
+        dim startPos[1]
+        startPos[0] = m.width
+        startPos[1] = 0
+        m.label.translation = startPos
+        m.interpolator.keyValue[0] = startPos
+        dim endPos[1]
+        endPos[0] = -m.width
+        endPos[1] = 0
+        dim values[1]
+        values[0] = startPos
+        values[1] = endPos
+        m.interpolator.keyValue = values
+    else if event.getField() = "text" then
+        m.label.text = m.top.text
+        m.label.observeField("renderTracking", "restartAnimation")
+        m.animation.observeField("state", "continueAnimation")
+        m.animation.control = "start"
+    end if
 end sub
 
 sub restartAnimation(event as object)
