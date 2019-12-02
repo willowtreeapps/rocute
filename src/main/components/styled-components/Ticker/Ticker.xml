@@ -5,12 +5,12 @@
   <interface>
     <function name="setText" />
     <function name="addText" />
-    <field id="text" type="string"/>
-    <field id="scrollDuration" type="float" value="10"/>
-    <field id="width" type="float" value="500" />
+    <field id="text" type="string" onChange="setInitialValues"/>
+    <field id="scrollDuration" type="float" value="19.20" onChange="setInitialValues"/>
+    <field id="width" type="float" value="1920" onChange="setInitialValues"/>
   </interface>
   <children>
-    <Label id="label" enableRenderTracking="true"/>
+    <Label id="label" enableRenderTracking="true" translation="[1920,0]"/>
     <Animation id="animation" easeFunction="linear" duration="10">
         <Vector2dFieldInterpolator id="interpolator" fieldToInterp = "label.translation" key="[0,1]" keyValue="[[1920,0],[-1920,0]]"/>
     </Animation>

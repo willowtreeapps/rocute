@@ -12,13 +12,13 @@ sub setInitialValues(event as object)
     if event.getField() = "scrollDuration" then
         m.animation.duration = event.getData()
     else if event.getField() = "width" then
-        m.width = m.top.width
+        m.width = event.getData()
         clippingRect = createObject("roAssociativeArray")
-        clippingRect["x"] = m.top.clippingRect.x
-        clippingRect["y"] = m.top.clippingRect.y
-        clippingRect["height"] = m.top.clippingRect.height
+        clippingRect["x"] = 0
+        clippingRect["y"] = 0
+        clippingRect["height"] = 1080
         clippingRect["width"] = m.width
-        'm.top.clippingRect = clippingRect
+        m.top.clippingRect = clippingRect
         dim startPos[1]
         startPos[0] = m.width
         startPos[1] = 0
