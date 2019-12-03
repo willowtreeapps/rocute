@@ -6,8 +6,8 @@
     <function name="setText" />
     <function name="addText" />
     <field id="text" type="string" onChange="setInitialValues"/>
-    <field id="scrollDuration" type="float" value="19.20" onChange="setInitialValues"/>
-    <field id="width" type="float" value="1920" onChange="setInitialValues"/>
+    <field id="scrollSpeed" type="float" value="100" onChange="setSpeed"/>
+    <field id="width" type="float" value="1920" onChange="setWidth"/>
   </interface>
   <children>
     <Label id="label" enableRenderTracking="true" translation="[1920,0]"/>

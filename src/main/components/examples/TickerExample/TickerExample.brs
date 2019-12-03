@@ -6,7 +6,7 @@ sub init()
     m.video.control = "play"
     m.ticker = m.top.findNode("ticker")
     m.timer = createObject("roSGNode", "Timer")
-    m.timer.duration = 25
+    m.timer.duration = 20
     m.timer.observeField("fire", "addText")
     m.timer.control = "start"
 end sub

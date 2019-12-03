@@ -3,6 +3,9 @@ sub init()
     m.label = m.top.findNode("label")
     m.animation = m.top.findNode("animation")
     m.interpolator = m.top.findNode("interpolator")
+    m.width = m.top.width
+    clippingRect = createObject("roAssociativeArray")
+    setWidth()
 end sub
 
 ' method to append text to the currently scrolling labels
@@ -11,7 +14,7 @@ end sub
 sub addText(params as object)
     m.fullText = m.label.text + params.text
 
-    if m.animation.repeat = true and m.label.translation[0] > m.interpolator.keyValue[1][0] + m.width then ' length of current text is known already and is on repeat and text is offscreen on right, new text can be appended right away
+    if m.animation.repeat = true and m.label.translation[0] > getEndPoint() + m.width then ' length of current text is known already and is on repeat and text is offscreen on right, new text can be appended right away
         m.label.text = m.fullText
         m.label.observeField("renderTracking", "restartAnimation")
         m.animation.observeField("state", "continueAnimation")
@@ -20,6 +23,7 @@ sub addText(params as object)
     end if
 
     ' wait until next time around and then add text
+    print "add text next time through"
     m.animation.repeat = false
     m.label.unobserveField("renderTracking")
     m.label.observeField("renderTracking", "setInitialValues")
@@ -27,73 +31,36 @@ end sub
 
 ' method to replace currently scrolling text. 
 ' 
-' @param replacementText the string to replace the text with
-' @param isInterruption an optional boolean value representing whether to interrupt the currently scrolling string. Defaults to false.
-sub replaceText(additionalText as string, isInterruption = false as boolean)
-
+' @param params an associative array where the key "text" is the new text for our ticker.
+sub replaceText(params as object)
+    m.fullText = params.text
 end sub
 
-' Sets values when interface fields are initialized.
+' Sets values when text is initialized.
 '
 ' @param event a roSGNodeEvent
 sub setInitialValues(event as object)
-    if event.getField() = "scrollDuration" then
-        m.animation.duration = event.getData()
-    else if event.getField() = "width" then
-        m.width = event.getData()
-        clippingRect = createObject("roAssociativeArray")
-        clippingRect["x"] = 0
-        clippingRect["y"] = 0
-        clippingRect["height"] = 1080
-        clippingRect["width"] = m.width
-        m.top.clippingRect = clippingRect
-        dim startPos[1]
-        startPos[0] = m.width
-        startPos[1] = 0
-        m.label.translation = startPos
-        m.interpolator.keyValue[0] = startPos
-        dim endPos[1]
-        endPos[0] = -m.width
-        endPos[1] = 0
-        dim values[1]
-        values[0] = startPos
-        values[1] = endPos
-        m.interpolator.keyValue = values
-    else if event.getField() = "text" or event.getField() = "renderTracking" then
-        if event.getField() = "text" then
-            m.fullText = event.getData()
-        else if event.getField() = "renderTracking" and event.getData() <> "none" then
-            return
-        else if event.getField() = "renderTracking" then
-            m.label.unobserveField("renderTracking")
-        end if
-        m.label.text = m.fullText
-        m.label.observeField("renderTracking", "restartAnimation")
-        m.animation.observeField("state", "continueAnimation")
-        m.animation.control = "start"
+    if event.getField() = "text" then
+        m.fullText = event.getData()
+    else if event.getField() = "renderTracking" and event.getData() <> "none" then
+        return
+    else if event.getField() = "renderTracking" then
+        setWidth()
+        m.label.unobserveField("renderTracking")
     end if
+    m.label.text = m.fullText
+    m.label.observeField("renderTracking", "restartAnimation")
+    m.animation.observeField("state", "continueAnimation")
+    m.animation.control = "start"
 end sub
 
-' An internal method to restart the animation after it completes. It then sets the animation to repeat forever and should not be called again unless the text changes.
+' An internal method to restart the animation after it completes. It then sets the animation to repeat forever or until the text or width changes.
 '
 ' @param event an roSGNodeEvent
 sub restartAnimation(event as object)
     if event.getData() = "none" then
-        originalDistance = m.interpolator.keyValue[0][0] - m.interpolator.keyValue[1][0]
-        dim startPos[1]
-        startPos[0] = m.width
-        startPos[1] = 0
-        dim endPos[1]
-        endPos[0] =  m.label.translation[0]
-        endPos[1] = 0
-        dim values[1]
-        values[0] = startPos
-        values[1] = endPos
-        m.interpolator.keyValue = values
-        originalDuration = m.animation.duration
-        newDistance = m.width - m.label.translation[0]
-        newDuration = originalDuration * newDistance / originalDistance
-        m.animation.duration = newDuration
+        setScrollEndpoints(m.width, m.label.translation[0])
+        setSpeed()
         m.animation.unobserveField("state")
         m.label.unobserveField("renderTracking")
         m.animation.repeat = true
@@ -106,17 +73,69 @@ end sub
 ' @param event an roSGNodeEvent
 sub continueAnimation(event as object)
     if event.getData() = "stopped" then
-        distance = m.interpolator.keyValue[0][0] - m.interpolator.keyValue[1][0]
-        dim startPos[1]
-        startPos[0] = m.label.translation[0]
-        startPos[1] = 0
-        dim endPos[1]
-        endPos[0] =  m.label.translation[0] - distance
-        endPos[1] = 0
-        dim values[1]
-        values[0] = startPos
-        values[1] = endPos
-        m.interpolator.keyValue = values
+        distance = getStartPoint() - getEndPoint()
+        setScrollEndpoints(m.label.translation[0], m.label.translation[0] - distance)
         m.animation.control = "start"
     end if
 end sub
+
+' A method called when the scrollSpeed has changed.
+sub setSpeed()
+    speed = m.top.scrollSpeed
+    if speed = 0 or speed = invalid then return ' avoid dividing by 0 or invalid.
+    distance = getStartPoint() - getEndPoint()
+    duration = distance / speed
+    m.animation.duration = duration
+end sub
+
+' A method called when the width has changed.
+sub setWidth()
+    m.width = m.top.width
+    if m.width <> m.top.clippingRect.width then
+        clippingRect = createObject("roAssociativeArray")
+        clippingRect["x"] = 0
+        clippingRect["y"] = 0
+        clippingRect["height"] = 1080
+        clippingRect["width"] = m.width
+        m.top.clippingRect = clippingRect
+    end if
+    if m.label.renderTracking = "none" then
+        setScrollEndpoints(m.width, -m.width)
+        setSpeed()
+    else
+        ' TODO: how to handle width changes while animation plays?
+    end if
+end sub
+
+' a method to set the x coordinates of the animation
+'
+' @param startPoint the starting x coordinate
+' @param endPoint the ending x coordinate
+sub setScrollEndpoints(startPoint as double, endPoint as double)
+    dim startPos[1]
+    startPos[0] = startPoint
+    startPos[1] = 0
+    m.label.translation = startPos
+    m.interpolator.keyValue[0] = startPos
+    dim endPos[1]
+    endPos[0] = endPoint
+    endPos[1] = 0
+    dim values[1]
+    values[0] = startPos
+    values[1] = endPos
+    m.interpolator.keyValue = values
+end sub
+
+' a helper function to get the x coordinate of the start point of the animation
+'
+' @return the x coordinate of the start point of the animation 
+function getStartPoint() as double
+    return m.interpolator.keyValue[0][0]
+end function
+
+' a helper function to get the x coordinate of the end point of the animation 
+'
+' @return the x coordinate of the end point of the animation 
+function getEndPoint() as double
+    return m.interpolator.keyValue[1][0]
+end function
