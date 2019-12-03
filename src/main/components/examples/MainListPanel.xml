@@ -12,6 +12,7 @@
         <ContentNode title="RandomColoredFontList" />
         <ContentNode title="HorizontalNavBar" />
         <ContentNode title="DisappearingLogo" />
+        <ContentNode title="ContentRotator" />
         <!-- <ContentNode title="Next" /> -->
       </ContentNode>
     </LabelList>
