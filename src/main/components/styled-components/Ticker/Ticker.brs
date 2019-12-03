@@ -3,11 +3,39 @@ sub init()
     m.label = m.top.findNode("label")
     m.animation = m.top.findNode("animation")
     m.interpolator = m.top.findNode("interpolator")
-    
-   ' m.top.observeField("text", "setText")
-    
 end sub
 
+' method to append text to the currently scrolling labels
+'
+' @param params an associative array where the key "text" is the additional text to append to our ticker.
+sub addText(params as object)
+    m.fullText = m.label.text + params.text
+
+    if m.animation.repeat = true and m.label.translation[0] > m.interpolator.keyValue[1][0] + m.width then ' length of current text is known already and is on repeat and text is offscreen on right, new text can be appended right away
+        m.label.text = m.fullText
+        m.label.observeField("renderTracking", "restartAnimation")
+        m.animation.observeField("state", "continueAnimation")
+        m.animation.repeat = false
+        return
+    end if
+
+    ' wait until next time around and then add text
+    m.animation.repeat = false
+    m.label.unobserveField("renderTracking")
+    m.label.observeField("renderTracking", "setInitialValues")
+end sub
+
+' method to replace currently scrolling text. 
+' 
+' @param replacementText the string to replace the text with
+' @param isInterruption an optional boolean value representing whether to interrupt the currently scrolling string. Defaults to false.
+sub replaceText(additionalText as string, isInterruption = false as boolean)
+
+end sub
+
+' Sets values when interface fields are initialized.
+'
+' @param event a roSGNodeEvent
 sub setInitialValues(event as object)
     if event.getField() = "scrollDuration" then
         m.animation.duration = event.getData()
@@ -31,16 +59,27 @@ sub setInitialValues(event as object)
         values[0] = startPos
         values[1] = endPos
         m.interpolator.keyValue = values
-    else if event.getField() = "text" then
-        m.label.text = m.top.text
+    else if event.getField() = "text" or event.getField() = "renderTracking" then
+        if event.getField() = "text" then
+            m.fullText = event.getData()
+        else if event.getField() = "renderTracking" and event.getData() <> "none" then
+            return
+        else if event.getField() = "renderTracking" then
+            m.label.unobserveField("renderTracking")
+        end if
+        m.label.text = m.fullText
         m.label.observeField("renderTracking", "restartAnimation")
         m.animation.observeField("state", "continueAnimation")
         m.animation.control = "start"
     end if
 end sub
 
+' An internal method to restart the animation after it completes. It then sets the animation to repeat forever and should not be called again unless the text changes.
+'
+' @param event an roSGNodeEvent
 sub restartAnimation(event as object)
     if event.getData() = "none" then
+        originalDistance = m.interpolator.keyValue[0][0] - m.interpolator.keyValue[1][0]
         dim startPos[1]
         startPos[0] = m.width
         startPos[1] = 0
@@ -52,7 +91,6 @@ sub restartAnimation(event as object)
         values[1] = endPos
         m.interpolator.keyValue = values
         originalDuration = m.animation.duration
-        originalDistance = 2*m.width
         newDistance = m.width - m.label.translation[0]
         newDuration = originalDuration * newDistance / originalDistance
         m.animation.duration = newDuration
@@ -63,14 +101,17 @@ sub restartAnimation(event as object)
     end if
 end sub
 
+' An internal method to continue the animation after it completes but the text is not yet fully outside the boundingRect.
+'
+' @param event an roSGNodeEvent
 sub continueAnimation(event as object)
     if event.getData() = "stopped" then
-        print m.label.translation[0]
+        distance = m.interpolator.keyValue[0][0] - m.interpolator.keyValue[1][0]
         dim startPos[1]
         startPos[0] = m.label.translation[0]
         startPos[1] = 0
         dim endPos[1]
-        endPos[0] =  m.label.translation[0] - m.width*2
+        endPos[0] =  m.label.translation[0] - distance
         endPos[1] = 0
         dim values[1]
         values[0] = startPos
@@ -78,27 +119,4 @@ sub continueAnimation(event as object)
         m.interpolator.keyValue = values
         m.animation.control = "start"
     end if
-end sub
-
-' method to append text to the currently scrolling labels
-'
-' @param additionalText the string to append to the currently scrolling text
-sub addText(additionalText as string)
-
-end sub
-
-' method to replace currently scrolling text. 
-' 
-' @param replacementText the string to replace the text with
-' @param isInterruption an optional boolean value representing whether to interrupt the currently scrolling string. Defaults to false.
-sub replaceText(additionalText as string, isInterruption = false as boolean)
-
-end sub
-
-' method to set the text initially and start the animations
-sub setText()
-   ' m.top.unobserveField("text")
-   ' m.text = m.top.text
-    m.label.text = m.top.text
-    m.animation.control = "start"
 end sub
