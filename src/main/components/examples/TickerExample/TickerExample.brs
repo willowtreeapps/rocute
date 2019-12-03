@@ -14,5 +14,5 @@ end sub
 sub addText()
     params = createObject("roAssociativeArray")
     params["text"] = "BREAKING NEWS: THIS TEXT WAS ADDED AS THE RESULT OF A TIMER."
-    m.ticker.callFunc("addText", params)
+    m.ticker.callFunc("setText", params)
 end sub

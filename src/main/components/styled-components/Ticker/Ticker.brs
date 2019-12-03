@@ -23,17 +23,18 @@ sub addText(params as object)
     end if
 
     ' wait until next time around and then add text
-    print "add text next time through"
-    m.animation.repeat = false
-    m.label.unobserveField("renderTracking")
-    m.label.observeField("renderTracking", "setInitialValues")
+    params.text = m.fullText
+    setText(params)
 end sub
 
 ' method to replace currently scrolling text. 
 ' 
 ' @param params an associative array where the key "text" is the new text for our ticker.
-sub replaceText(params as object)
+sub setText(params as object)
     m.fullText = params.text
+    m.animation.repeat = false
+    m.label.unobserveField("renderTracking")
+    m.label.observeField("renderTracking", "setInitialValues")
 end sub
 
 ' Sets values when text is initialized.
