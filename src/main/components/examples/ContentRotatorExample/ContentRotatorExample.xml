@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="utf-8" ?>
-
-<component name="ContentRotatorExampleComponent" extends="Panel" >
-  <script type="text/brightscript" uri="pkg:/components/examples/ContentRotatorExample/ContentRotatorExample.brs"/>
-  <children>
-    <ContentRotator id="ContentRotatorExample" />
-  </children>
-</component>

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<component name="CardRotator" extends="Panel" >
+    <script type="text/brightscript" uri="CardRotator.brs" />
+    <children>
+        <TargetList id="CardRotatorList" defaultTargetSetFocusIndex="1" advanceKey="down" reverseKey="up" />
+    </children>
+</component>

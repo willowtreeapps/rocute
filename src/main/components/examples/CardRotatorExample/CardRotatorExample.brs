@@ -1,11 +1,11 @@
 sub init()
-    m.ContentRotatorExample = m.top.findNode("ContentRotatorExample")
-    m.ContentRotatorExample.setFocus(true)
+    m.CardRotatorExample = m.top.findNode("CardRotatorExample")
+    m.CardRotatorExample.setFocus(true)
     m.top.observeField("focusedChild", "handleFocus")
 end sub
 
 sub handleFocus(event as object)
     if m.top.isInFocusChain() then
-        m.ContentRotatorExample.setFocus(true)
+        m.CardRotatorExample.setFocus(true)
     end if
 end sub

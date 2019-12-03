@@ -21,7 +21,7 @@ sub createNextPanel(event as object)
     else if index = 6 then
         m.top.nextPanel = createObject("roSGNode", "DisappearingLogoExample")
     else if index = 7 then
-        m.top.nextPanel = createObject("roSGNode", "ContentRotatorExampleComponent")
+        m.top.nextPanel = createObject("roSGNode", "CardRotatorExampleComponent")
         ' else if index = NUMBERHERE then
         '     m.top.nextPanel = createObject("roSGNode", "NextExampleComponent")
     end if

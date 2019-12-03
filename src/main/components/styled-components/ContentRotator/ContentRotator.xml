@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="utf-8" ?>
-<component name="ContentRotator" extends="Panel" >
-    <script type="text/brightscript" uri="ContentRotator.brs" />
-    <children>
-        <TargetList id="ContentRotatorList" defaultTargetSetFocusIndex="1" advanceKey="down" reverseKey="up" />
-    </children>
-</component>

@@ -1,22 +1,22 @@
 sub init()
     ' Scene Generation
-    ContentRotatorList = m.top.findNode("ContentRotatorList")
+    CardRotatorList = m.top.findNode("CardRotatorList")
     focusedTargetSet = createObject("roSGNode", "TargetSet")
-    ContentRotatorList.focusedTargetSet = focusedTargetSet
+    CardRotatorList.focusedTargetSet = focusedTargetSet
     focusedTargetSet.targetRects = [
         { x: 0, y: 0, width: 200, height: 100 },
         { x: 200, y: 200, width: 200, height: 100 },
         { x: 0, y: 400, width: 200, height: 100 },
     ]
-    ContentRotatorList.targetSet = focusedTargetSet
-    ContentRotatorList.showTargetRects = false
+    CardRotatorList.targetSet = focusedTargetSet
+    CardRotatorList.showTargetRects = false
     ' Content Generation
-    ContentRotatorList.itemComponentName = "ContentRotatorItem"
+    CardRotatorList.itemComponentName = "CardRotatorItem"
     dataModel = setUpDataModel()
-    ContentRotatorList.content = dataModel
+    CardRotatorList.content = dataModel
     ' Focus Control
-    m.ContentRotatorList = m.top.findNode("ContentRotatorList")
-    m.ContentRotatorList.setFocus(true)
+    m.CardRotatorList = m.top.findNode("CardRotatorList")
+    m.CardRotatorList.setFocus(true)
     m.top.observeField("focusedChild", "handleFocus")
 end sub
 
@@ -33,6 +33,6 @@ end function
 sub handleFocus(event as object)
     ' Focus Control
     if m.top.isInFocusChain() then
-        m.ContentRotatorList.setFocus(true)
+        m.CardRotatorList.setFocus(true)
     end if
 end sub

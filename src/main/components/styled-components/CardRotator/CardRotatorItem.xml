@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<component name="ContentRotatorItem" extends="Group" >
-    <script type="text/brightscript" uri="ContentRotatorItem.brs" />
+<component name="CardRotatorItem" extends="Group" >
+    <script type="text/brightscript" uri="CardRotatorItem.brs" />
     <interface>
         <field id="itemContent" type="node" onChange="itemContentChanged" />
         <field id="currRect" type="rect2d" onChange="currRectChanged" />
     </interface>
     <children>
-        <Rectangle id="contentRotatorRectangle" color="#808080">
-            <Label id="contentRotatorLabel" translation="[5, 5]" />
+        <Rectangle id="cardRotatorRectangle" color="#808080">
+            <Label id="cardRotatorLabel" translation="[5, 5]" />
         </Rectangle>
     </children>
 </component>
