@@ -8,18 +8,28 @@ sub init()
     child1 = contentRoot.createChild("ContentNode")
     child1.title = "Intro to Angular"
     child1.SDPosterUrl = "pkg:/images/js-for-test/angular.jpg"
+    child1.addField("textColor", "String", false)
+    child1.textColor = "#ffffffff"
     child2 = contentRoot.createChild("ContentNode")
     child2.title = "Intro to Ember"
     child2.SDPosterUrl = "pkg:/images/js-for-test/ember.png"
+    child2.addField("textColor", "string", false)
+    child2.textColor = "#ff0000ff"
     child3 = contentRoot.createChild("ContentNode")
     child3.title = "Intro to Polymer"
     child3.SDPosterUrl = "pkg:/images/js-for-test/polymer.png"
+    child3.addField("textColor", "string", false)
+    child3.textColor = "#000000ff"
     child4 = contentRoot.createChild("ContentNode")
     child4.title = "Intro to React"
     child4.SDPosterUrl = "pkg:/images/js-for-test/react.png"
+    child4.addField("textColor", "string", false)
+    child4.textColor = "#0000ffff"
     child5 = contentRoot.createChild("ContentNode")
     child5.title = "Intro to Vue"
     child5.SDPosterUrl = "pkg:/images/js-for-test/vue.jpeg"
+    child5.addField("textColor", "string", false)
+    child5.textColor = "#ffffffff"
     ' TargetSet Size Setup
     focusedTargetSet = createObject("roSGNode", "TargetSet")
     focusedTargetSet.targetRects = [

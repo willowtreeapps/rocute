@@ -7,6 +7,7 @@ end sub
 sub itemContentChanged()
     m.cardRotatorLabel.text = m.top.itemContent.title
     m.testPoster.uri = m.top.itemContent.SDPosterUrl
+    m.cardRotatorLabel.color = m.top.itemContent.textColor
 end sub
 
 sub currRectChanged()
@@ -14,4 +15,5 @@ sub currRectChanged()
     m.cardRotatorRectangle.height = m.top.currRect.height
     m.testPoster.width = m.top.currRect.width
     m.testPoster.height = m.top.currRect.height
+    m.cardRotatorLabel.width = m.top.currRect.width
 end sub
