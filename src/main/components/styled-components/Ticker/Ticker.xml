@@ -8,6 +8,9 @@
     <field id="text" type="string" onChange="setInitialValues"/>
     <field id="scrollSpeed" type="float" value="100" onChange="setSpeed"/>
     <field id="width" type="float" value="1920" onChange="setWidth"/>
+    <field id="color" type="color" onChange="setLabelField"/>
+    <field id="font" type="node" onChange="setLabelField"/>
+    <field id="vertAlign" type="string" onChange="setLabelField"/>
   </interface>
   <children>
     <Label id="label" enableRenderTracking="true" translation="[1920,0]"/>

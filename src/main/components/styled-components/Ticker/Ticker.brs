@@ -37,6 +37,13 @@ sub setText(params as object)
     m.label.observeField("renderTracking", "setInitialValues")
 end sub
 
+' Sets fields on the label
+'
+' @param event a roSGNodeEvent
+sub setLabelField(event as object)
+    m.label[event.getField()] = event.getData()
+end sub
+
 ' Sets values when text is initialized.
 '
 ' @param event a roSGNodeEvent
