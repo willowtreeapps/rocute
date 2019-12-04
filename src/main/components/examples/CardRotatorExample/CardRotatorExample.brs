@@ -6,19 +6,19 @@ sub init()
     ' Content Generation
     contentRoot = createObject("roSGNode", "ContentNode")
     child1 = contentRoot.createChild("ContentNode")
-    child1.title = "Item 1"
+    child1.title = "Intro to Angular"
     child1.SDPosterUrl = "pkg:/images/js-for-test/angular.jpg"
     child2 = contentRoot.createChild("ContentNode")
-    child2.title = "Item 2"
+    child2.title = "Intro to Ember"
     child2.SDPosterUrl = "pkg:/images/js-for-test/ember.png"
     child3 = contentRoot.createChild("ContentNode")
-    child3.title = "Item 3"
+    child3.title = "Intro to Polymer"
     child3.SDPosterUrl = "pkg:/images/js-for-test/polymer.png"
     child4 = contentRoot.createChild("ContentNode")
-    child4.title = "Item 4"
+    child4.title = "Intro to React"
     child4.SDPosterUrl = "pkg:/images/js-for-test/react.png"
     child5 = contentRoot.createChild("ContentNode")
-    child5.title = "Item 5"
+    child5.title = "Intro to Vue"
     child5.SDPosterUrl = "pkg:/images/js-for-test/vue.jpeg"
     ' TargetSet Size Setup
     focusedTargetSet = createObject("roSGNode", "TargetSet")
