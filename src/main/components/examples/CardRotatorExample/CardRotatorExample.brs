@@ -4,8 +4,8 @@ sub init()
     m.CardRotatorExample.setFocus(true)
     m.top.observeField("focusedChild", "handleFocus")
     ' Content Generation
-    contentRoot = createObject("roSGNode", "ContentNode")
-    child1 = contentRoot.createChild("ContentNode")
+    generatedContent = createObject("roSGNode", "ContentNode")
+    child1 = generatedContent.createChild("ContentNode")
     child1.title = "Intro to Angular"
     child1.SDPosterUrl = "pkg:/images/js-for-test/angular.jpg"
     child1.addField("textColor", "string", false)
@@ -14,7 +14,7 @@ sub init()
     child1.rectColor = "#ffffffff"
     child1.addField("textCords", "string", false)
     child1.textCords = "[5,5]"
-    child2 = contentRoot.createChild("ContentNode")
+    child2 = generatedContent.createChild("ContentNode")
     child2.title = "Intro to Ember"
     child2.SDPosterUrl = "pkg:/images/js-for-test/ember.png"
     child2.addField("textColor", "string", false)
@@ -23,7 +23,7 @@ sub init()
     child2.rectColor = "#000000ff"
     child2.addField("textCords", "string", false)
     child2.textCords = "[5,5]"
-    child3 = contentRoot.createChild("ContentNode")
+    child3 = generatedContent.createChild("ContentNode")
     child3.title = "Intro to Polymer"
     child3.SDPosterUrl = "pkg:/images/js-for-test/polymer.png"
     child3.addField("textColor", "string", false)
@@ -32,7 +32,7 @@ sub init()
     child3.rectColor = "#ffffffff"
     child3.addField("textCords", "string", false)
     child3.textCords = "[5,5]"
-    child4 = contentRoot.createChild("ContentNode")
+    child4 = generatedContent.createChild("ContentNode")
     child4.title = "Intro to React"
     child4.SDPosterUrl = "pkg:/images/js-for-test/react.png"
     child4.addField("textColor", "string", false)
@@ -41,7 +41,7 @@ sub init()
     child4.rectColor = "#000000ff"
     child4.addField("textCords", "string", false)
     child4.textCords = "[5,5]"
-    child5 = contentRoot.createChild("ContentNode")
+    child5 = generatedContent.createChild("ContentNode")
     child5.title = "Intro to Vue"
     child5.SDPosterUrl = "pkg:/images/js-for-test/vue.jpeg"
     child5.addField("textColor", "string", false)
@@ -58,7 +58,7 @@ sub init()
         { x: 0, y: 400, width: 150, height: 75 },
     ]
     ' Assign Content and TargetSet
-    m.CardRotatorExample.listContents = contentRoot
+    m.CardRotatorExample.listContents = generatedContent
     m.CardRotatorExample.targetSet = focusedTargetSet
     m.top.CardRotatorExample = m.CardRotatorExample
 end sub

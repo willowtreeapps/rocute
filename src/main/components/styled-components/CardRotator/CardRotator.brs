@@ -4,7 +4,6 @@ sub init()
     CardRotatorList.showTargetRects = false
     CardRotatorList.itemComponentName = "CardRotatorItem"
     focusedTargetSet = createObject("roSGNode", "TargetSet")
-    focusedTargetSet = createObject("roSGNode", "TargetSet")
     focusedTargetSet.targetRects = [
         { x: 0, y: 0, width: 200, height: 100 },
         { x: 200, y: 200, width: 200, height: 100 },
