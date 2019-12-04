@@ -8,7 +8,7 @@
     <children>
         <Rectangle id="cardRotatorRectangle" color="#808080">
             <Poster id="testPoster" />
-            <Label id="cardRotatorLabel" translation="[5, 5]" color="#ff0000" />
+            <Label id="cardRotatorLabel" translation="[5, 5]" />
         </Rectangle>
     </children>
 </component>

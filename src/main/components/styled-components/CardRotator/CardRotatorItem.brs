@@ -8,6 +8,8 @@ sub itemContentChanged()
     m.cardRotatorLabel.text = m.top.itemContent.title
     m.testPoster.uri = m.top.itemContent.SDPosterUrl
     m.cardRotatorLabel.color = m.top.itemContent.textColor
+    m.cardRotatorRectangle.color = m.top.itemContent.rectColor
+    m.cardRotatorLabel.translation = m.top.itemContent.textCords
 end sub
 
 sub currRectChanged()
