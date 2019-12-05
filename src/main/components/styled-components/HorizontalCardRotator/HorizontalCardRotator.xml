@@ -16,6 +16,6 @@
         />
     </interface>
     <children>
-        <TargetList id="HorizontalCardRotatorList" defaultTargetSetFocusIndex="1" advanceKey="down" reverseKey="up" />
+        <TargetList id="HorizontalCardRotatorList" defaultTargetSetFocusIndex="1" advanceKey="right" reverseKey="left" />
     </children>
 </component>

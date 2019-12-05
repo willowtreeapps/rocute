@@ -53,9 +53,9 @@ sub init()
     ' TargetSet Size Setup
     focusedTargetSet = createObject("roSGNode", "TargetSet")
     focusedTargetSet.targetRects = [
-        { x: 0, y: 0, width: 200, height: 100 },
-        { x: 220, y: 120, width: 500, height: 250 },
-        { x: 0, y: 400, width: 150, height: 75 },
+        { x: 0, y: 0, width: 150, height: 75 },
+        { x: 50, y: 150, width: 600, height: 300 },
+        { x: 500, y: 0, width: 200, height: 100 },
     ]
     ' Assign Content and TargetSet
     m.HorizontalCardRotatorExample.listContents = generatedContent
