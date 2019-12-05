@@ -13,7 +13,14 @@
             "password": "${input:rokuPassword}",
             "rootDir": "${workspaceFolder}/.ukor",
             "sourceDirs": [
-                "${workspaceFolder}/src/main"
+                "${workspaceFolder}/src/main",
+            ],
+            "files": [
+                "manifest",
+                "source/**/*.*",
+                "components/**/*.*",
+                "images/**/*.*",
+                "locale/**/*.*"
             ],
             "enableDebuggerAutoRecovery": false,
             "stopDebuggerOnAppExit": false,
