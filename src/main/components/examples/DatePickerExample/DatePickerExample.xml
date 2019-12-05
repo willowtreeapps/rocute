@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<component name="DatePickerExample" extends="Panel" >
+  <script type="text/brightscript" uri="pkg:/components/examples/DatePickerExample/DatePickerExample.brs"/>
+  <children>
+    <DatePicker id="datePicker" />
+  </children>
+</component>

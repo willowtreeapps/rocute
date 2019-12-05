@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<component name="DatePicker" extends="Group" >
+  <script type="text/brightscript" uri="pkg:/components/styled-components/DatePicker/DatePicker.brs"/>
+  <interface>
+    <field id="useISO" type="boolean" value="false" onChange="setFormat"/>
+    <field id="useMonthNames" type="boolean" value="true" onChange="toggleMonthNames"/>
+    <field id="yearWidth" type="float" value="100" />
+    <field id="monthWidth" type="float" value="200" />
+    <field id="dayWidth" type="float" value="100" />
+  </interface>
+  <children>
+    <LabelList id="year" numRows = "1"/>
+    <LabelList id="month" numRows = "1"/>
+    <LabelList id="day" numRows = "1"/>
+  </children>
+</component>
