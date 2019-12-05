@@ -5,15 +5,15 @@
   <children>
     <LabelList id="componentList">
       <ContentNode role="Content">
-        <ContentNode title="TiledBackground" />
-        <ContentNode title="ArcInterpolator" /> 
-        <ContentNode title="ResizeList" />
-        <ContentNode title="RandomColoredList" />
-        <ContentNode title="RandomColoredFontList" />
-        <ContentNode title="HorizontalNavBar" />
-        <ContentNode title="DisappearingLogo" />
+        <ContentNode title="ArcInterpolator" />
         <ContentNode title="CardRotator" />
+        <ContentNode title="DisappearingLogo" />
         <ContentNode title="HorizontalCardRotator" />
+        <ContentNode title="HorizontalNavBar" />
+        <ContentNode title="RandomColoredFontList" />
+        <ContentNode title="RandomColoredList" />
+        <ContentNode title="ResizeList" />
+        <ContentNode title="TiledBackground" />
         <!-- <ContentNode title="Next" /> -->
       </ContentNode>
     </LabelList>
