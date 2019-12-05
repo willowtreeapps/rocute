@@ -13,6 +13,7 @@
         <ContentNode title="HorizontalNavBar" />
         <ContentNode title="DisappearingLogo" />
         <ContentNode title="CardRotator" />
+        <ContentNode title="HorizontalCardRotator" />
         <!-- <ContentNode title="Next" /> -->
       </ContentNode>
     </LabelList>

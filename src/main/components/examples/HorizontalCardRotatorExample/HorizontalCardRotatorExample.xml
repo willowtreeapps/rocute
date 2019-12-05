@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<component name="HorizontalCardRotatorExampleComponent" extends="Panel" >
+  <script type="text/brightscript" uri="pkg:/components/examples/HorizontalCardRotatorExample/HorizontalCardRotatorExample.brs"/>
+  <children>
+    <HorizontalCardRotator id="HorizontalCardRotatorExample" />
+  </children>
+</component>
