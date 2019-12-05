@@ -56,8 +56,8 @@ sub setFormat()
         dateOrder = tr("MDY")
     end if
 
-    m.month.unobserveField("itemSelected")
-    m.year.unobserveField("itemSelected")
+    m.month.unobserveField("itemFocused")
+    m.year.unobserveField("itemFocused")
 
     ' YMD, MDY, and DMY are the only formats acceptable. things like "MYD" or any other invalid string will fall back to the ISO standard of "YMD".
     if dateOrder = "MDY" then
@@ -83,15 +83,16 @@ sub setFormat()
         m.thirdPicker = m.day
     end if
 
-    m.year.observeField("itemSelected", "yearChanged")
-    m.month.observeField("itemSelected", "monthChanged")
+    m.year.observeField("itemFocused", "yearChanged")
+    m.month.observeField("itemFocused", "monthChanged")
 end sub
 
 ' a method called when the year changes. This checks if we have february selected as the month and changes the number of days if we are in a leap year
 '
 ' @param event a roSGNodeEvent
 sub yearChanged(event as object)
-    if m.month.itemSelected <> 2 then return
+    if m.year.hasFocus() = false then return
+    if m.month.itemFocused <> 2 then return
     index = event.getData()
     selectedYear = val(m.year.content.getChild(index).title, 10)
     numDays = m.day.content.getChildCount() - 1 ' subtract 1 for the blank day
@@ -102,11 +103,11 @@ sub yearChanged(event as object)
 end sub
 
 sub updateDayContents()
-    selectedDay = m.day.itemSelected
+    selectedDay = m.day.itemFocused
     dayContents = getDayContents()
     m.day.content = dayContents
     if selectedDay < m.day.content.getChildCount() then
-        m.day.jumpToItem(selectedDay)
+        m.day.jumpToItem = selectedDay
     end if
 end sub
 
@@ -114,13 +115,14 @@ end sub
 '
 ' @param event a roSGNodeEvent
 sub monthChanged(event as object)
+    if m.month.hasFocus() = false then return
     selectedMonth = event.getData()
     oldNumDays = m.day.content.getChildCount() - 1 ' subtract 1 for the blank day
     newNumDays = 31
     if selectedMonth = 9 or selectedMonth = 4 or selectedMonth = 6 or selectedMonth = 11 ' 30 days hath september, april, june, and november
         newNumDays = 30
     else if selectedMonth = 2 then
-        index = m.year.itemSelected
+        index = m.year.itemFocused
         if index < 1 then
             newNumDays = 28
         else
@@ -142,9 +144,9 @@ end sub
 '
 ' @param event a roSGNodeEvent
 sub toggleMonthNames(event as object)
-    selectedMonth = m.month.itemSelected
+    selectedMonth = m.month.itemFocused
     m.month.content = getMonthContents()
-    m.month.itemSelected = selectedMonth
+    m.month.itemFocused = selectedMonth
 end sub
 
 ' a function which returns a ContentNode with 150 years in it, starting with this year
@@ -218,15 +220,15 @@ function getDayContents() as object
     blank.title = ""
 
     currentMonth = 0
-    if m.month <> invalid and m.month.itemSelected <> invalid
-        currentMonth = m.month.itemSelected
+    if m.month <> invalid and m.month.itemFocused <> invalid
+        currentMonth = m.month.itemFocused
     end if
 
     numDays = 31 ' default to 31 days
     if currentMonth = 2 ' February has an unusual number of days, handle this case differently
         currentYear = 0
         if m.year <> invalid then
-            currentYear = m.year.itemSelected
+            currentYear = m.year.itemFocused
         end if
 
         if isLeapYear(currentYear) then
@@ -259,6 +261,5 @@ end function
 
 function getDate() as string
     dateTime = createObject("roDateTime")
-    print dateTime
     return dateTime.toISOString()
 end function
