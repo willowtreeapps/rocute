@@ -24,13 +24,13 @@
         {
             "id": "rokuHost",
             "type": "promptString",
-            "default": "192.168.102.185",
+            "default": "0.0.0.0",
             "description": "Host IP Address"
         },
         {
             "id": "rokuPassword",
             "type": "promptString",
-            "default": "Pass123",
+            "default": "password",
             "description": "Password"
         }
     ]
