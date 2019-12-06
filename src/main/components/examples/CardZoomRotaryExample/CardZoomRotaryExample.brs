@@ -52,14 +52,14 @@ sub init()
     child5.textCords = "[5,5]"
     ' TargetSet Size Setup
     focusedTargetSet = createObject("roSGNode", "TargetSet")
-    focusedTargetSet.targetRects = [
-        { x: 0, y: 0, width: 200, height: 100 },
-        { x: 220, y: 120, width: 500, height: 250 },
-        { x: 0, y: 400, width: 150, height: 75 },
-    ]
+    ' focusedTargetSet.targetRects = [
+    '     { x: 0, y: 0, width: 0, height: 0 },
+    '     { x: 0, y: 0, width: 0, height: 0 },
+    '     { x: 0, y: 0, width: 0, height: 0 },
+    ' ]
     ' Assign Content and TargetSet
     m.CardZoomRotaryExample.listContents = generatedContent
-    m.CardZoomRotaryExample.targetSet = focusedTargetSet
+    ' m.CardZoomRotaryExample.targetSet = focusedTargetSet
     m.top.CardZoomRotaryExample = m.CardZoomRotaryExample
 end sub
 

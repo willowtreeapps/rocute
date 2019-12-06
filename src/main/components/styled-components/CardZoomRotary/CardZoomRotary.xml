@@ -16,6 +16,6 @@
         />
     </interface>
     <children>
-        <TargetList id="CardZoomRotaryList" defaultTargetSetFocusIndex="1" advanceKey="down" reverseKey="up" />
+        <TargetList id="CardZoomRotaryList" advanceKey="down" reverseKey="up" />
     </children>
 </component>
