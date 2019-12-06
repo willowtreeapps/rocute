@@ -9,16 +9,13 @@
         <ContentNode title="CardRotator" />
         <ContentNode title="CardZoomRotary" />
         <ContentNode title="DisappearingLogo" />
-<<<<<<< HEAD
         <ContentNode title="HorizontalCardRotator" />
         <ContentNode title="HorizontalNavBar" />
         <ContentNode title="RandomColoredFontList" />
         <ContentNode title="RandomColoredList" />
         <ContentNode title="ResizeList" />
-        <ContentNode title="TiledBackground" />
-=======
         <ContentNode title="Ticker" />
->>>>>>> Add a new news ticker type component.
+        <ContentNode title="TiledBackground" />
         <!-- <ContentNode title="Next" /> -->
       </ContentNode>
     </LabelList>
