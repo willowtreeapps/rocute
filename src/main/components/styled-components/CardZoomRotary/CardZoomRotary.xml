@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<component name="CardZoomRotary" extends="Panel" >
+    <script type="text/brightscript" uri="CardZoomRotary.brs" />
+    <interface>
+        <field
+            id="listContents"
+            type="node"
+            onChange="updateContents"
+            value = "[]"
+        />
+        <field
+            id="targetSet"
+            type="node"
+            onChange="updateTargetSet"
+            value = "[]"
+        />
+    </interface>
+    <children>
+        <TargetList id="CardZoomRotaryList" defaultTargetSetFocusIndex="1" advanceKey="down" reverseKey="up" />
+    </children>
+</component>
