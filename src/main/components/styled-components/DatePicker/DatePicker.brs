@@ -13,6 +13,46 @@ sub init()
     m.top.observeField("focusedChild", "giveFocus")
 end sub
 
+sub setDate()
+    yearIndex = m.year.itemFocused
+    monthIndex = m.month.itemFocused
+    dayIndex = m.day.itemFocused
+    if yearIndex <= 0 or monthIndex <= 0 or dayIndex <= 0 then
+        m.top.dateTimeISOString = invalid
+        m.top.dateTimeSeconds = invalid
+        return
+    end if
+
+    yearCount = m.year.content.getChildCount()
+    monthCount = 12
+    dayCount = m.day.content.getChildCount()
+
+    if yearIndex >= yearCount or monthIndex >= monthCount or dayIndex >= dayCount then
+        m.top.dateTimeISOString = invalid
+        m.top.dateTimeSeconds = invalid
+        return
+    end if
+
+    yearString = m.year.content.getChild(yearIndex).title
+    monthString = stri(monthIndex)
+    dayString = stri(dayIndex)
+
+    if len(monthString) < 2 then
+        monthString = "0" + monthString
+    end if
+
+    if len(dayString) < 2 then
+        dayString = "0" + dayString
+    end if
+
+    isoString = yearString + "-" + monthString + "-" + dayString
+    dateTime = createObject("roDateTime")
+    dateTime.fromISO8601String(isoString)
+    m.top.dateTimeISOString = dateTime.toISOString()
+    m.top.dateTimeSeconds = dateTime.asSeconds()
+    print dateTime
+end sub
+
 ' a function to handle key press events and give focus as needed
 '
 ' @param key a string representing the key pressed
@@ -85,6 +125,7 @@ sub setFormat()
 
     m.year.observeField("itemFocused", "yearChanged")
     m.month.observeField("itemFocused", "monthChanged")
+    m.day.observeField("itemFocused", "dayChanged")
 end sub
 
 ' a method called when the year changes. This checks if we have february selected as the month and changes the number of days if we are in a leap year
@@ -92,7 +133,10 @@ end sub
 ' @param event a roSGNodeEvent
 sub yearChanged(event as object)
     if m.year.hasFocus() = false then return
-    if m.month.itemFocused <> 2 then return
+    if m.month.itemFocused <> 2 then 
+        setDate()
+        return
+    end if
     index = event.getData()
     selectedYear = val(m.year.content.getChild(index).title, 10)
     numDays = m.day.content.getChildCount() - 1 ' subtract 1 for the blank day
@@ -100,6 +144,7 @@ sub yearChanged(event as object)
     if (isLeap = false and numDays <> 28) or (isLeap = true and numDays <> 29) then
         updateDayContents()
     end if
+    setDate()
 end sub
 
 sub updateDayContents()
@@ -138,6 +183,13 @@ sub monthChanged(event as object)
     if oldNumDays <> newNumDays then
         updateDayContents()
     end if
+    setDate()
+end sub
+
+' a method called when the day changes.
+sub dayChanged(event as object)
+    if m.day.hasFocus() = false then return
+    setDate()
 end sub
 
 ' a method to turn month names on or off

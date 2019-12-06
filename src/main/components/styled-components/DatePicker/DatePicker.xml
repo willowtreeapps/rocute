@@ -8,6 +8,8 @@
     <field id="yearWidth" type="float" value="100" />
     <field id="monthWidth" type="float" value="200" />
     <field id="dayWidth" type="float" value="100" />
+    <field id="dateTimeISOString" type="string" />
+    <field id="dateTimeSeconds" type="longinteger" />
   </interface>
   <children>
     <LabelList id="year" numRows = "1"/>
