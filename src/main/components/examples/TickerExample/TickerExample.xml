@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<component name="TickerExample" extends="Panel" >
+  <script type="text/brightscript" uri="pkg:/components/examples/TickerExample/TickerExample.brs"/>
+  <children>
+    <Video id = "video" width = "540" height = "360" />
+    <Ticker 
+        id="ticker" 
+        translation = "[0, 330]"
+        width="540" 
+        color="#aec6cfff"
+        text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.">
+        <Font role="font" uri="pkg:/images/fonts/Allerta-Regular.ttf" size="24"/>
+    </Ticker>
+  </children>
+</component>
