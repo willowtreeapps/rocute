@@ -27,7 +27,7 @@ end sub
 
 sub updateContents()
     ' Sets content
-    m.CardZoomRotaryList.content = m.top.listContents
+    m.CardZoomRotaryList.content = m.top.content
 end sub
 
 sub updateTargetSet()

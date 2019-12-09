@@ -26,7 +26,7 @@ end sub
 
 sub updateContents()
     ' Sets content
-    m.HorizontalCardRotatorList.content = m.top.listContents
+    m.HorizontalCardRotatorList.content = m.top.content
 end sub
 
 sub updateTargetSet()
