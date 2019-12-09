@@ -4,6 +4,28 @@ sub init()
     m.HorizontalCardRotatorExample.setFocus(true)
     m.top.observeField("focusedChild", "handleFocus")
     ' Content Generation
+    generatedContent = generateContent()
+    ' TargetSet Size Setup
+    focusedTargetSet = createObject("roSGNode", "TargetSet")
+    focusedTargetSet.targetRects = [
+        { x: 0, y: 0, width: 150, height: 75 },
+        { x: 50, y: 150, width: 600, height: 300 },
+        { x: 500, y: 0, width: 200, height: 100 },
+    ]
+    ' Assign Content and TargetSet
+    m.HorizontalCardRotatorExample.listContents = generatedContent
+    m.HorizontalCardRotatorExample.targetSet = focusedTargetSet
+    m.top.HorizontalCardRotatorExample = m.HorizontalCardRotatorExample
+end sub
+
+sub handleFocus(event as object)
+    ' Focus Control
+    if m.top.isInFocusChain() then
+        m.HorizontalCardRotatorExample.setFocus(true)
+    end if
+end sub
+
+function generateContent()
     generatedContent = createObject("roSGNode", "ContentNode")
     child1 = generatedContent.createChild("ContentNode")
     child1.title = "Intro to Angular"
@@ -50,22 +72,5 @@ sub init()
     child5.rectColor = "#ffffffff"
     child5.addField("textCords", "string", false)
     child5.textCords = "[5,5]"
-    ' TargetSet Size Setup
-    focusedTargetSet = createObject("roSGNode", "TargetSet")
-    focusedTargetSet.targetRects = [
-        { x: 0, y: 0, width: 150, height: 75 },
-        { x: 50, y: 150, width: 600, height: 300 },
-        { x: 500, y: 0, width: 200, height: 100 },
-    ]
-    ' Assign Content and TargetSet
-    m.HorizontalCardRotatorExample.listContents = generatedContent
-    m.HorizontalCardRotatorExample.targetSet = focusedTargetSet
-    m.top.HorizontalCardRotatorExample = m.HorizontalCardRotatorExample
-end sub
-
-sub handleFocus(event as object)
-    ' Focus Control
-    if m.top.isInFocusChain() then
-        m.HorizontalCardRotatorExample.setFocus(true)
-    end if
-end sub
+    return generatedContent
+end function

@@ -3,6 +3,29 @@ sub init()
     m.CardRotatorExample = m.top.findNode("CardRotatorExample")
     m.CardRotatorExample.setFocus(true)
     m.top.observeField("focusedChild", "handleFocus")
+    'Get Content
+    generatedContent = getContent()
+    ' TargetSet Size Setup
+    focusedTargetSet = createObject("roSGNode", "TargetSet")
+    focusedTargetSet.targetRects = [
+        { x: 0, y: 0, width: 200, height: 100 },
+        { x: 220, y: 120, width: 500, height: 250 },
+        { x: 0, y: 400, width: 150, height: 75 },
+    ]
+    ' Assign Content and TargetSet
+    m.CardRotatorExample.listContents = generatedContent
+    m.CardRotatorExample.targetSet = focusedTargetSet
+    m.top.CardRotatorExample = m.CardRotatorExample
+end sub
+
+sub handleFocus(event as object)
+    ' Focus Control
+    if m.top.isInFocusChain() then
+        m.CardRotatorExample.setFocus(true)
+    end if
+end sub
+
+function getContent()
     ' Content Generation
     generatedContent = createObject("roSGNode", "ContentNode")
     child1 = generatedContent.createChild("ContentNode")
@@ -50,22 +73,5 @@ sub init()
     child5.rectColor = "#ffffffff"
     child5.addField("textCords", "string", false)
     child5.textCords = "[5,5]"
-    ' TargetSet Size Setup
-    focusedTargetSet = createObject("roSGNode", "TargetSet")
-    focusedTargetSet.targetRects = [
-        { x: 0, y: 0, width: 200, height: 100 },
-        { x: 220, y: 120, width: 500, height: 250 },
-        { x: 0, y: 400, width: 150, height: 75 },
-    ]
-    ' Assign Content and TargetSet
-    m.CardRotatorExample.listContents = generatedContent
-    m.CardRotatorExample.targetSet = focusedTargetSet
-    m.top.CardRotatorExample = m.CardRotatorExample
-end sub
-
-sub handleFocus(event as object)
-    ' Focus Control
-    if m.top.isInFocusChain() then
-        m.CardRotatorExample.setFocus(true)
-    end if
-end sub
+    return generatedContent
+end function
