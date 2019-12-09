@@ -11,10 +11,9 @@ sub init()
     m.day.itemSize = [m.top.dayWidth, 50]
     setFormat()
     m.top.observeField("focusedChild", "giveFocus")
-    m.deviceInfo = createObject("roDeviceInfo")
-    print m.deviceInfo.getCurrentLocale()
 end sub
 
+' This method populates the interface fields "dateTimeISOString" and "dateTimeSeconds"
 sub setDate()
     yearIndex = m.year.itemFocused
     monthIndex = m.month.itemFocused
@@ -46,9 +45,12 @@ sub setDate()
     dateTime.fromISO8601String(isoString)
     m.top.dateTimeISOString = dateTime.toISOString()
     m.top.dateTimeSeconds = dateTime.asSeconds()
-    print m.top.dateTimeISOString
 end sub
 
+' a function to get the appropriate timezone offset string in the ISO format. Currently Roku does not support anything other than UTC, so UTC is always returned. 
+'
+' @param a ifDateTime object
+' @return the timezone offset as a string: "Z" for UTC offset
 function getOffsetString(dateTime as object) as string
     return "Z"
     ' in the event that this is ever supported, delete the above line
@@ -64,7 +66,10 @@ function getOffsetString(dateTime as object) as string
     return offsetStr
 end function
 
-
+' a function to get a (at least) two digit string from an integer. (example: 1 would return "01"). If the number is negative, returns a negative sign in front of the number. (example: -1 would return "-01").
+'
+' @param number an integer number
+' @return a string representation of that number, padded to at least 2 digits.
 function getTwoDigitString(number as integer) as string
     numStr = stri(number, 10)
     if len(numStr) < 2 then
@@ -169,6 +174,7 @@ sub yearChanged(event as object)
     setDate()
 end sub
 
+' This method updates the number of days in the month appropriately according to what month and year it is. It preserves which day was selected, except in the case where the selected day does not exist in this month and year, in which case it reverts to the blank selection option.
 sub updateDayContents()
     selectedDay = m.day.itemFocused
     dayContents = getDayContents()
@@ -334,9 +340,4 @@ function isLeapYear(year as integer) as boolean
     if year mod 100 <> 0 then return true ' years divisible by 4 and not divisible by 100 are leap years, ex: 1996
     if year mod 400 = 0 then return false ' years divisible by 400 are NOT leap years, ex: 2000
     return true ' years divisible by 4 and 100 but not 400 are leap years, ex: 1900
-end function
-
-function getDate() as string
-    dateTime = createObject("roDateTime")
-    return dateTime.toISOString()
 end function
