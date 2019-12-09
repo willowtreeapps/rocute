@@ -7,6 +7,7 @@
       <ContentNode role="Content">
         <ContentNode title="ArcInterpolator" />
         <ContentNode title="CardRotator" />
+        <ContentNode title="CardZoomDiagonal" />
         <ContentNode title="CardZoomRotary" />
         <ContentNode title="DisappearingLogo" />
         <ContentNode title="HorizontalCardRotator" />
