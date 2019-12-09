@@ -11,6 +11,8 @@ sub init()
     m.day.itemSize = [m.top.dayWidth, 50]
     setFormat()
     m.top.observeField("focusedChild", "giveFocus")
+    m.deviceInfo = createObject("roDeviceInfo")
+    print m.deviceInfo.getCurrentLocale()
 end sub
 
 sub setDate()
@@ -34,24 +36,44 @@ sub setDate()
     end if
 
     yearString = m.year.content.getChild(yearIndex).title
-    monthString = stri(monthIndex)
-    dayString = stri(dayIndex)
+    monthString = getTwoDigitString(monthIndex)
+    dayString = getTwoDigitString(dayIndex)
 
-    if len(monthString) < 2 then
-        monthString = "0" + monthString
-    end if
-
-    if len(dayString) < 2 then
-        dayString = "0" + dayString
-    end if
-
-    isoString = yearString + "-" + monthString + "-" + dayString
+    isoString = yearString + "-" + monthString + "-" + dayString + "T00:00:00"
     dateTime = createObject("roDateTime")
+    offsetStr = getOffsetString(dateTime)
+    isoString = isoString + offsetStr
     dateTime.fromISO8601String(isoString)
     m.top.dateTimeISOString = dateTime.toISOString()
     m.top.dateTimeSeconds = dateTime.asSeconds()
-    print dateTime
+    print m.top.dateTimeISOString
 end sub
+
+function getOffsetString(dateTime as object) as string
+    return "Z"
+    ' in the event that this is ever supported, delete the above line
+    offset = -dateTime.getTimeZoneOffset() ' have to negate this because roku returns the wrong thing. 
+    offsetHours = offset \ 60
+    offsetMins = abs(offset) mod 60
+    offsetStr = getTwoDigitString(offsetHours) + ":" + getTwoDigitString(offsetMins)
+    if offsetHours > 0 then
+        offsetStr = "+" + offsetStr
+    else if offsetHours < 0 and left(offsetStr, 1) <> "-" then ' this should only happen if the offset is -30 minutes, which is probably not a real timezone but you never know, it could be someday.
+        offsetStr = "-" + offsetStr
+    end if
+    return offsetStr
+end function
+
+
+function getTwoDigitString(number as integer) as string
+    numStr = stri(number, 10)
+    if len(numStr) < 2 then
+        numStr = "0" + numStr
+    else if number < 0 and len(numStr) < 3 then
+        numStr = "-0" + right(numStr, 1)
+    end if
+    return numStr
+end function
 
 ' a function to handle key press events and give focus as needed
 '
@@ -152,7 +174,9 @@ sub updateDayContents()
     dayContents = getDayContents()
     m.day.content = dayContents
     if selectedDay < m.day.content.getChildCount() then
+        m.day.unobserveField("itemFocused")
         m.day.jumpToItem = selectedDay
+        m.day.observeField("itemFocused", "dayChanged")
     end if
 end sub
 
@@ -198,7 +222,9 @@ end sub
 sub toggleMonthNames(event as object)
     selectedMonth = m.month.itemFocused
     m.month.content = getMonthContents()
+    m.month.unobserveField("itemFocused")
     m.month.itemFocused = selectedMonth
+    m.month.observeField("itemFocused", "monthChanged")
 end sub
 
 ' a function which returns a ContentNode with 150 years in it, starting with this year
@@ -213,7 +239,7 @@ function getYearContents() as object
     currentYear = dateTime.getYear()
     for i = currentYear to currentYear - 150 step -1
         year = years.createChild("ContentNode")
-        year.title = stri(i)
+        year.title = stri(i, 10)
     end for
 
     return years
@@ -226,8 +252,7 @@ function getMonthContents() as object
     months = createObject("roSGNode", "ContentNode")
     blank = months.createChild("ContentNode")
     blank.title = ""
-    deviceInfo = createObject("roDeviceInfo")
-    print deviceInfo.getCurrentLocale()
+    
     if m.top.useMonthNames = true then
         january = months.createChild("ContentNode")
         january.title = tr("January")
@@ -256,7 +281,7 @@ function getMonthContents() as object
     else
         for i = 1 to 12
             month = months.createChild("ContentNode")
-            month.title = stri(i)
+            month.title = stri(i, 10)
         end for
     end if
 
