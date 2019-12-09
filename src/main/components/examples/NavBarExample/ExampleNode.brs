@@ -1,5 +1,4 @@
 sub init()
-    m.top.setFocus(true)
     m.top.vertFocusAnimationStyle = "floatingFocus"
 end sub
 
