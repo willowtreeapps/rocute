@@ -3,7 +3,7 @@
     <script type="text/brightscript" uri="CardZoomDiagonal.brs" />
     <interface>
         <field
-            id="listContents"
+            id="content"
             type="node"
             onChange="updateContents"
             value = "[]"

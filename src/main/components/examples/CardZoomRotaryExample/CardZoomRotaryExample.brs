@@ -13,7 +13,7 @@ sub init()
     '     { x: 0, y: 0, width: 0, height: 0 },
     ' ]
     ' Assign Content and TargetSet
-    m.CardZoomRotaryExample.listContents = generatedContent
+    m.CardZoomRotaryExample.content = generatedContent
     ' m.CardZoomRotaryExample.targetSet = focusedTargetSet
     m.top.CardZoomRotaryExample = m.CardZoomRotaryExample
 end sub

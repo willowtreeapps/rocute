@@ -13,7 +13,7 @@ sub init()
         { x: 0, y: 400, width: 150, height: 75 },
     ]
     ' Assign Content and TargetSet
-    m.CardRotatorExample.listContents = generatedContent
+    m.CardRotatorExample.content = generatedContent
     m.CardRotatorExample.targetSet = focusedTargetSet
     m.top.CardRotatorExample = m.CardRotatorExample
 end sub
