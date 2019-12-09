@@ -78,9 +78,6 @@ sub showLogo(event as object)
     state = event.getData()
     if state = "none" or state = "buffering" or state = "finished" or state = "error" then return
     m.animation.control = "stop"
-    print state
-    'print m.animation.control
-    'state = m.video.state
     m.logo.opacity = m.top.logoOpacity
     if state = "playing" then
         m.timer.control = "start"

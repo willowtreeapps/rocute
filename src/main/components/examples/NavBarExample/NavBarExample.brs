@@ -12,8 +12,6 @@ sub init()
 end sub
 
 sub setDefaultFocus(event as object)
-    print event.getField()
-    print event.getData()
     if m.top.isInFocusChain() = true and m.displayedNode.isInFocusChain() = false and m.navBar.isInFocusChain() = false then
         m.displayedNode.setFocus(true)
     end if
