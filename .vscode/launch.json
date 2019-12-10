@@ -25,6 +25,28 @@
             "enableDebuggerAutoRecovery": false,
             "stopDebuggerOnAppExit": false,
             "preLaunchTask": "ukorMake",
+        },
+        {
+            "type": "brightscript",
+            "request": "launch",
+            "name": "BrightScript Debug: Launch 2",
+            "stopOnEntry": false,
+            "host": "${input:rokuHost}",
+            "password": "${input:rokuPassword}",
+            "rootDir": "${workspaceFolder}/.ukor",
+            "sourceDirs": [
+                "${workspaceFolder}/src/main",
+            ],
+            "files": [
+                "manifest",
+                "source/**/*.*",
+                "components/**/*.*",
+                "images/**/*.*",
+                "locale/**/*.*"
+            ],
+            "enableDebuggerAutoRecovery": false,
+            "stopDebuggerOnAppExit": false,
+            "preLaunchTask": "ukorMake2",
         }
     ],
     "inputs":[

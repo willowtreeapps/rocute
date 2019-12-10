@@ -1,4 +1,4 @@
-sub main(params as object)
+sub RunUserInterface(params as object)
   ' set up your screen
   screen = CreateObject("roSGScreen")
   m.port = CreateObject("roMessagePort")
