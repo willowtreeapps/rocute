@@ -1,6 +1,5 @@
+' Initialization method for DisappearingNavBar
 sub init()
-    m.top.unobserveField("focusedChild")
-    m.top.observeField("focusedChild", "focusChangedOverride")
     m.top.observeField("height", "setAnimationHeight")
     m.slideInAnimation = m.top.findNode("inAnimation")
     m.inInterpolator = m.top.findNode("inInterpol")
@@ -11,7 +10,10 @@ sub init()
     m.grid.enableRenderTracking = true
 end sub
 
-sub focusChangedOverride(event as object)
+' This method overrides the focusChanged method from HorizontalNavBar.
+'
+' @param event a roSGNodeEvent
+sub focusChanged(event as object)
     if m.top.isInFocusChain() = true then
         if m.grid.renderTracking = "none" then
             m.slideInAnimation.control = "start"
@@ -24,6 +26,9 @@ sub focusChangedOverride(event as object)
     end if
 end sub
 
+' This sets the height of the slide animations.
+'
+' @param event a roSGNodeEvent
 sub setAnimationHeight(event as object)
     height = event.getData()
     dim inVector[1]
