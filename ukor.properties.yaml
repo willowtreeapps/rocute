@@ -8,7 +8,4 @@ flavors:
   main:
     src:
       - main
-  saver:
-    base: 'main'
-    src:
-      - 'SGSimpleScreensaver'
+      - 'SGScreensaver'

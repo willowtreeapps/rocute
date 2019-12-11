@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<component name="Screensaver" extends="Scene" >
+    <interface>
+        <field id="animationControl" type="string" alwaysNotify="true" onChange="OnAnimationChanged" />
+    </interface>
+    <script type="text/brightscript" >
+        <![CDATA[
+            sub OnAnimationChanged()
+                m.RectAnimation.control = m.top.animationControl
+            end sub
+            sub init()
+                m.RectAnimation = m.top.findNode("RectangleMover")
+	            m.top.setFocus(true)
+            end sub
+        ]]>
+    </script>
+    <children>
+        <Poster
+            id="Rectangle"
+            uri="pkg:/images/willowtreelogo.png"
+        />
+        <Animation
+            id="RectangleMover"
+            repeat="true" 
+            duration="8"
+            easeFunction="linear"
+        >
+            <Vector2DFieldInterpolator
+                id="RectangleInterp" 
+		        fieldToInterp="Rectangle.translation" 
+			    key="[0.0, 0.25, 0.5, 0.75, 1.0]"
+			    keyValue="[[300,150],[700,150],[700,400],[300,400],[300,150]]"
+		    />
+        </Animation>
+    </children>
+</component>

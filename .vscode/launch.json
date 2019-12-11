@@ -29,7 +29,7 @@
         {
             "type": "brightscript",
             "request": "launch",
-            "name": "BrightScript Debug: Launch 2",
+            "name": "BrightScript Debug: Launch Screensaver",
             "stopOnEntry": false,
             "host": "${input:rokuHost}",
             "password": "${input:rokuPassword}",
@@ -46,7 +46,7 @@
             ],
             "enableDebuggerAutoRecovery": false,
             "stopDebuggerOnAppExit": false,
-            "preLaunchTask": "ukorMake2",
+            "preLaunchTask": "ukorMakeScreensaver",
         }
     ],
     "inputs":[
