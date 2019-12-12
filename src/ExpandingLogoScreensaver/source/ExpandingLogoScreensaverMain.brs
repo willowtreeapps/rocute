@@ -5,7 +5,7 @@ sub showChannelSGScreen()
     screen = CreateObject("roSGScreen")
     m.port = CreateObject("roMessagePort")
     screen.setMessagePort(m.port)
-    scene = screen.CreateScene("Screensaver")
+    scene = screen.CreateScene("ExpandingLogoScreensaver")
     screen.show()
     scene.animationControlMover = "start"
     scene.animationControlWider = "start"

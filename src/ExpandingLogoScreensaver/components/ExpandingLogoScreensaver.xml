@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" ?>
 
-<component name="Screensaver" extends="Scene" >
+<component name="ExpandingLogoScreensaver" extends="Scene" >
     <interface>
         <field id="animationControlMover" type="string" alwaysNotify="true" onChange="OnAnimationChangedMover" />
         <field id="animationControlWider" type="string" alwaysNotify="true" onChange="OnAnimationChangedWider" />
