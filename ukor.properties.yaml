@@ -8,3 +8,4 @@ flavors:
   main:
     src:
       - main
+      - 'ExpandingLogoScreensaver'

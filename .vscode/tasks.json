@@ -9,5 +9,10 @@
             "type": "shell",
             "command": "ukor make main"
         },
+        {
+            "label": "ukorMakeScreensaver",
+            "type": "shell",
+            "command": "ukor make screensaver"
+        },
     ]
 }

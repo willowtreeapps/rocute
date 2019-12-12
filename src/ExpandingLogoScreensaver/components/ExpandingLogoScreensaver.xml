@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<component name="ExpandingLogoScreensaver" extends="Scene" >
+    <interface>
+        <field id="animationControlMover" type="string" alwaysNotify="true" onChange="OnAnimationChangedMover" />
+        <field id="animationControlWider" type="string" alwaysNotify="true" onChange="OnAnimationChangedWider" />
+        <field id="animationControlHigher" type="string" alwaysNotify="true" onChange="OnAnimationChangedHigher" />
+    </interface>
+    <script type="text/brightscript" >
+        <![CDATA[
+            sub OnAnimationChangedMover()
+                m.RectAnimationMover.control = m.top.animationControlMover
+            end sub
+            sub OnAnimationChangedWider()
+                m.RectAnimationWider.control = m.top.animationControlWider
+            end sub
+            sub OnAnimationChangedHigher()
+                m.RectAnimationHigher.control = m.top.animationControlHigher
+            end sub
+            sub init()
+                m.RectAnimationMover = m.top.findNode("RectangleMover")
+                m.RectAnimationWider = m.top.findNode("RectangleWider")
+                m.RectAnimationHigher = m.top.findNode("RectangleHigher")
+	            m.top.setFocus(true)
+            end sub
+        ]]>
+    </script>
+    <children>
+        <Poster
+            id="Rectangle"
+            uri="pkg:/images/willowtreelogo.png"
+            width="200"
+            height="200"
+        />
+        <Animation
+            id="RectangleMover"
+            repeat="true" 
+            duration="8"
+            easeFunction="linear"
+        >
+            <Vector2DFieldInterpolator
+                id="RectangleInterp" 
+		        fieldToInterp="Rectangle.translation" 
+			    key="[0.0, 0.25, 0.5, 0.75, 1.0]"
+			    keyValue="[[540,300],[490,200],[540,300],[490,200],[540,300]]"
+		    />
+        </Animation>
+        <Animation
+            id="RectangleWider"
+            repeat="true" 
+            duration="8"
+            easeFunction="linear"
+        >
+            <FloatFieldInterpolator
+                id="RectangleWiderInterp" 
+		        fieldToInterp="Rectangle.width" 
+			    key="[0.0, 0.25, 0.5, 0.75, 1.0]"
+			    keyValue="[200, 300, 200, 300, 200]"
+		    />
+        </Animation>
+        <Animation
+            id="RectangleHigher"
+            repeat="true" 
+            duration="8"
+            easeFunction="linear"
+        >
+            <FloatFieldInterpolator
+                id="RectangleHigherInterp" 
+		        fieldToInterp="Rectangle.height" 
+			    key="[0.0, 0.25, 0.5, 0.75, 1.0]"
+			    keyValue="[200, 300, 200, 300, 200]"
+		    />
+        </Animation>
+    </children>
+</component>
