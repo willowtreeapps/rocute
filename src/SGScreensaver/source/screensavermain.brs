@@ -7,7 +7,10 @@ sub showChannelSGScreen()
     screen.setMessagePort(m.port)
     scene = screen.CreateScene("Screensaver")
     screen.show()
-    scene.animationControl = "start"
+    scene.animationControlMover = "start"
+    scene.animationControlWider = "start"
+    scene.animationControlHigher = "start"
+
     while(true)
         msg = wait(2000, m.port)
         if (msg <> invalid)
