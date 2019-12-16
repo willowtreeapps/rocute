@@ -9,11 +9,11 @@
   </interface>
   <children>
     <MaskGroup
-      id = "circlChopMaskGroup"
+      id = "circleChopMaskGroup"
       maskuri = "pkg:/images/circle-crop.png"
     >
       <Poster
-        id = "circlChopPoster"
+        id = "circleChopPoster"
       />
     </MaskGroup>
   </children>

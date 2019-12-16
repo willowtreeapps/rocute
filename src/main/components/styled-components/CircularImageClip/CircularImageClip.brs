@@ -2,39 +2,39 @@ sub init()
 end sub
 
 sub setPath ()
-    m.circlChopPoster = m.top.findNode("circlChopPoster")
-    m.circlChopPoster.uri = m.top.imageUri
-    if m.circlChopPoster.bitmapHeight <> 0 then
+    m.circleChopPoster = m.top.findNode("circleChopPoster")
+    m.circleChopPoster.uri = m.top.imageUri
+    if m.circleChopPoster.bitmapHeight <> 0 then
         onImageLoad()
     else
-        m.circlChopPoster.observeField("bitmapHeight", "onImageLoad")
+        m.circleChopPoster.observeField("bitmapHeight", "onImageLoad")
     end if
 end sub
 
 sub onImageLoad ()
     if m.top.height = 0 then
-        m.circlChopMaskGroup = m.top.findNode("circlChopMaskGroup")
-        m.imgWidth = m.circlChopPoster.bitmapWidth
-        m.imgHeight = m.circlChopPoster.bitmapHeight
-        m.circlChopMaskGroup.masksize = [m.imgWidth, m.imgHeight]
+        m.circleChopMaskGroup = m.top.findNode("circleChopMaskGroup")
+        m.imgWidth = m.circleChopPoster.bitmapWidth
+        m.imgHeight = m.circleChopPoster.bitmapHeight
+        m.circleChopMaskGroup.masksize = [m.imgWidth, m.imgHeight]
     end if
-    m.circlChopPoster.unobserveField("bitmapHeight")
+    m.circleChopPoster.unobserveField("bitmapHeight")
 end sub
 
 sub setHeight()
-    m.circlChopMaskGroup = m.top.findNode("circlChopMaskGroup")
+    m.circleChopMaskGroup = m.top.findNode("circleChopMaskGroup")
     if (m.top.width <> 0)
-        m.circlChopMaskGroup.masksize = [m.top.width, m.top.height]
+        m.circleChopMaskGroup.masksize = [m.top.width, m.top.height]
     end if
-    m.circlChopPoster = m.top.findNode("circlChopPoster")
-    m.circlChopPoster.height = m.top.height
+    m.circleChopPoster = m.top.findNode("circleChopPoster")
+    m.circleChopPoster.height = m.top.height
 end sub
 
 sub setWidth()
-    m.circlChopMaskGroup = m.top.findNode("circlChopMaskGroup")
+    m.circleChopMaskGroup = m.top.findNode("circleChopMaskGroup")
     if (m.top.height <> 0)
-        m.circlChopMaskGroup.masksize = [m.top.width, m.top.height]
+        m.circleChopMaskGroup.masksize = [m.top.width, m.top.height]
     end if
-    m.circlChopPoster = m.top.findNode("circlChopPoster")
-    m.circlChopPoster.width = m.top.width
+    m.circleChopPoster = m.top.findNode("circleChopPoster")
+    m.circleChopPoster.width = m.top.width
 end sub
