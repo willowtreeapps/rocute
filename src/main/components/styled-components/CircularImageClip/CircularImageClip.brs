@@ -2,6 +2,8 @@ sub init()
 end sub
 
 sub setPath ()
+    ' Sets the file path for the image, and divides logic for either setting up
+    '   an image now or waiting for an image to be ready for setup
     m.circleChopPoster = m.top.findNode("circleChopPoster")
     m.circleChopPoster.uri = m.top.imageUri
     if m.circleChopPoster.bitmapHeight <> 0 then
@@ -12,6 +14,8 @@ sub setPath ()
 end sub
 
 sub onImageLoad ()
+    ' When an image is loaded, if the m.top.height field is equal to 0, being default with no bounds set,
+    '   set the mask up in accordance with the images normal height/width
     if m.top.height = 0 then
         m.circleChopMaskGroup = m.top.findNode("circleChopMaskGroup")
         m.imgWidth = m.circleChopPoster.bitmapWidth
@@ -22,8 +26,9 @@ sub onImageLoad ()
 end sub
 
 sub setHeight()
+    ' On m.top.height change set the images height in accordance
     m.circleChopMaskGroup = m.top.findNode("circleChopMaskGroup")
-    if (m.top.width <> 0)
+    if (m.top.width <> 0) ' On the observer function when both height and with are set, set the masksize
         m.circleChopMaskGroup.masksize = [m.top.width, m.top.height]
     end if
     m.circleChopPoster = m.top.findNode("circleChopPoster")
@@ -31,8 +36,9 @@ sub setHeight()
 end sub
 
 sub setWidth()
+    ' On m.top.width change set the images width in accordance
     m.circleChopMaskGroup = m.top.findNode("circleChopMaskGroup")
-    if (m.top.height <> 0)
+    if (m.top.height <> 0) ' On the observer function when both height and with are set, set the masksize
         m.circleChopMaskGroup.masksize = [m.top.width, m.top.height]
     end if
     m.circleChopPoster = m.top.findNode("circleChopPoster")
