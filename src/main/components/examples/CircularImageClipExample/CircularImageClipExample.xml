@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<component name="CircularImageClipExampleComponent" extends="Panel" >
+  <children>
+    <CircularImageClip id="CircularImageClipExample" height="256" width="256" imageUri="pkg:/images/test.png"/>
+  </children>
+</component>

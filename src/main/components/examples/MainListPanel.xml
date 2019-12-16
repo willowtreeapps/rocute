@@ -9,6 +9,7 @@
         <ContentNode title="CardRotator" />
         <ContentNode title="CardZoomDiagonal" />
         <ContentNode title="CardZoomRotary" />
+        <ContentNode title="CircularImageClip" />
         <ContentNode title="DatePicker"/>
         <ContentNode title="DisappearingLogo" />
         <ContentNode title="HorizontalCardRotator" />
