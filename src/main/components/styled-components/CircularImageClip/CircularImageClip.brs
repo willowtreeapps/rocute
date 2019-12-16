@@ -18,6 +18,7 @@ sub onImageLoad ()
         m.imgHeight = m.circlChopPoster.bitmapHeight
         m.circlChopMaskGroup.masksize = [m.imgWidth, m.imgHeight]
     end if
+    m.circlChopPoster.unobserveField("bitmapHeight")
 end sub
 
 sub setHeight()
