@@ -55,7 +55,9 @@ sub setPosition()
         m.triangleChopMaskGroup.maskuri = "pkg:/images/topLeftClip.png"
     else if position = "bottomLeft"
         m.triangleChopMaskGroup.maskuri = "pkg:/images/bottomLeftClip.png"
-    else position = "bottomRight"
+    else if position = "bottomRight"
         m.triangleChopMaskGroup.maskuri = "pkg:/images/bottomRightClip.png"
+    else
+        m.triangleChopMaskGroup.maskuri = ""
     end if
 end sub
