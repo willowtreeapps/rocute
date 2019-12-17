@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<component name="RatingIconExample" extends="Panel" >
+  <script type="text/brightscript" uri="pkg:/components/examples/RatingIconExample/RatingIconExample.brs"/>
+  <children>
+    <Video id = "video" width = "540" height = "360" />
+    <RatingIcon id = "logoOverlay" videoid = "video"/>
+  </children>
+</component>

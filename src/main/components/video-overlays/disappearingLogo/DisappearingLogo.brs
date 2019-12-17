@@ -34,13 +34,13 @@ sub logoChanged(event as object)
     if m.top.fixedPosition = true and m.top.logoTranslation <> invalid then
         logoPosition[0] = videoTranslation[0] + m.top.logoTranslation[0]
         logoPosition[1] = videoTranslation[1] + m.top.logoTranslation[1]
-    else if m.position = "topLeft" then
+    else if m.top.position = "topLeft" then
         logoPosition[0] = videoTranslation[0] + m.top.margin
         logoPosition[1] = videoTranslation[1] + m.top.margin
-    else if m.position = "topRight" then
+    else if m.top.position = "topRight" then
         logoPosition[0] = videoTranslation[0] + videoWidth - m.top.margin - m.top.logoSize[0]
         logoPosition[1] = videoTranslation[1] + m.top.margin
-    else if m.position = "bottomLeft" then
+    else if m.top.position = "bottomLeft" then
         logoPosition[0] = videoTranslation[0] + m.top.margin
         logoPosition[1] = videoTranslation[1] + videoHeight - m.top.margin - m.top.logoSize[1]
     else ' use the default of "bottomRight"
@@ -58,7 +58,13 @@ end sub
 
 sub videoChanged(event as object)
     videoId = event.getData()
-    videoNode = m.top.getParent().findNode(videoId)
+    videoNode = m.top.findNode(videoId)
+    parentNode = m.top
+    while videoNode = invalid 
+        parentNode = parentNode.getParent()
+        if parentNode = invalid then return
+        videoNode = parentNode.findNode(videoId)
+    end while
     if videoNode <> invalid then
         m.video = videoNode
         logoChanged(invalid)

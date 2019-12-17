@@ -16,6 +16,7 @@
         <ContentNode title="HorizontalNavBar" />
         <ContentNode title="RandomColoredFontList" />
         <ContentNode title="RandomColoredList" />
+        <ContentNode title="RatingIcon"/>
         <ContentNode title="ResizeList" />
         <ContentNode title="Ticker" />
         <ContentNode title="TiledBackground" />
