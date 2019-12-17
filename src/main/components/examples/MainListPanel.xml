@@ -21,6 +21,7 @@
         <ContentNode title="ResizeList" />
         <ContentNode title="Ticker" />
         <ContentNode title="TiledBackground" />
+        <ContentNode title="TriangularCornerClip" />
         <ContentNode title="TriangularImageClip" />
         <!-- <ContentNode title="Next" /> -->
       </ContentNode>

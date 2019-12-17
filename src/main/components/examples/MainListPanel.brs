@@ -39,6 +39,8 @@ sub createNextPanel(event as object)
     else if index = 15 then
         m.top.nextPanel = createObject("roSGNode", "TiledBackgroundExample")
     else if index = 16 then
+        m.top.nextPanel = createObject("roSGNode", "TriangularCornerClipExampleComponent")
+    else if index = 17 then
         m.top.nextPanel = createObject("roSGNode", "TriangularImageClipExampleComponent")
         ' else if index = NUMBERHERE then
         '     m.top.nextPanel = createObject("roSGNode", "NextExampleComponent")

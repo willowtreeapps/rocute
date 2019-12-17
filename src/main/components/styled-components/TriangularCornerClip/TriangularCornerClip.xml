@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<component name="TriangularCornerClip" extends="Group" >
+  <script type="text/brightscript" uri="pkg:/components/styled-components/TriangularCornerClip/TriangularCornerClip.brs"/>
+  <interface >
+    <field id="height" type="int" value="0" onChange="setHeight"/>
+    <field id="width" type="int" value="0" onChange="setWidth"/>
+    <field id="imageUri" type="uri" onChange="setPath"/>
+    <field id="rightAnglePosition" type="string" value="topRight" onChange="setPosition"/>
+  </interface>
+  <children>
+    <MaskGroup
+      id = "triangleChopMaskGroup"
+      maskuri = "pkg:/images/topRightClip.png"
+    >
+      <Poster
+        id = "triangleChopPoster"
+      />
+    </MaskGroup>
+  </children>
+</component>
