@@ -27,19 +27,23 @@ sub createNextPanel(event as object)
     else if index = 9 then
         m.top.nextPanel = createObject("roSGNode", "NavBarExample")
     else if index = 10 then
-        m.top.nextPanel = createObject("roSGNode", "RandomColoredFontListListPanelExample")
+        m.top.nextPanel = createObject("roSGNode", "LiveIconExample")
     else if index = 11 then
-        m.top.nextPanel = createObject("roSGNode", "RandomColoredListListPanelExample")
+        m.top.nextPanel = createObject("roSGNode", "RandomColoredFontListListPanelExample")
     else if index = 12 then
-        m.top.nextPanel = createObject("roSGNode", "RatingIconExample")
+        m.top.nextPanel = createObject("roSGNode", "RandomColoredListListPanelExample")
     else if index = 13 then
-        m.top.nextPanel = createObject("roSGNode", "ResizeListListPanelExample")
+        m.top.nextPanel = createObject("roSGNode", "RatingIconExample")
     else if index = 14 then
-        m.top.nextPanel = createObject("roSGNode", "TickerExample")
+        m.top.nextPanel = createObject("roSGNode", "ResizeListListPanelExample")
     else if index = 15 then
-        m.top.nextPanel = createObject("roSGNode", "TiledBackgroundExample")
+        m.top.nextPanel = createObject("roSGNode", "TickerExample")
     else if index = 16 then
+<<<<<<< HEAD
         m.top.nextPanel = createObject("roSGNode", "TriangularCornerClipExampleComponent")
+=======
+        m.top.nextPanel = createObject("roSGNode", "TiledBackgroundExample")
+>>>>>>> Adds a LIVE icon to the video node if the video is a live stream.
     else if index = 17 then
         m.top.nextPanel = createObject("roSGNode", "TriangularImageClipExampleComponent")
         ' else if index = NUMBERHERE then
