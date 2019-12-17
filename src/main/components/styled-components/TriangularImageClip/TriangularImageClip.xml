@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<component name="TriangularImageClip" extends="Group" >
+  <script type="text/brightscript" uri="pkg:/components/styled-components/TriangularImageClip/TriangularImageClip.brs"/>
+  <interface >
+    <field id="height" type="int" value="0" onChange="setHeight"/>
+    <field id="width" type="int" value="0" onChange="setWidth"/>
+    <field id="imageUri" type="uri" onChange="setPath"/>
+  </interface>
+  <children>
+    <MaskGroup
+      id = "triangleChopMaskGroup"
+      maskuri = "pkg:/images/triangle-crop.png"
+    >
+      <Poster
+        id = "triangleChopPoster"
+      />
+    </MaskGroup>
+  </children>
+</component>
