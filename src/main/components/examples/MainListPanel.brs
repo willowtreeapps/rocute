@@ -29,10 +29,12 @@ sub createNextPanel(event as object)
     else if index = 10 then
         m.top.nextPanel = createObject("roSGNode", "RandomColoredListListPanelExample")
     else if index = 11 then
-        m.top.nextPanel = createObject("roSGNode", "ResizeListListPanelExample")
+        m.top.nextPanel = createObject("roSGNode", "RatingIconExample")
     else if index = 12 then
-        m.top.nextPanel = createObject("roSGNode", "TickerExample")
+        m.top.nextPanel = createObject("roSGNode", "ResizeListListPanelExample")
     else if index = 13 then
+        m.top.nextPanel = createObject("roSGNode", "TickerExample")
+    else if index = 14 then
         m.top.nextPanel = createObject("roSGNode", "TiledBackgroundExample")
         ' else if index = NUMBERHERE then
         '     m.top.nextPanel = createObject("roSGNode", "NextExampleComponent")

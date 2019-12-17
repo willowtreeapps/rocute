@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<component name="RatingIcon" extends="Group" >
+  <script type="text/brightscript" uri="pkg:/components/video-overlays/ratingIcon/RatingIcon.brs"/>
+  <interface>
+    <field id = "iconFolderUri" type="uri" value="pkg:/images/ratingIcons" />
+    <field id = "logoOpacity" type = "float" value = "1" onChange="setInnerField"/>
+    <field id = "displayTime" type = "float" value = "1" onChange="setInnerField"/>
+    <field id = "fadeTime" type = "float" value = "1" onChange="setInnerField"/>
+    <field id = "position" type = "string" value = "topLeft" onChange="setInnerField"/>
+    <field id = "margin" type = "float" value = "10" onChange="setInnerField"/>
+    <field id = "fixedPosition" type = "boolean" value = "false" onChange="setInnerField"/>
+    <field id = "logoTranslation" type = "vector2d" onChange="setInnerField"/>
+    <field id = "videoId" type = "string" onChange="setVideo"/>
+  </interface>
+  <children>
+    <DisappearingLogo id="ratingLogo" logoSize="[30, 17]"/>
+  </children>
+</component>
