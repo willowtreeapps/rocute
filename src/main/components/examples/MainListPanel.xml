@@ -12,10 +12,12 @@
         <ContentNode title="CircularImageClip" />
         <ContentNode title="DatePicker"/>
         <ContentNode title="DisappearingLogo" />
+        <ContentNode title="DisappearingNavBar" />
         <ContentNode title="HorizontalCardRotator" />
         <ContentNode title="HorizontalNavBar" />
         <ContentNode title="RandomColoredFontList" />
         <ContentNode title="RandomColoredList" />
+        <ContentNode title="RatingIcon"/>
         <ContentNode title="ResizeList" />
         <ContentNode title="Ticker" />
         <ContentNode title="TiledBackground" />

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<component name="DisappearingNavBar" extends="HorizontalNavBar">
+    <children>
+        <animation id = "inAnimation" duration=".3" easeFunction="inOutQuad" >
+            <Vector2dFieldInterpolator id="inInterpol" fieldToInterp = "grid.translation" key="[0,1]" keyValue="[[0,-115],[0, 0]]" />
+        </animation>
+        <animation id = "outAnimation" duration=".3" easeFunction="inOutQuad" >
+            <Vector2dFieldInterpolator id="outInterpol" fieldToInterp = "grid.translation" key="[0,1]" keyValue="[[0,0],[0, -115]]" />
+        </animation>
+        <animation id = "fadeInAnimation" duration=".3" easeFunction="inOutQuad" >
+            <FloatFieldInterpolator id="fadeInInterpol" fieldToInterp = "grid.opacity" key="[0,1]" keyValue="[0.0, 1.0]" />
+        </animation>
+        <animation id = "fadeOutAnimation" duration=".3" easeFunction="inOutQuad" >
+            <FloatFieldInterpolator id="fadeOutInterpol" fieldToInterp = "grid.opacity" key="[0,1]" keyValue="[1.0, 0.0]" />
+        </animation>
+    </children>
+    <script type="text/brightscript" uri="pkg:/components/styled-components/DisappearingNavBar/DisappearingNavBar.brs"/>
+</component>
