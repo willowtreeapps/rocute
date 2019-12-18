@@ -7,6 +7,14 @@
         <field id="animationControlHigher" type="string" alwaysNotify="true" onChange="OnAnimationChangedHigher" />
     </interface>
     <script type="text/brightscript" uri="pkg:/components/BouncingLogoScreensaver.brs"/>
+    <script type="text/brightscript">
+        <![CDATA[
+            sub init()
+                print "init inside xml"
+                start()
+            end sub
+        ]]>
+    </script>
     <children>
         <Poster
             id="Rectangle"

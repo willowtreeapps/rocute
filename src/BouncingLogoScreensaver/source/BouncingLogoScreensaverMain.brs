@@ -1,7 +1,9 @@
 sub RunScreenSaver(params as object) as object
-    showChannelSGScreen()
+    print "BouncingLogoScreensaverMain.RunScreenSaver"
+    showBChannelSGScreen()
 end sub
-sub showChannelSGScreen()
+sub showBChannelSGScreen()
+    print "BouncingLogoScreensaverMain.showBChannelSGScreen"
     screen = CreateObject("roSGScreen")
     m.port = CreateObject("roMessagePort")
     screen.setMessagePort(m.port)

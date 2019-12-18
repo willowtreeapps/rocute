@@ -2,10 +2,17 @@ name: rocute
 version: 0.0.1
 buildDir: out
 sourceDir: src
-defaults:
-  falvor: main
-flavors:
-  main:
-    src:
-      - main
-      - 'ExpandingLogoScreensaver'
+mainFlavor: 'main'
+flavors: {
+  main: {
+    src: ['main']
+  },
+  Screensaver1: {
+    base: 'main',
+    src: ['ExpandingLogoScreensaver']
+  },
+  Screensaver2: {
+    base: 'main',
+    src: ['BouncingLogoScreensaver']
+  }
+}

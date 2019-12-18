@@ -1,4 +1,5 @@
-sub init()
+sub start()
+    print "start"
     m.logo = m.top.findNode("Rectangle")
     m.animation = m.top.findNode("RectangleMover")
     m.interpolator = m.top.findNode("RectangleInterp")
@@ -58,7 +59,7 @@ end function
 function getClosestPoint(position as object, possiblePoints as object) as object
     maxDistance = sqr(m.screeenWidth^2 + m.screenHeight^2)
     closestPoint = invalid
-    for point in possiblePoints
+    for each point in possiblePoints
         if point <> invalid then
             distance = getDistance(position, point)
             if distance < maxDistance then
@@ -131,10 +132,10 @@ end function
 ' Gets the y intercept of the line described by the point and m.slope
 '
 ' @param position as a Vector2D
-' @param the y intercept as a double
-function getYIntercept(position as object)
+' @return the y intercept as a double
+function getYIntercept(position as object) as double
     if isLeftWall(position) return position[1]
-    return = position[1] - m.slope * position[0]
+    return position[1] - m.slope * position[0]
 end function
 
 ' Gets the slope of a line through points A and B

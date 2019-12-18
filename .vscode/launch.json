@@ -46,7 +46,7 @@
             ],
             "enableDebuggerAutoRecovery": false,
             "stopDebuggerOnAppExit": false,
-            "preLaunchTask": "ukorMakeScreensaver",
+            "preLaunchTask": "ukorMakeScreensaver1",
         }
     ],
     "inputs":[
