@@ -59,7 +59,7 @@
         {
             "id": "rokuPassword",
             "type": "promptString",
-            "default": "password",
+            "default": "pass123",
             "description": "Password"
         }
     ]

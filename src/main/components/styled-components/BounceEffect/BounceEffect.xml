@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<component name="BounceEffect" extends="Group" >
+  <script type="text/brightscript" uri="pkg:/components/styled-components/BounceEffect/BounceEffect.brs"/>
+  <interface />
+  <children>
+    <Poster id="BouncingItem" uri="pkg:/images/test.png"/>
+  </children>
+</component>
