@@ -1,32 +1,54 @@
 sub init()
-    m.RectAnimationMover = m.top.findNode("RectangleMover")
-    m.RectAnimationWider = m.top.findNode("RectangleWider")
-    m.RectAnimationHigher = m.top.findNode("RectangleHigher")
+    m.logo = m.top.findNode("Rectangle")
+    m.animation = m.top.findNode("RectangleMover")
+    m.interpolator = m.top.findNode("RectangleInterp")
+    m.timer = m.top.findNode("animationTimer")
     m.top.setFocus(true)
 
     ' TODO: use any size screen here, SD, HD, or FHD
     m.screenHeight = 720
     m.screenWidth = 1080
+
+    m.slope = Rnd(m.screenHeight) / Rnd(m.screenWidth)
+    m.speed = Rnd(1080)
+    animateToNextPoint()
+    m.timer.observeField("fire", "animateToNextPoint")
+end sub
+
+sub animateToNextPoint()
+    position = m.logo.translation
+    nextPoint = getNextPosition(position)
+    dim points[1]
+    points[0] = position
+    points[1] = nextPoint
+    m.interpolator.keyValue = points
+    distance = getDistance(position, nextPoint)
+    time = distance / m.speed
+    m.animation.duration = time
+    m.timer.duration = time
+
+    m.animation.control = "start"
+    m.timer.control = "start"
 end sub
 
 ' Gets the next position for a bounce given the previous two positions
 '
-' @param startPos the start position for the motion as a Vector2D
-' @param midPos the position to bounce off of as a Vector2D
+' @param position the position to bounce off of as a Vector2D
 ' @return a Vector2D with the next position
-function getNextPosition(startPos as object, midPos as object) as object
-    oldSlope = getSlope(startPos, midPos)
+function getNextPosition(position as object) as object
+    oldSlope = m.slope
     newSlope = -1 / oldSlope ' this is the slope of the new trajectory after the bounce
-    if isCorner(midPos) then ' this is a weird edge case where we bounce straight back
+    if isCorner(position) then ' this is a weird edge case where we bounce straight back
         newSlope = - oldSlope
     end if
-    yIntercept = getYIntercept(midPos, newSlope)
+    m.slope = newSlope
+    yIntercept = getYIntercept(position, newSlope)
     dim possiblePoints[3]
-    possiblePoints[0] = getTopWallIntersection(midPos, newSlope, yIntercept)
-    possiblePoints[1] = getBottomWallIntersection(midPos, newSlope, yIntercept)
-    possiblePoints[2] = getLeftWallIntersection(midPos, newSlope, yIntercept)
-    possiblePoints[3] = getRightWallIntersection(midPos, newSlope, yIntercept)
-    return getClosestPoint(midPos, possiblePoints)
+    possiblePoints[0] = getTopWallIntersection(position, yIntercept)
+    possiblePoints[1] = getBottomWallIntersection(position, yIntercept)
+    possiblePoints[2] = getLeftWallIntersection(position, yIntercept)
+    possiblePoints[3] = getRightWallIntersection(position, yIntercept)
+    return getClosestPoint(position, possiblePoints)
 end function
 
 ' Returns the point closest to the given point from an array of possibilities
@@ -34,18 +56,28 @@ end function
 ' @param position the start point as a Vector2D
 ' @param possiblePoints an array of Vector2D
 function getClosestPoint(position as object, possiblePoints as object) as object
-    
+    maxDistance = sqr(m.screeenWidth^2 + m.screenHeight^2)
+    closestPoint = invalid
+    for point in possiblePoints
+        if point <> invalid then
+            distance = getDistance(position, point)
+            if distance < maxDistance then
+                maxDistance = distance
+                closestPoint = point
+            end if
+        end if
+    end for
+    return closestPoint
 end function
 
-' Gets the point on the top wall which intersects with the line described by the given point, slope and y-intercept
+' Gets the point on the top wall which intersects with the line described by the given point and y-intercept
 '
 ' @param position a Vector2D describing the point on the line where we're starting from
-' @param slope the slope of the line as a double
 ' @param yIntercept the yIntercept of the line as a double
-function getTopWallIntersection(position as object, slope as double, yIntercept as double) as object
+function getTopWallIntersection(position as object, yIntercept as double) as object
     if isTopWall(position) return invalid
-    if slope = 0 return invalid
-    intersection = -yIntercept / slope
+    if m.slope = 0 return invalid
+    intersection = -yIntercept / m.slope
     if intersection < 0 or intersection > m.screenWidth then return invalid
     dim intercept[1]
     intercept[0] = intersection
@@ -53,15 +85,14 @@ function getTopWallIntersection(position as object, slope as double, yIntercept 
     return intercept
 end function
 
-' Gets the point on the bottom wall which intersects with the line described by the given point, slope and y-intercept
+' Gets the point on the bottom wall which intersects with the line described by the given point and y-intercept
 '
 ' @param position a Vector2D describing the point on the line where we're starting from
-' @param slope the slope of the line as a double
 ' @param yIntercept the yIntercept of the line as a double
-function getBottomWallIntersection(position as object, slope as double, yIntercept as double) as object
+function getBottomWallIntersection(position as object, yIntercept as double) as object
     if isBottomWall(position) return invalid
-    if slope = 0 return invalid
-    intersection = (m.screenHeight - yIntercept) / slope
+    if m.slope = 0 return invalid
+    intersection = (m.screenHeight - yIntercept) / m.slope
     if intersection < 0 or intersection > m.screenWidth then return invalid
     dim intercept[1]
     intercept[0] = intersection
@@ -69,12 +100,11 @@ function getBottomWallIntersection(position as object, slope as double, yInterce
     return intercept
 end function
 
-' Gets the point on the left wall which intersects with the line described by the given point, slope and y-intercept
+' Gets the point on the left wall which intersects with the line described by the given point and y-intercept
 '
 ' @param position a Vector2D describing the point on the line where we're starting from
-' @param slope the slope of the line as a double
 ' @param yIntercept the yIntercept of the line as a double
-function getLeftWallIntersection(position as object, slope as double, yIntercept as double) as object
+function getLeftWallIntersection(position as object, yIntercept as double) as object
     if isLeftWall(position) return invalid
     intersection = yIntercept
     if intersection < 0 or intersection > m.screenHeight return invalid
@@ -84,14 +114,13 @@ function getLeftWallIntersection(position as object, slope as double, yIntercept
     return intercept
 end function
 
-' Gets the point on the right wall which intersects with the line described by the given point, slope and y-intercept
+' Gets the point on the right wall which intersects with the line described by the given point and y-intercept
 '
 ' @param position a Vector2D describing the point on the line where we're starting from
-' @param slope the slope of the line as a double
 ' @param yIntercept the yIntercept of the line as a double
-function getRightWallIntersection(position as object, slope as double, yIntercept as double) as object
+function getRightWallIntersection(position as object, yIntercept as double) as object
     if isRightWall(position) return invalid
-    intersection = slope * m.screenWidth + yIntercept
+    intersection = m.slope * m.screenWidth + yIntercept
     if intersection < 0 or intersection > m.screenHeight then return invalid
     dim intercept[1]
     intercept[0] = m.screenWidth
@@ -99,14 +128,13 @@ function getRightWallIntersection(position as object, slope as double, yIntercep
     return intercept
 end function
 
-' Gets the y intercept of the line described by the point and slope
+' Gets the y intercept of the line described by the point and m.slope
 '
 ' @param position as a Vector2D
-' @param slope as a double
 ' @param the y intercept as a double
-function getYIntercept(position as object, slope as double)
+function getYIntercept(position as object)
     if isLeftWall(position) return position[1]
-    return = position[1] - slope * position[0]
+    return = position[1] - m.slope * position[0]
 end function
 
 ' Gets the slope of a line through points A and B
@@ -170,12 +198,3 @@ end function
 sub OnAnimationChangedMover()
     m.RectAnimationMover.control = m.top.animationControlMover
 end sub
-
-sub OnAnimationChangedWider()
-    m.RectAnimationWider.control = m.top.animationControlWider
-end sub
-
-sub OnAnimationChangedHigher()
-    m.RectAnimationHigher.control = m.top.animationControlHigher
-end sub
-
