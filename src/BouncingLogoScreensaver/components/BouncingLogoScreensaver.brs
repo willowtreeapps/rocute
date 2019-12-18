@@ -5,9 +5,8 @@ sub init()
     m.timer = m.top.findNode("animationTimer")
 
     ' TODO: use any size screen here, SD, HD, or FHD
-    m.screenHeight = 720
+    m.screenHeight = 720 - m.logo.height
     m.screenWidth = 1080
-
     m.slope = Rnd(m.screenHeight) / Rnd(m.screenWidth)
     m.speed = Rnd(1080)
     animateToNextPoint()
@@ -17,8 +16,6 @@ end sub
 sub animateToNextPoint()
     position = m.logo.translation
     nextPoint = getNextPosition(position)
-    print "newPosition:"
-    ? nextPoint
     dim points[1]
     points[0] = position
     points[1] = nextPoint
@@ -37,9 +34,6 @@ end sub
 ' @param position the position to bounce off of as a Vector2D
 ' @return a Vector2D with the next position
 function getNextPosition(position as object) as object
-    print "position: "
-    ? position
-    print "oldSlope: " + str(m.slope)
     oldSlope = m.slope
     if isCorner(position) then ' this is a weird edge case where we bounce straight back
         newSlope = oldSlope
@@ -47,7 +41,6 @@ function getNextPosition(position as object) as object
         newSlope = - oldSlope
     end if
     m.slope = newSlope
-    print "newSlope: " + str(m.slope)
     yIntercept = getYIntercept(position)
     dim possiblePoints[3]
     possiblePoints[0] = getTopWallIntersection(position, yIntercept)
