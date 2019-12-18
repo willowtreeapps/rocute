@@ -1,4 +1,4 @@
-sub RunScreenSaver(params as object) as object
+sub RunUserInterface(params as object) as object
     print "BouncingLogoScreensaverMain.RunScreenSaver"
     showBChannelSGScreen()
 end sub

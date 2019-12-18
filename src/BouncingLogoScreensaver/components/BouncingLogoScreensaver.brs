@@ -1,10 +1,8 @@
-sub start()
-    print "start"
+sub init()
     m.logo = m.top.findNode("Rectangle")
     m.animation = m.top.findNode("RectangleMover")
     m.interpolator = m.top.findNode("RectangleInterp")
     m.timer = m.top.findNode("animationTimer")
-    m.top.setFocus(true)
 
     ' TODO: use any size screen here, SD, HD, or FHD
     m.screenHeight = 720
@@ -19,6 +17,8 @@ end sub
 sub animateToNextPoint()
     position = m.logo.translation
     nextPoint = getNextPosition(position)
+    print "newPosition:"
+    ? nextPoint
     dim points[1]
     points[0] = position
     points[1] = nextPoint
@@ -37,13 +37,18 @@ end sub
 ' @param position the position to bounce off of as a Vector2D
 ' @return a Vector2D with the next position
 function getNextPosition(position as object) as object
+    print "position: "
+    ? position
+    print "oldSlope: " + str(m.slope)
     oldSlope = m.slope
-    newSlope = -1 / oldSlope ' this is the slope of the new trajectory after the bounce
     if isCorner(position) then ' this is a weird edge case where we bounce straight back
+        newSlope = oldSlope
+    else
         newSlope = - oldSlope
     end if
     m.slope = newSlope
-    yIntercept = getYIntercept(position, newSlope)
+    print "newSlope: " + str(m.slope)
+    yIntercept = getYIntercept(position)
     dim possiblePoints[3]
     possiblePoints[0] = getTopWallIntersection(position, yIntercept)
     possiblePoints[1] = getBottomWallIntersection(position, yIntercept)
@@ -57,10 +62,11 @@ end function
 ' @param position the start point as a Vector2D
 ' @param possiblePoints an array of Vector2D
 function getClosestPoint(position as object, possiblePoints as object) as object
-    maxDistance = sqr(m.screeenWidth^2 + m.screenHeight^2)
+    maxDistance = sqr(m.screenWidth^2 + m.screenHeight^2)
     closestPoint = invalid
     for each point in possiblePoints
         if point <> invalid then
+            return point
             distance = getDistance(position, point)
             if distance < maxDistance then
                 maxDistance = distance
@@ -69,6 +75,12 @@ function getClosestPoint(position as object, possiblePoints as object) as object
         end if
     end for
     return closestPoint
+end function
+
+function getDistance(pointA as object, pointB as object) as double
+    deltaX = pointA[0] - pointB[0]
+    deltaY = pointA[1] - pointB[1]
+    return sqr(deltaX^2 + deltaY^2)
 end function
 
 ' Gets the point on the top wall which intersects with the line described by the given point and y-intercept
