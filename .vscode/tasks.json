@@ -10,9 +10,14 @@
             "command": "ukor make main"
         },
         {
-            "label": "ukorMakeScreensaver",
+            "label": "ukorMakeScreensaver1",
             "type": "shell",
-            "command": "ukor make screensaver"
+            "command": "ukor make Screensaver1"
         },
+        {
+            "label": "ukorMakeScreensaver2",
+            "type": "shell",
+            "command": "ukor make Screensaver2"
+        }
     ]
 }
