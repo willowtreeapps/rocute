@@ -1,9 +1,12 @@
-sub RunUserInterface(params as object) as object
-    print "BouncingLogoScreensaverMain.RunScreenSaver"
-    showBChannelSGScreen()
+' Default ScreenSaver method.
+'
+' @param params as an associative array
+sub RunScreenSaver(params as object) as object
+    showScreenSaverSGScreen()
 end sub
-sub showBChannelSGScreen()
-    print "BouncingLogoScreensaverMain.showBChannelSGScreen"
+
+' Shows the screen saver and waits for key events. 
+sub showScreenSaverSGScreen()
     screen = CreateObject("roSGScreen")
     m.port = CreateObject("roMessagePort")
     screen.setMessagePort(m.port)

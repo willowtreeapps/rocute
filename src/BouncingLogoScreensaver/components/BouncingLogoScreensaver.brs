@@ -1,3 +1,4 @@
+' Initialization method for the BouncingLogoScreensaver component.
 sub init()
     m.logo = m.top.findNode("Rectangle")
     m.animation = m.top.findNode("RectangleMover")
@@ -13,6 +14,7 @@ sub init()
     m.timer.observeField("fire", "animateToNextPoint")
 end sub
 
+' Method which animates the logo from a side wall to another side wall.
 sub animateToNextPoint()
     position = m.logo.translation
     nextPoint = getNextPosition(position)
@@ -199,8 +201,3 @@ end function
 function isRightWall(position as object) as boolean
     return position[0] = m.screenWidth
 end function
-
-
-sub OnAnimationChangedMover()
-    m.RectAnimationMover.control = m.top.animationControlMover
-end sub
