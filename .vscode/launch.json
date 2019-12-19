@@ -29,7 +29,7 @@
         {
             "type": "brightscript",
             "request": "launch",
-            "name": "BrightScript Debug: Launch Screensaver",
+            "name": "BrightScript Debug: Launch Screensaver1",
             "stopOnEntry": false,
             "host": "${input:rokuHost}",
             "password": "${input:rokuPassword}",
@@ -47,6 +47,28 @@
             "enableDebuggerAutoRecovery": false,
             "stopDebuggerOnAppExit": false,
             "preLaunchTask": "ukorMakeScreensaver1",
+        },
+        {
+            "type": "brightscript",
+            "request": "launch",
+            "name": "BrightScript Debug: Launch Screensaver2",
+            "stopOnEntry": false,
+            "host": "${input:rokuHost}",
+            "password": "${input:rokuPassword}",
+            "rootDir": "${workspaceFolder}/.ukor",
+            "sourceDirs": [
+                "${workspaceFolder}/src/main",
+            ],
+            "files": [
+                "manifest",
+                "source/**/*.*",
+                "components/**/*.*",
+                "images/**/*.*",
+                "locale/**/*.*"
+            ],
+            "enableDebuggerAutoRecovery": false,
+            "stopDebuggerOnAppExit": false,
+            "preLaunchTask": "ukorMakeScreensaver2",
         }
     ],
     "inputs":[
