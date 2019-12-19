@@ -117,14 +117,13 @@ sub steadyPattern()
     keyArray.push(0)
     keyValueArray.push([constWidth, startHeight])
     ' dynamically populate key/val arrays
-    for x = 1 to (2 * totalBounces)
+    for x = 1 to totalBounces
         keyArray.push(current)
         keyValueArray.push([constWidth, startHeight - maxHeight])
         current = current + increment
         keyArray.push(current)
         keyValueArray.push([constWidth, startHeight])
         current = current + increment
-        x = x + 1
     end for
     ' set key and keyval arrays
     m.ItemInterp = m.top.findNode("ItemInterp")
