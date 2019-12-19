@@ -15,7 +15,7 @@
     <Poster id="BouncingItem"/>
     <Animation
       id="ItemMover"
-      easeFunction="linear"
+      easeFunction="outQuad"
     >
       <Vector2DFieldInterpolator
         id="ItemInterp" 
