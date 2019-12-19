@@ -88,8 +88,8 @@ function getTopWallIntersection(position as object, yIntercept as double) as obj
     intersection = -yIntercept / m.slope
     if intersection < 0 or intersection > m.screenWidth then return invalid
     dim intercept[1]
-    intercept[0] = intersection
-    intercept[1] = m.screenHeight
+    intercept[0] = int(intersection)
+    intercept[1] = 0
     return intercept
 end function
 
@@ -103,7 +103,7 @@ function getBottomWallIntersection(position as object, yIntercept as double) as 
     intersection = (m.screenHeight - yIntercept) / m.slope
     if intersection < 0 or intersection > m.screenWidth then return invalid
     dim intercept[1]
-    intercept[0] = intersection
+    intercept[0] = int(intersection)
     intercept[1] = m.screenHeight
     return intercept
 end function
@@ -118,7 +118,7 @@ function getLeftWallIntersection(position as object, yIntercept as double) as ob
     if intersection < 0 or intersection > m.screenHeight return invalid
     dim intercept[1]
     intercept[0] = 0
-    intercept[1] = intersection
+    intercept[1] = int(intersection)
     return intercept
 end function
 
@@ -132,7 +132,7 @@ function getRightWallIntersection(position as object, yIntercept as double) as o
     if intersection < 0 or intersection > m.screenHeight then return invalid
     dim intercept[1]
     intercept[0] = m.screenWidth
-    intercept[1] = intersection
+    intercept[1] = int(intersection)
     return intercept
 end function
 
@@ -162,7 +162,6 @@ end function
 ' @param position as a Vector2D
 ' @return a boolean, true if the position is a corner of the screen
 function isCorner(position as object) as boolean
-    
     if position[0] = 0 and position[1] = 0 then return true ' top left corner
     if position[0] = 0 and position[1] = m.screenHeight then return true ' bottom left corner
     if position[0] = m.screenWidth and position[1] = 0 then return true ' top right corner
