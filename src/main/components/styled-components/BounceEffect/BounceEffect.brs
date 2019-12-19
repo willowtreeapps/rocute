@@ -36,22 +36,25 @@ sub ascendingPattern()
     constWidth = startPoint[0]
     ' set up number modifyers
     increment = (1 / totalBounces) / 2
-    current = increment
+    current = 0
     decheight = maxHeight / totalBounces
     chopHeight = startHeight - decheight
+    totalDistance = 0
+    for i = 0 to totalBounces
+        totalDistance = totalDistance + (maxHeight - (decheight * i)) * 2
+    end for
     'add first value to key/val arrays
-    keyArray.push(0)
+    keyArray.push(current)
     keyValueArray.push([constWidth, startHeight])
     ' dynamically populate key/val arrays
-    for x = 1 to (2 * totalBounces)
+    for x = 1 to totalBounces
+        current = current + ((startHeight - chopHeight) * 2 / totalDistance) / 2
         keyArray.push(current)
         keyValueArray.push([constWidth, chopHeight])
-        chopHeight = chopHeight - decheight
-        current = current + increment
+        current = current + ((startHeight - chopHeight) * 2 / totalDistance) / 2
         keyArray.push(current)
         keyValueArray.push([constWidth, startHeight])
-        current = current + increment
-        x = x + 1
+        chopHeight = chopHeight - decheight
     end for
     ' set key and keyval arrays
     m.ItemInterp = m.top.findNode("ItemInterp")
