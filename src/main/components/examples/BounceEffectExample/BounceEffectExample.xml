@@ -3,6 +3,6 @@
 <component name="BounceEffectExampleComponent" extends="Panel" >
   <script type="text/brightscript" uri="pkg:/components/examples/BounceEffectExample/BounceEffectExample.brs"/>
   <children>
-    <BounceEffect id="BounceEffectExample" imageUri="pkg:/images/test.png" startPoint="[300, 300]" maxHeight="150" bounceType="descending" totalBounces="5" duration="15" repeat="true" />
+    <BounceEffect id="BounceEffectExample" imageUri="pkg:/images/test.png" startPoint="[250, 250]" maxHeight="100" bounceType="descending" totalBounces="3" duration="2" repeat="false" />
   </children>
 </component>
