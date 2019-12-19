@@ -2,8 +2,25 @@
 
 <component name="BounceEffect" extends="Group" >
   <script type="text/brightscript" uri="pkg:/components/styled-components/BounceEffect/BounceEffect.brs"/>
-  <interface />
+  <interface>
+    <field id="imageUri" type="uri" onChange="imageUriSet" />
+    <field id="startPoint" type="intarray" value="[0, 0]" onChange="animationSet" />
+    <field id="maxHeight" type="int" value="50" onChange="animationSet" />
+    <field id="bounceType" type="string" value="descending" onChange="animationSet"/>
+    <field id="totalBounces" type="int" value="3" onChange="animationSet"/>
+    <field id="duration" type="int" value="3" onChange="durationSet"/>
+    <field id="repeat" type="boolean" value="false" onChange="repeatSet"/>
+  </interface>
   <children>
-    <Poster id="BouncingItem" uri="pkg:/images/test.png"/>
+    <Poster id="BouncingItem"/>
+    <Animation
+      id="ItemMover"
+      easeFunction="linear"
+    >
+      <Vector2DFieldInterpolator
+        id="ItemInterp" 
+	      fieldToInterp="BouncingItem.translation" 
+		  />
+    </Animation>
   </children>
 </component>
