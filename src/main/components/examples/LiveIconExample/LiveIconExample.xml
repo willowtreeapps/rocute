@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<component name="LiveIconExample" extends="Panel" >
+  <script type="text/brightscript" uri="pkg:/components/examples/LiveIconExample/LiveIconExample.brs"/>
+  <children>
+    <Video id = "video" width = "540" height = "360" />
+    <LiveIcon id = "logoOverlay" videoid = "video" logoSize = "[67, 17]" logoUri = "pkg:/images/live.png"/>
+  </children>
+</component>

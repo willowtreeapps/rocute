@@ -16,6 +16,7 @@
         <ContentNode title="DisappearingNavBar" />
         <ContentNode title="HorizontalCardRotator" />
         <ContentNode title="HorizontalNavBar" />
+        <ContentNode title="LiveIcon" />
         <ContentNode title="RandomColoredFontList" />
         <ContentNode title="RandomColoredList" />
         <ContentNode title="RatingIcon"/>
