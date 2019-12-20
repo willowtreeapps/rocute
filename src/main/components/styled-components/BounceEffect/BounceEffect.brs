@@ -73,26 +73,28 @@ sub descendingPattern()
     startHeight = startPoint[1]
     constWidth = startPoint[0]
     ' set up number modifyers
-    increment = (1 / totalBounces) / 2
-    current = 0
-    chopHeight = startHeight - maxHeight
-    decheight = maxHeight / totalBounces
+    currentTime = 0
+    jumpHeight = startHeight - maxHeight ' an int that is going to be chopped down for each decriment
+    decheight = maxHeight / totalBounces ' how much each decriment will be
     totalDistance = 0
     for i = 0 to totalBounces
         totalDistance = totalDistance + (maxHeight - (decheight * i)) * 2
     end for
     'add first value to key/val arrays
-    keyArray.push(current)
+    keyArray.push(currentTime)
     keyValueArray.push([constWidth, startHeight])
     ' dynamically populate key/val arrays
     for x = 1 to totalBounces
-        current = current + ((startHeight - chopHeight) * 2 / totalDistance) / 2
-        keyArray.push(current)
-        keyValueArray.push([constWidth, chopHeight])
-        current = current + ((startHeight - chopHeight) * 2 / totalDistance) / 2
-        keyArray.push(current)
+        ' generate time array for given pass
+        bounceTime = (startHeight - jumpHeight) / totalDistance
+        currentTime = currentTime + bounceTime
+        keyArray.push(currentTime)
+        currentTime = currentTime + bouncetime
+        keyArray.push(currentTime)
+        ' generage position array for given pass
+        keyValueArray.push([constWidth, jumpHeight])
         keyValueArray.push([constWidth, startHeight])
-        chopHeight = chopHeight + decheight
+        jumpHeight = jumpHeight + decheight
     end for
     ' set key and keyval arrays
     m.ItemInterp = m.top.findNode("ItemInterp")
