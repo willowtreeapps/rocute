@@ -22,6 +22,8 @@ sub logoChanged(event as object)
     if fieldsAreNotSet() = true then return
     if isLiveVideo() = false then
         m.logo.opacity = 0
+    else
+        m.logo.opacity = m.top.logoOpacity
     end if
     videoTranslation = m.video.translation
     videoWidth = m.video.width
