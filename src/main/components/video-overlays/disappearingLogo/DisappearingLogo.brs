@@ -27,6 +27,17 @@ end sub
 
 sub logoChanged(event as object)
     if fieldsAreNotSet() = true then return
+    if m.top.logoSize[0] = 0 and m.top.logoSize[1] = 0 then
+        ' use the size of the actual image
+        if m.logo.bitmapWidth > 0 and m.logo.bitmapHeight > 0 then
+            m.logo.unobserveField("bitmapWidth")
+            m.logo.unobserveField("bitmapHeight")
+            m.top.logoSize[0] = m.logo.bitmapWidth
+            m.top.logoSize[1] = m.logo.bitmapHeight
+        else if m.logo.bitmapWidth = 0 then
+            m.logo.observeField("bitmapWidth", "logoChanged")
+        end if
+    end if
     videoTranslation = m.video.translation
     videoWidth = m.video.width
     videoHeight = m.video.height
@@ -95,5 +106,5 @@ sub fadeLogo(event as object)
 end sub
 
 sub fieldsAreNotSet() as boolean
-    return m.video = invalid or m.top.logoUri = invalid or m.top.margin = invalid or m.top.logoSize = invalid
+    return m.video = invalid or m.top.logoUri = invalid
 end sub

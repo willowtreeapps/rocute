@@ -4,7 +4,7 @@
   <script type="text/brightscript" uri="pkg:/components/video-overlays/DisappearingLogo/DisappearingLogo.brs"/>
   <interface>
     <field id = "logoUri" type = "uri" />
-    <field id = "logoSize" type = "vector2d" value = "[30, 30]" />
+    <field id = "logoSize" type = "vector2d" />
     <field id = "logoOpacity" type = "float" value = "1" />
     <field id = "displayTime" type = "float" value = "1" />
     <field id = "fadeTime" type = "float" value = "1" />
