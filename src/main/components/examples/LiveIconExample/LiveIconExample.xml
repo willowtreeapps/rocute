@@ -4,6 +4,6 @@
   <script type="text/brightscript" uri="pkg:/components/examples/LiveIconExample/LiveIconExample.brs"/>
   <children>
     <Video id = "video" width = "540" height = "360" />
-    <LiveIcon id = "logoOverlay" videoid = "video" logoSize = "[67, 17]" logoUri = "pkg:/images/live.png"/>
+    <LiveIcon id = "logoOverlay" videoid = "video" logoUri = "pkg:/images/live.png"/>
   </children>
 </component>

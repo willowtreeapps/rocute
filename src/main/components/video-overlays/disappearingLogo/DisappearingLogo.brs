@@ -32,10 +32,14 @@ sub logoChanged(event as object)
         if m.logo.bitmapWidth > 0 and m.logo.bitmapHeight > 0 then
             m.logo.unobserveField("bitmapWidth")
             m.logo.unobserveField("bitmapHeight")
-            m.top.logoSize[0] = m.logo.bitmapWidth
-            m.top.logoSize[1] = m.logo.bitmapHeight
+            dim realLogoSize[1]
+            realLogoSize[0] = m.logo.bitmapWidth
+            realLogoSize[1] = m.logo.bitmapHeight
+            m.top.logoSize = realLogoSize
         else if m.logo.bitmapWidth = 0 then
             m.logo.observeField("bitmapWidth", "logoChanged")
+        else if m.logo.bitmapHeight = 0 then
+            m.logo.observeField("bitmapHeight", "logoChanged")
         end if
     end if
     videoTranslation = m.video.translation
