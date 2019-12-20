@@ -6,6 +6,7 @@
     <LabelList id="componentList">
       <ContentNode role="Content">
         <ContentNode title="ArcInterpolator" />
+        <ContentNode title="BounceEffect" />
         <ContentNode title="CardRotator" />
         <ContentNode title="CardZoomDiagonal" />
         <ContentNode title="CardZoomRotary" />
