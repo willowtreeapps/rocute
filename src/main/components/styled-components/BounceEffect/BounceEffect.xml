@@ -4,10 +4,10 @@
   <script type="text/brightscript" uri="pkg:/components/styled-components/BounceEffect/BounceEffect.brs"/>
   <interface>
     <field id="imageUri" type="uri" onChange="imageUriSet" />
-    <field id="startPoint" type="intarray" value="[0, 0]" onChange="animationSet" />
-    <field id="maxHeight" type="int" value="50" onChange="animationSet" />
-    <field id="bounceType" type="string" value="descending" onChange="animationSet"/>
-    <field id="totalBounces" type="int" value="3" onChange="animationSet"/>
+    <field id="startPoint" type="intarray" value="[0, 0]" onChange="setAnimation" />
+    <field id="maxHeight" type="int" value="50" onChange="setAnimation" />
+    <field id="bounceType" type="string" value="descending" onChange="setAnimation"/>
+    <field id="totalBounces" type="int" value="3" onChange="setAnimation"/>
     <field id="duration" type="int" value="3" onChange="durationSet"/>
     <field id="repeat" type="boolean" value="false" onChange="repeatSet"/>
   </interface>

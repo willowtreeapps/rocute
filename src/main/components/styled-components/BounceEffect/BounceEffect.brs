@@ -6,64 +6,15 @@ sub imageUriSet()
     m.ItemMover = m.top.findNode("ItemMover")
     m.BouncingItem = m.top.findNode("BouncingItem")
     m.BouncingItem.uri = m.top.imageUri
-    animationSet()
+    setAnimation()
     durationSet()
     repeatSet()
     m.ItemMover.control = "start"
     m.top.setFocus(true)
 end sub
 
-' whenever a field is changed on the interface this update function is called
-sub animationSet()
-    if m.top.bounceType = "ascending"
-        ascendingPattern()
-    else if m.top.bounceType = "descending"
-        descendingPattern()
-    else if m.top.bounceType = "steady"
-        steadyPattern()
-    end if
-end sub
-
-' called for ascending bounce animation
-sub ascendingPattern()
-    ' initial variable declarations
-    totalBounces = m.top.totalBounces
-    startPoint = m.top.startPoint
-    maxHeight = m.top.maxHeight
-    keyArray = []
-    keyValueArray = []
-    startHeight = startPoint[1]
-    constWidth = startPoint[0]
-    ' set up number modifyers
-    increment = (1 / totalBounces) / 2
-    current = 0
-    decheight = maxHeight / totalBounces
-    chopHeight = startHeight - decheight
-    totalDistance = 0
-    for i = 0 to totalBounces
-        totalDistance = totalDistance + (maxHeight - (decheight * i)) * 2
-    end for
-    'add first value to key/val arrays
-    keyArray.push(current)
-    keyValueArray.push([constWidth, startHeight])
-    ' dynamically populate key/val arrays
-    for x = 1 to totalBounces
-        current = current + ((startHeight - chopHeight) * 2 / totalDistance) / 2
-        keyArray.push(current)
-        keyValueArray.push([constWidth, chopHeight])
-        current = current + ((startHeight - chopHeight) * 2 / totalDistance) / 2
-        keyArray.push(current)
-        keyValueArray.push([constWidth, startHeight])
-        chopHeight = chopHeight - decheight
-    end for
-    ' set key and keyval arrays
-    m.ItemInterp = m.top.findNode("ItemInterp")
-    m.ItemInterp.key = keyArray
-    m.ItemInterp.keyValue = keyValueArray
-end sub
-
 ' called for descending bounce animation
-sub descendingPattern()
+sub setAnimation()
     ' initial variable declarations
     totalBounces = m.top.totalBounces
     startPoint = m.top.startPoint
@@ -75,10 +26,16 @@ sub descendingPattern()
     ' set up number modifyers
     currentTime = 0
     jumpHeight = startHeight - maxHeight ' an int that is going to be chopped down for each decriment
-    decheight = maxHeight / totalBounces ' how much each decriment will be
+    ' how much each decriment will be
+    difHeight = 0
+    if m.top.bounceType = "ascending"
+        difHeight = -1 * maxHeight / totalBounces
+    else if m.top.bounceType = "descending"
+        difHeight = maxHeight / totalBounces
+    end if
     totalDistance = 0
     for i = 0 to totalBounces
-        totalDistance = totalDistance + (maxHeight - (decheight * i)) * 2
+        totalDistance = totalDistance + (maxHeight - (difHeight * i)) * 2
     end for
     'add first value to key/val arrays
     keyArray.push(currentTime)
@@ -94,38 +51,7 @@ sub descendingPattern()
         ' generage position array for given pass
         keyValueArray.push([constWidth, jumpHeight])
         keyValueArray.push([constWidth, startHeight])
-        jumpHeight = jumpHeight + decheight
-    end for
-    ' set key and keyval arrays
-    m.ItemInterp = m.top.findNode("ItemInterp")
-    m.ItemInterp.key = keyArray
-    m.ItemInterp.keyValue = keyValueArray
-end sub
-
-' called for steady bounce animation
-sub steadyPattern()
-    ' initial variable declarations
-    totalBounces = m.top.totalBounces
-    startPoint = m.top.startPoint
-    maxHeight = m.top.maxHeight
-    keyArray = []
-    keyValueArray = []
-    startHeight = startPoint[1]
-    constWidth = startPoint[0]
-    ' set up number modifyers
-    increment = (1 / totalBounces) / 2
-    current = increment
-    'add first value to key/val arrays
-    keyArray.push(0)
-    keyValueArray.push([constWidth, startHeight])
-    ' dynamically populate key/val arrays
-    for x = 1 to totalBounces
-        keyArray.push(current)
-        keyValueArray.push([constWidth, startHeight - maxHeight])
-        current = current + increment
-        keyArray.push(current)
-        keyValueArray.push([constWidth, startHeight])
-        current = current + increment
+        jumpHeight = jumpHeight + difHeight
     end for
     ' set key and keyval arrays
     m.ItemInterp = m.top.findNode("ItemInterp")
