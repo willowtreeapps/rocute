@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 
 <component name="BounceEffect" extends="Group" >
-  <script type="text/brightscript" uri="pkg:/components/styled-components/BounceEffect/BounceEffect.brs"/>
+  <script type="text/brightscript" uri="pkg:/components/animations/BounceEffect/BounceEffect.brs"/>
   <interface>
     <field id="imageUri" type="uri" onChange="imageUriSet" />
     <field id="startPoint" type="intarray" value="[0, 0]" onChange="setAnimation" />
