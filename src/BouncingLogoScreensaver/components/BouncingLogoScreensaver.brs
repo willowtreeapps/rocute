@@ -9,7 +9,6 @@ sub init()
     m.screenHeight = 720 - m.logo.height
     m.screenWidth = 1080
     m.slope = Rnd(m.screenHeight) / Rnd(m.screenWidth)
-    m.slope = m.screenHeight / m.screenWidth
     m.speed = Rnd(1080)
     animateToNextPoint()
     m.timer.observeField("fire", "animateToNextPoint")
@@ -17,8 +16,6 @@ end sub
 
 ' Method which animates the logo from a side wall to another side wall.
 sub animateToNextPoint()
-    print "animateToNextPoint"
-    m.timer.unobserveField("fire")
     position = m.logo.translation
     nextPoint = getNextPosition(position)
     dim points[1]
@@ -32,7 +29,6 @@ sub animateToNextPoint()
 
     m.animation.control = "start"
     m.timer.control = "start"
-    m.timer.observeField("fire", "animateToNextPoint")
 end sub
 
 ' Gets the next position for a bounce given the previous two positions
@@ -43,10 +39,9 @@ function getNextPosition(position as object) as object
     oldSlope = m.slope
     if isCorner(position) then ' this is a weird edge case where we bounce straight back
         print "IS CORNER IS TRUE"
-        'if m.interpolator.keyValue.count() > 0 then ' check that this isn't the very beginning
-        '    ? m.slope
-        '    return m.interpolator.keyValue[1]
-        ' end if
+        if m.interpolator.keyValue.count() > 0 then ' check that this isn't the very beginning
+            return m.interpolator.keyValue[1]
+        end if
         newSlope = oldSlope
     else
         newSlope = - oldSlope
