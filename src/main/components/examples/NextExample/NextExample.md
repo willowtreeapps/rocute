@@ -1,6 +1,6 @@
 # Next
 
-## Description
+### Description
 The 'Next' component is an stubbed out component for development. If you are interested in
 contributing, this component is here to help.
 To utlilize this tool,
@@ -13,7 +13,7 @@ To utlilize this tool,
  MainPanalList.xml files.
  - Create a pull request.
 
-## Usage
+### Usage
 | Field | Description | Required |
 | ----------- | ----------- | ----------- |
 |  |  |  |

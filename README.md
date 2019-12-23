@@ -1,11 +1,11 @@
 # rocute
 beautiful ui components for roku development
 
-## About
+### About
 
-## Example and Setup
+### Example and Setup
 
-## Components
+### Components
 
 **ArchInterpolator**
 description
@@ -72,8 +72,8 @@ description
 **TriangularImageClip**
 description
 
-## Screensavers
+### Screensavers
 
-## Questions
+### Questions
 
-## Contributing
+### Contributing
