@@ -10,10 +10,11 @@ To utilize this tool,
 
 ### Usage
 | Field | Type | Default | Options | Required | AccessPermission | Description |
+| ----------- | ----------- | ----------- | ----------- | ----------- | ----------- | ----------- |
 | useISO | boolean | false | true, false | false | READ_WRITE | If set to true, this causes the order of the LabelLists to be in the form of the ISO standard, YMD. If set to false, the labelLists will go off of localization settings to determine order. |
 | useMonthNames | boolean | true | true, false | false | READ_WRITE | If set to false, months are shown as integers from 1 to 12. If set to true, the month field will go off of localization settings to determine month names. |
 | yearWidth | float | 100 | | false | READ_WRITE | The width of the year LabelList. |
 | monthWidth | float | 200 | | false | READ_WRITE | The width of the month LabelList. |
 | dayWidth | float | 100 | | false | READ_WRITE | The width of the day LabelList. |
-| dateTimeISOString | string | | | | READ_WRITE | Midnight UTC on the date selected as an ISO string. |
-| dateTimeSeconds | longinteger | | | | READ_WRITE | Midnight UTC on the date selected as seconds from epoch. |
+| dateTimeISOString | string | | | | READ_ONLY | Midnight UTC on the date selected as an ISO string. |
+| dateTimeSeconds | longinteger | | | | READ_ONLY | Midnight UTC on the date selected as seconds from epoch. |
