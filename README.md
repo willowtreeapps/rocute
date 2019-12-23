@@ -2,6 +2,9 @@
 beautiful ui components for roku development
 
 ### About
+rocute is an open source component library to aid developers in creating beautiful roku apps in a 
+timely manner. Our libary includes styled components, animations, and screensavers ready for easy 
+out of the box implementation.
 
 ### Example and Setup
 
