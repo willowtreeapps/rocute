@@ -52,16 +52,19 @@ contributing, this component is here to help. Instructions can be found in the N
 directory.
 
 **RandomColoredFontList**
-description
+RandomColoredFontList is a LabelList component that will randomly change the font color of the 
+selected element.
 
 **RandomColoredList**
-description
+RandomColoredList is a LabelList component that will randomly change the color of the 
+selected element.
 
 **RatingIcon**
 description
 
 **ResizeList**
-description
+ResizeList is a LabelList component that will resize so the currently selected element 
+takes up more space.
 
 **Ticker**
 description
@@ -70,10 +73,14 @@ description
 description
 
 **TriangularCornerClip**
-description
+TriangularCornerClip is a way to clip an image to fit into the bounds of a right triangle. 
+In the event you want to clip the corner of a scene or image with another image, or want to
+have an image shown as a right triangle programmatically, this component fits the use case.
 
 **TriangularImageClip**
-description
+TriangularImageClip is a way to clip an image to fit in a triangle. As opposed to 
+TriangularCornerClip, this triangular clip component will stretch to your image and remain 
+centric on the images center.
 
 ### Screensavers
 
