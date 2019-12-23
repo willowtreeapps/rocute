@@ -14,6 +14,6 @@ To utlilize this tool,
  - Create a pull request.
 
 ### Usage
-| Field | Description | Options | Required |
-| ----------- | ----------- | ----------- | ----------- |
-|  |  |  |  |
+| Field | Type | Default | Options | Required | Access Permission | Description |
+| ----------- | ----------- | ----------- | ----------- | ----------- | ----------- | ----------- |
+|  |  |  |  |  |  |  |
