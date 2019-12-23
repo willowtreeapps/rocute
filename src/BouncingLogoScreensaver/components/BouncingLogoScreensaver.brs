@@ -9,6 +9,7 @@ sub init()
     m.screenHeight = 720 - m.logo.height
     m.screenWidth = 1080
     m.slope = Rnd(m.screenHeight) / Rnd(m.screenWidth)
+    m.slope = m.screenHeight / m.screenWidth
     m.speed = Rnd(1080)
     animateToNextPoint()
     m.timer.observeField("fire", "animateToNextPoint")
@@ -16,6 +17,8 @@ end sub
 
 ' Method which animates the logo from a side wall to another side wall.
 sub animateToNextPoint()
+    print "animateToNextPoint"
+    m.timer.unobserveField("fire")
     position = m.logo.translation
     nextPoint = getNextPosition(position)
     dim points[1]
@@ -29,6 +32,7 @@ sub animateToNextPoint()
 
     m.animation.control = "start"
     m.timer.control = "start"
+    m.timer.observeField("fire", "animateToNextPoint")
 end sub
 
 ' Gets the next position for a bounce given the previous two positions
@@ -38,6 +42,11 @@ end sub
 function getNextPosition(position as object) as object
     oldSlope = m.slope
     if isCorner(position) then ' this is a weird edge case where we bounce straight back
+        print "IS CORNER IS TRUE"
+        'if m.interpolator.keyValue.count() > 0 then ' check that this isn't the very beginning
+        '    ? m.slope
+        '    return m.interpolator.keyValue[1]
+        ' end if
         newSlope = oldSlope
     else
         newSlope = - oldSlope
@@ -86,6 +95,7 @@ function getTopWallIntersection(position as object, yIntercept as double) as obj
     if isTopWall(position) return invalid
     if m.slope = 0 return invalid
     intersection = -yIntercept / m.slope
+    intersection = roundToNearest10(intersection)
     if intersection < 0 or intersection > m.screenWidth then return invalid
     dim intercept[1]
     intercept[0] = int(intersection)
@@ -101,6 +111,7 @@ function getBottomWallIntersection(position as object, yIntercept as double) as 
     if isBottomWall(position) return invalid
     if m.slope = 0 return invalid
     intersection = (m.screenHeight - yIntercept) / m.slope
+    intersection = roundToNearest10(intersection)
     if intersection < 0 or intersection > m.screenWidth then return invalid
     dim intercept[1]
     intercept[0] = int(intersection)
@@ -115,6 +126,7 @@ end function
 function getLeftWallIntersection(position as object, yIntercept as double) as object
     if isLeftWall(position) return invalid
     intersection = yIntercept
+    intersection = roundToNearest10(intersection)
     if intersection < 0 or intersection > m.screenHeight return invalid
     dim intercept[1]
     intercept[0] = 0
@@ -129,6 +141,7 @@ end function
 function getRightWallIntersection(position as object, yIntercept as double) as object
     if isRightWall(position) return invalid
     intersection = m.slope * m.screenWidth + yIntercept
+    intersection = roundToNearest10(intersection)
     if intersection < 0 or intersection > m.screenHeight then return invalid
     dim intercept[1]
     intercept[0] = m.screenWidth
@@ -199,4 +212,12 @@ end function
 ' @return true if the position is at the right of the screen
 function isRightWall(position as object) as boolean
     return position[0] = m.screenWidth
+end function
+
+' This function rounds a number to the nearest integer divisible by 10. For example, 23.5 would round down to 20, and 88.2 would round up to 90.
+'
+' @param number a double
+' @return an integer
+function roundToNearest10(number as double) as integer
+    return(number / 10) * 10
 end function
