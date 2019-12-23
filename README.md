@@ -14,19 +14,21 @@ out of the box implementation.
 description
 
 **BounceEffect -**
-description
+A customizable bounce which can be applied to any image.
 
 **CardRotator -**
-description
+A card rotary which moves on the y axis.
 
 **CardZoomDiagonal -**
-description
+An overlapping card rotator where cards slide from the top left to front center, and the cards
+that will be shown sooner overlap the ones that will be shown later.
 
 **CardZoomRotary -**
-description
+An overlapping card rotator where cards are visually pulled from the back to the front center.
 
 **CircularImageClip -**
-description
+A circular border to be placed on images, which will stretch to oval bounds 
+if proper heights and widths are provided.
 
 **DatePicker -**
 description
@@ -38,7 +40,7 @@ description
 description
 
 **HorizontalCardRotator -**
-description
+A card rotary which moves on the x axis.
 
 **LiveIcon -**
 description
@@ -83,6 +85,12 @@ TriangularCornerClip, this triangular clip component will stretch to your image 
 centric on the images center.
 
 ### Screensavers
+
+**BouncingLogoScreensaver -**
+A screensaver channel where a provided logo will expand and contract in the center of the screen.
+
+**ExpandingLogoScreensaver -**
+description
 
 ### Questions
 
