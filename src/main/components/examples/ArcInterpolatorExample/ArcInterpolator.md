@@ -9,7 +9,8 @@ To utilize this tool,
  - Ignore both the `key` and `keyValue` fields as those are not used by the `ArcInterpolator`. 
 
 ### Usage
-| Field | Type | Default | Options | Required | AccessPermission | Description
+| Field | Type | Default | Options | Required | AccessPermission | Description |
+| ----------- | ----------- | ----------- | ----------- | ----------- | ----------- | ----------- |
 | fieldToInterp | string | "" | | true | READ_WRITE | Inherited field from the Vector2DFieldInterpolator component. Specifies the field to interpolate. The string should contain the ID of a node in the scene and the name of a field of that node, separated by a dot ".". In this case the field must be "translation". |
 | key | array of float's | [ ] | | false | READ_WRITE | Inherited field from the Vector2DFieldInterpolator component. This field is ignored. |
 | keyValue | array of float's | [ ] | | false| READ_WRITE | Inherited field from the Vector2DFieldInterpolator component. This field is ignored. |
