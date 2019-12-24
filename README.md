@@ -7,6 +7,18 @@ timely manner. Our libary includes styled components, animations, and screensave
 out of the box implementation.
 
 ### Example and Setup
+**To utilize a component:**
+**For access to all components:**
+**To run our app:**
+ - Install ukor: `npm install -g @willowtreeapps/ukor`.
+ - Install [vscode.](https://code.visualstudio.com/)
+ - Install [vscode brightscript.](https://marketplace.visualstudio.com/items?itemName=celsoaf.brightscript)
+ - Open the root directory of our repo in vscode.
+ - Modify `.vscode/launch.json` so the inputs resemble `"default": "0.0.0.0",` to your roku ip address, and `"default": "password",` to your roku password.
+ - Click the debug tab in vscode.
+ - Press the dropdown button next to the play button and select `Brightscript Debug: Launch`.
+ - Press the play button next to the dropdown.
+
 
 ### Components
 
