@@ -9,16 +9,16 @@ out of the box implementation.
 ## Example and Setup
 ### Example
 ### Setup
-**To utilize a component:**
+#### To utilize a component:
  - Navigate to `./src/main/components` in the rocute directory.
  - Dependent on if you want a general styled component, or an animation, or a video-overlay, select either the `styled-components`, or `animations`, or `video-overlays` directory.
  - Copy the directory of the component you want into an appropriate place in your codebase.
  - For component specific documentation, refer to the ThatComponent.md file in the component's example directory.
-**For access to all components:**
+#### For access to all components:
  - Copy the components directory out of `./src/main` into your project structure in an appropriate place.
  - Import any and all components into your project.
  - For component specific documentation, refer to the ThatComponent.md file in the component's example directory.
-**To run our app:**
+#### To run our app:
  - Install ukor: `npm install -g @willowtreeapps/ukor`.
  - Install [vscode.](https://code.visualstudio.com/)
  - Install [vscode brightscript.](https://marketplace.visualstudio.com/items?itemName=celsoaf.brightscript)
