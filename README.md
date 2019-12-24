@@ -8,6 +8,17 @@ out of the box implementation.
 
 ## Example and Setup
 ### Example
+```xml
+<!-- The SceneGraph component you are working in -->
+<?xml version="1.0" encoding="utf-8" ?>
+<component name="BounceEffectExampleComponent" extends="Panel" >
+  <script type="text/brightscript" uri="pkg:/components/examples/BounceEffectExample/BounceEffectExample.brs"/>
+  <children>
+    <!-- Implementation of our component -->
+    <BounceEffect id="BounceEffectExample" imageUri="pkg:/images/test.png" startPoint="[250, 250]" maxHeight="100" bounceType="descending" totalBounces="3" duration="2" repeat="false" />
+  </children>
+</component>
+```
 ### Setup
 #### To utilize a component:
  - Navigate to `./src/main/components` in the rocute directory.
