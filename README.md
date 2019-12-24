@@ -1,12 +1,14 @@
 # rocute
 beautiful ui components for roku development
 
-### About
+## About
 rocute is an open source component library to aid developers in creating beautiful roku apps in a 
 timely manner. Our libary includes styled components, animations, and screensavers ready for easy 
 out of the box implementation.
 
-### Example and Setup
+## Example and Setup
+### Example
+### Setup
 **To utilize a component:**
  - Navigate to `./src/main/components` in the rocute directory.
  - Dependent on if you want a general styled component, or an animation, or a video-overlay, select either the `styled-components`, or `animations`, or `video-overlays` directory.
@@ -27,7 +29,7 @@ out of the box implementation.
  - Press the play button next to the dropdown.
 
 
-### Components
+## Components
 
 **ArchInterpolator -**
 description
@@ -103,7 +105,7 @@ TriangularImageClip is a way to clip an image to fit in a triangle. As opposed t
 TriangularCornerClip, this triangular clip component will stretch to your image and remain 
 centric on the images center.
 
-### Screensavers
+## Screensavers
 
 **BouncingLogoScreensaver -**
 A screensaver channel where a provided logo will expand and contract in the center of the screen.
@@ -111,6 +113,6 @@ A screensaver channel where a provided logo will expand and contract in the cent
 **ExpandingLogoScreensaver -**
 description
 
-### Questions
+## Questions
 
-### Contributing
+## Contributing
