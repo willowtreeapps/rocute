@@ -5,7 +5,7 @@
   <interface >
     <field id="height" type="int" value="0" onChange="setHeight"/>
     <field id="width" type="int" value="0" onChange="setWidth"/>
-      <field id="translation" type="intarray" value="[0, 0]" onChange="setTranslation"/>
+    <field id="translation" type="intarray" value="[0, 0]" onChange="setTranslation"/>
     <field id="imageUri" type="uri" onChange="setPath"/>
     <field id="rightAnglePosition" type="string" value="topRight" onChange="setPosition"/>
   </interface>

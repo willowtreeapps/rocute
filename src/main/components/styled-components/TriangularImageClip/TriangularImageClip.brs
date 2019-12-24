@@ -1,4 +1,6 @@
 sub init()
+    m.triangleChopPoster = m.top.findNode("triangleChopPoster")
+    m.triangleChopPoster.translation = m.top.translation
 end sub
 
 ' Sets the file path for the image, and divides logic for either setting up
@@ -43,4 +45,10 @@ sub setWidth()
     end if
     m.triangleChopPoster = m.top.findNode("triangleChopPoster")
     m.triangleChopPoster.width = m.top.width
+end sub
+
+' On m.top.translation change set the images translation in accordance
+sub setTranslation()
+    m.triangleChopPoster = m.top.findNode("triangleChopPoster")
+    m.triangleChopPoster.translation = m.top.translation
 end sub
