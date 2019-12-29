@@ -1,3 +1,4 @@
+' Initialization method for the TickerExample component.
 sub init()
     m.video = m.top.findNode("video")
     videoContent = createObject("roSGNode", "ContentNode")
@@ -11,6 +12,7 @@ sub init()
     m.timer.control = "start"
 end sub
 
+' A method to change the text showing in the ticker.
 sub addText()
     params = createObject("roAssociativeArray")
     params["text"] = "BREAKING NEWS: THIS TEXT WAS ADDED AS THE RESULT OF A TIMER."
