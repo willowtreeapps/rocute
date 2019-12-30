@@ -8,7 +8,6 @@ sub init()
     m.screenHeight = 720 - m.logo.height
     m.screenWidth = 1080
     m.slope = Rnd(m.screenHeight) / Rnd(m.screenWidth)
-    m.slope = m.screenHeight / m.screenWidth / 2
     m.speed = Rnd(1080)
     animateToNextPoint(invalid)
     m.animation.observeField("state", "animateToNextPoint")
