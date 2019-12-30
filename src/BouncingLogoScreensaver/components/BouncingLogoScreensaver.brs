@@ -3,19 +3,20 @@ sub init()
     m.logo = m.top.findNode("Rectangle")
     m.animation = m.top.findNode("RectangleMover")
     m.interpolator = m.top.findNode("RectangleInterp")
-    m.timer = m.top.findNode("animationTimer")
 
     ' TODO: use any size screen here, SD, HD, or FHD
     m.screenHeight = 720 - m.logo.height
     m.screenWidth = 1080
-    m.slope = Rnd(m.screenHeight) / Rnd(m.screenWidth)
+    'm.slope = Rnd(m.screenHeight) / Rnd(m.screenWidth)
+    m.slope = m.screenHeight / m.screenWidth
     m.speed = Rnd(1080)
-    animateToNextPoint()
-    m.timer.observeField("fire", "animateToNextPoint")
+    animateToNextPoint(invalid)
+    m.animation.observeField("state", "animateToNextPoint")
 end sub
 
 ' Method which animates the logo from a side wall to another side wall.
-sub animateToNextPoint()
+sub animateToNextPoint(event as object)
+    if event <> invalid and event.getData() <> "stopped" then return
     position = m.logo.translation
     nextPoint = getNextPosition(position)
     dim points[1]
@@ -25,10 +26,7 @@ sub animateToNextPoint()
     distance = getDistance(position, nextPoint)
     time = distance / m.speed
     m.animation.duration = time
-    m.timer.duration = time
-
     m.animation.control = "start"
-    m.timer.control = "start"
 end sub
 
 ' Gets the next position for a bounce given the previous two positions

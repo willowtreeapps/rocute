@@ -20,9 +20,5 @@
 			    key="[0.0, 1.0]"
 		    />
         </Animation>
-        <Timer
-            id="animationTimer"
-            duration = "8"
-        />
     </children>
 </component>
