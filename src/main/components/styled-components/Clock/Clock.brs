@@ -1,3 +1,4 @@
+' Initialization method for the Clock component
 sub init()
     info = createObject("roDeviceInfo")
     m.clockFormat = info.getClockFormat()
@@ -18,15 +19,19 @@ sub init()
     m.delayTimer.control = "start"
 
     ' show the current time
-    updateClock(invalid)
+    updateClock()
 end sub
 
-sub updateClock(event as object)
+' Updates the label with the correct time
+sub updateClock()
     m.dateTime.mark()
     m.dateTime.toLocalTime()
     m.displayLabel.text = getTimeString()
 end sub
 
+' A function to get a string representation of m.dateTime in the appropriate format.
+' 
+' @return the time as a string
 function getTimeString() as string
     hours = m.dateTime.getHours()
     minutes = m.dateTime.getMinutes()
@@ -50,6 +55,10 @@ function getTimeString() as string
     return hourString + ":" + minuteString + ampm
 end function
 
+' A function to return a string version of a number with no spaces and at least two digits, padded with zeros if necessary.
+'
+' @param number any integer
+' @return a string representation of that number
 function toDoubleDigits(number as integer) as string
     numString = toSimpleString(number)
     length = len(numString)
@@ -61,18 +70,25 @@ function toDoubleDigits(number as integer) as string
     end if
 end function
 
+' A function to return a string version of a number with no spaces
+'
+' @param number any integer
+' @return a string representation of that number
 function toSimpleString(number as integer) as string
     numString = stri(number)
     length = len(numString)
     return right(numString, length - 1) ' chop off the extra space roku's stri function adds to the front
 end function
 
+' A method to check if we've reached the top of the minute, and if so, start the timer which goes off every 60 seconds.
+'
+' @param event a roSGNodeEvent
 sub delayToStartOfMinute(event as object)
     m.dateTime.mark()
     m.dateTime.toLocalTime()
     second = m.dateTime.getSeconds()
     if second = 0 then
-        updateClock(invalid)
+        updateClock()
         m.timer.control = "start"
         m.delayTimer = invalid
     end if
