@@ -4,7 +4,7 @@
         <HorizontalNavBar
             id = "navBar"
             itemComponentName="NavBarItem"
-            itemSize="[120, 36]"
+            height = "36"
             translation = "[20,20]"
             itemWidths = "[100, 100, 60, 120, 120]"
             itemSpacings = "[20, 20, 20, 20, 0]"
