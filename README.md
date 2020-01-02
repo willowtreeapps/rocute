@@ -125,6 +125,7 @@ A screensaver channel where a provided logo will expand and contract in the cent
 description
 
 ## Questions
+Join us in the #tooling channel on the [Roku Developers Slack](https://rokudevelopers.slack.com).
 
 ## Contributing
 Contributions and suggestions are more than welcome. Please see our [Code of Conduct](/CODE_OF_CONDUCT.md)
