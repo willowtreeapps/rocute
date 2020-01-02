@@ -108,8 +108,6 @@ description
 
 **TriangularCornerClip -**
 TriangularCornerClip is a way to clip an image to fit into the bounds of a right triangle. 
-In the event you want to clip the corner of a scene or image with another image, or want to
-have an image shown as a right triangle programmatically, this component fits the use case.
 
 **TriangularImageClip -**
 TriangularImageClip is a way to clip an image to fit in a triangle. As opposed to 
