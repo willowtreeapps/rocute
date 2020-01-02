@@ -43,7 +43,7 @@ out of the box implementation.
 ## Components
 
 **ArchInterpolator -**
-description
+A type of Vector2DInterpolator which can be used to animate a smooth arc through three points. 
 
 **BounceEffect -**
 A customizable bounce which can be applied to any image.
@@ -63,22 +63,22 @@ A circular border to be placed on images, which will stretch to oval bounds
 if proper heights and widths are provided.
 
 **DatePicker -**
-description
+A Date Picker component comprised of three LabelLists. Includes localization options.
 
 **DisappearingLogo -**
-description
+An image overlay for a video which appears in a corner (or anywhere) and fades away after a certain amount of time.
 
 **DisappearingNav -**
-description
+A Horizontal Nav Bar which fades up (or down) and away when it loses focus.
 
 **HorizontalCardRotator -**
 A card rotary which moves on the x axis.
 
 **LiveIcon -**
-description
+A video overlay displayed on Live video steams but not on prerecorded content.
 
 **NavBar -**
-description
+A Horizontal Nav Bar component. 
 
 **Next -**
 The 'Next' component is an stubbed out component for development. If you are interested in
@@ -94,17 +94,17 @@ RandomColoredList is a LabelList component that will randomly change the color o
 selected element.
 
 **RatingIcon -**
-description
+A video overlay which displays the rating of the video if given, and then fades out after a certain amount of time.
 
 **ResizeList -**
 ResizeList is a LabelList component that will resize so the currently selected element 
 takes up more space.
 
 **Ticker -**
-description
+A news ticker component which scrolls text from right to left across the screen.
 
 **TiledBackground -**
-description
+A rectangle with an image tiled to fill its area.
 
 **TriangularCornerClip -**
 TriangularCornerClip is a way to clip an image to fit into the bounds of a right triangle. 
@@ -119,10 +119,10 @@ centric on the images center.
 ## Screensavers
 
 **BouncingLogoScreensaver -**
-A screensaver channel where a provided logo will expand and contract in the center of the screen.
+A screensaver channel where a provided logo will bounce around the edges of the screen. 
 
 **ExpandingLogoScreensaver -**
-description
+A screensaver channel where a provided logo will expand and contract in the center of the screen.
 
 ## Questions
 
