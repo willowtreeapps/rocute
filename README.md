@@ -114,7 +114,7 @@ have an image shown as a right triangle programmatically, this component fits th
 **TriangularImageClip -**
 TriangularImageClip is a way to clip an image to fit in a triangle. As opposed to 
 TriangularCornerClip, this triangular clip component will stretch to your image and remain 
-centric on the images center.
+centric on the middle of the image.
 
 ## Screensavers
 
