@@ -4,7 +4,7 @@
 The 'HorizontalNavBar' component is 
 To utilize this tool,
  - The HorizontalNavBar can be added as a normal Group component to your SceneGraph XML or BrightScript.
- - 
+ 
 
 ### Usage
 | Field | Type | Default | Options | Required | AccessPermission | Description |
