@@ -62,6 +62,9 @@ An overlapping card rotator where cards are visually pulled from the back to the
 A circular border to be placed on images, which will stretch to oval bounds 
 if proper heights and widths are provided.
 
+**Clock -**
+A Clock component similar to the clock inside of the Overhang component.
+
 **DatePicker -**
 A Date Picker component comprised of three LabelLists. Includes localization options.
 
