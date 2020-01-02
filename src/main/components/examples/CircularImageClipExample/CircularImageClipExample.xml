@@ -2,6 +2,6 @@
 
 <component name="CircularImageClipExampleComponent" extends="Panel" >
   <children>
-    <CircularImageClip id="CircularImageClipExample" height="256" width="256" imageUri="pkg:/images/test.png"/>
+    <CircularImageClip id="CircularImageClipExample" height="256" width="256" translation= "[0, 0]" imageUri="pkg:/images/test.png"/>
   </children>
 </component>
