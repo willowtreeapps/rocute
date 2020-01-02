@@ -2,7 +2,7 @@
 
 ### Description
 TriangularImageClip is a way to clip an image to fit in a triangle. As opposed to TriangularCornerClip, 
-this triangular clip component will stretch to your image and remain centric on the images center.
+this triangular clip component will stretch to your image and remain centric on the middle of the image.
 To utilize this tool,
  - Ensure the TriangularImageClip directory is in your code.
  - Provide a TriangularImageClip component the required props.
