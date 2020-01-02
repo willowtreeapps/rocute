@@ -9,4 +9,4 @@ Before submitting a pull request, please make sure you have tested your changes.
 
 By submitting a pull request, you represent that you have the right to license
 your contribution to WillowTree and the community, and agree by submitting the patch
-that your contributions are licensed under the [Apache License](LICENSE).
+that your contributions are licensed under the [Apache License](LICENSE.md).
