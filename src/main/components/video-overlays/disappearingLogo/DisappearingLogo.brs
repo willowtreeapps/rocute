@@ -4,6 +4,12 @@ sub init()
     
     m.animation = m.top.findNode("fadeAnimation")
 
+    ' set default show and fade states
+    m.showStates = createObject("roArray", 1, true)
+    m.showStates.push("paused")
+    m.fadeStates = createObject("roArray", 1, true)
+    m.fadeStates.push("playing")
+
     ' setup timer to fade the logo
     m.timer = createObject("roSGNode", "Timer")
     m.timer.duration = m.top.displayTime
@@ -113,10 +119,12 @@ end sub
 ' @param event as object
 sub showLogo(event as object)
     state = event.getData()
-    if state = "none" or state = "buffering" or state = "finished" or state = "error" then return
+    isShowLogo = arrayContainsValue(m.showStates, state)
+    isFadeLogo = arrayContainsValue(m.fadeStates, state)
+    if isShowLogo = false and isFadeLogo = false then return
     m.animation.control = "stop"
     m.logo.opacity = m.top.logoOpacity
-    if state = "playing" then
+    if isFadeLogo then
         m.timer.control = "start"
     end if
 end sub
@@ -133,4 +141,19 @@ end sub
 ' @return true if any required fields are missing, false otherwise.
 function fieldsAreNotSet() as boolean
     return m.video = invalid or m.top.logoUri = invalid
+end function
+
+function arrayContainsValue(array as object, value as string) as boolean
+    for each comparator in array
+        if comparator = value then return true
+    end for
+    return false
+end function
+
+function setShowStates(param as object) as object
+    m.showStates = param.states
+end function
+
+function setFadeStates(param as object) as object
+    m.fadeStates = param.states
 end function
