@@ -1,3 +1,4 @@
+' Initialization method for the TiledBackgroundExample component
 sub init()
     padding = 10
     tiledBG = m.top.findNode("tiledBG")

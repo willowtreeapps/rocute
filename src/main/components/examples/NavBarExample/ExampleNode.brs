@@ -1,7 +1,11 @@
+' An initialization method for the ExampleNode component.
 sub init()
     m.top.vertFocusAnimationStyle = "floatingFocus"
 end sub
 
+' A method to set the content of the example node.
+' 
+' @param event a roSGNodeEvent
 sub changeText(event as object)
     value = event.getData()
     ' put the same text in 5 times

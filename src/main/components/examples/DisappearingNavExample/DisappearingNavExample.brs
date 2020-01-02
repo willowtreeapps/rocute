@@ -1,3 +1,4 @@
+' Initialization method for the DisappearingNavExample component.
 sub init()
     m.navBar = m.top.findNode("navBar")
     m.container = m.top.findNode("container")
@@ -11,12 +12,18 @@ sub init()
     m.container.appendChild(m.displayedNode)
 end sub
 
+' Method to set focus on the main list when the DisappearingNavExample panel gets focus. 
+'
+' @param event a roSGNodeEvent
 sub setDefaultFocus(event as object)
     if m.top.isInFocusChain() = true and m.displayedNode.isInFocusChain() = false and m.navBar.isInFocusChain() = false then
         m.displayedNode.setFocus(true)
     end if
 end sub
 
+' A method to set the correct content when a different item in the nav bar is selected. It is called when the createNextPanelIndex field of the DisappearingNavBar component changes.
+'
+' @param event a roSGNodeEvent
 sub setPanel(event as object)
     index = event.getData()
     m.displayedNode = createObject("roSGNode", "ExampleNode")
@@ -35,6 +42,10 @@ sub setPanel(event as object)
     m.displayedNode.setFocus(true)
 end sub
 
+' Method to handle key events inside of the DisappearingNavExample component. This determines when to focus on the navBar and when to focus on the content.
+'
+' @param key the key which was pressed
+' @param press true if the key was depressed and false if it was released
 sub onKeyEvent(key as string, press as boolean)
     if m.displayedNode.isInFocusChain() = true and key = "up" and press = true then
         m.navBar.setFocus(true)
