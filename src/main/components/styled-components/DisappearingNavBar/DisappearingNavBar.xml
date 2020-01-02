@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <component name="DisappearingNavBar" extends="HorizontalNavBar">
+    <interface>
+        <field id="isFadeDown" type="boolean" value="false" onChange="setAnimationHeight" />
+    </interface>
     <children>
         <animation id = "inAnimation" duration=".3" easeFunction="inOutQuad" >
             <Vector2dFieldInterpolator id="inInterpol" fieldToInterp = "grid.translation" key="[0,1]" keyValue="[[0,-115],[0, 0]]" />

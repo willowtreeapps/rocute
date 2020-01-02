@@ -30,7 +30,7 @@ end sub
 '
 ' @param event a roSGNodeEvent
 sub setAnimationHeight(event as object)
-    height = event.getData()
+    height = m.top.height
     dim inVector[1]
     dim outVector[1]
     dim showPosition[1]
@@ -39,7 +39,12 @@ sub setAnimationHeight(event as object)
     showPosition[1] = 0
 
     hidePosition[0] = 0
-    hidePosition[1] = -height
+
+    if m.top.isFadeDown = true then
+        hidePosition[1] = height
+    else
+        hidePosition[1] = -height
+    end if
     inVector[0] = hidePosition
     inVector[1] = showPosition
     outVector[0] = showPosition
