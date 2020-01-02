@@ -14,4 +14,4 @@ To utilize this tool,
 | imageUri | uri | none | any uri | true | READ_WRITE | The uri of an image. |
 | height | int | 0 | any int | false | READ_WRITE | The height of the image |
 | width | int | 0 | any int | false | READ_WRITE | The width of the image |
-| translation | intarray | [0, 0] | any array of two ints | false | READ_WRITE | The location of the iamge on the screen. |
+| translation | intarray | [0, 0] | any array of two ints | false | READ_WRITE | The location of the image on the screen. |
