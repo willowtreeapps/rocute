@@ -6,6 +6,7 @@ To utilize this tool,
  - Include a CardRotator component in your xml.
  - In brightscript, asign focus as outlined under 'Initial Setup & Focus Control' in the CardRotatorExample.brs file.
  - In the same brightscript file, dynamically genearte a ContentNode containing relevent content, which may include title, SDPosterUrl, textColor, rectColor and textCords.
+    - test
  - In the same brightscript file, create and assign dimensions to the three spots on the screen you want rectangles to display in a TargetSet object on the targetRects property.
  - Assign the TargetSet and ContentNode onto the CardRotator.
 
