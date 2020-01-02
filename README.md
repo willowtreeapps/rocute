@@ -127,3 +127,5 @@ description
 ## Questions
 
 ## Contributing
+Contributions and suggestions are more than welcome. Please see our [Code of Conduct](/CODE_OF_CONDUCT.md)
+as well as our [Contributing Guidelines ](/CONTRIBUTING.md) for more information.
