@@ -8,6 +8,10 @@ sub init()
     m.logo.margin = m.top.margin
     m.logo.fixedPosition = m.top.fixedPosition
     m.logo.logoTranslation = m.top.logoTranslation
+    showParams = createObject("roAssociativeArray")
+    showStates = createObject("roArray", 1, true)
+    showParams.states = showStates
+    m.logo.callFunc("setShowStates", showParams)
 end sub
 
 ' A method called when the videoId is set
