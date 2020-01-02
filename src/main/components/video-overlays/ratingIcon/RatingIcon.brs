@@ -1,3 +1,4 @@
+' Initialization method for the RatingIcon component
 sub init()
     m.logo = m.top.findNode("ratingLogo")
     ' set defaults for inner fields

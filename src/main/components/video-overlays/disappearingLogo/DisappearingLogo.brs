@@ -1,3 +1,4 @@
+' Initialization method for the DisappearingLogo component.
 sub init()
     m.logo = m.top.findNode("logo")
     
@@ -31,6 +32,9 @@ sub init()
     m.top.observeField("videoId", "videoChanged")
 end sub
 
+' A method called when any fields relating to the display of the logo are changed (position, logoUri, logoOpacity, etc.) This method determines where and how to display the logo when it is at maximum opacity.
+' 
+' @param event a roSGNodeEvent
 sub logoChanged(event as object)
     if fieldsAreNotSet() = true then return
     if m.top.logoSize[0] = 0 and m.top.logoSize[1] = 0 then
@@ -77,6 +81,9 @@ sub logoChanged(event as object)
     m.logo.uri = m.top.logoUri
 end sub
 
+' The method called when the videoId has changed.
+'
+' @param event a roSGNodeEvent
 sub videoChanged(event as object)
     videoId = event.getData()
     videoNode = m.top.findNode(videoId)
@@ -93,14 +100,23 @@ sub videoChanged(event as object)
     end if
 end sub
 
+' A method which changes the duration of time when the logo is displayed at maximum opacity.
+' 
+' @param event as object
 sub timerChanged(event as object)
     m.timer.duration = event.getData()
 end sub
 
+' A method which changes the duration of animation which fades the logo.
+' 
+' @param event as object
 sub animationChanged(event as object)
     m.animation.duration = event.getData()
 end sub
 
+' A method which starts displaying the logo for a certain amount of time, and then lets it fade for a certain amount of time.
+' 
+' @param event as object
 sub showLogo(event as object)
     state = event.getData()
     isShowLogo = arrayContainsValue(m.showStates, state)
@@ -113,13 +129,19 @@ sub showLogo(event as object)
     end if
 end sub
 
+' Starts the fade animation
+' 
+' @param event as object
 sub fadeLogo(event as object)
     m.animation.control = "start"
 end sub
 
-sub fieldsAreNotSet() as boolean
+' A function to check if the required fields are not set.
+' 
+' @return true if any required fields are missing, false otherwise.
+function fieldsAreNotSet() as boolean
     return m.video = invalid or m.top.logoUri = invalid
-end sub
+end function
 
 function arrayContainsValue(array as object, value as string) as boolean
     for each comparator in array
