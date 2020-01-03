@@ -7,12 +7,12 @@ flavors: {
   main: {
     src: ['main']
   },
-  Screensaver1: {
-    base: 'main',
-    src: ['ExpandingLogoScreensaver']
-  },
-  Screensaver2: {
+  BouncingLogoScreensaver: {
     base: 'main',
     src: ['BouncingLogoScreensaver']
+  },
+  ExpandingLogoScreensaver: {
+    base: 'main',
+    src: ['ExpandingLogoScreensaver']
   }
 }
