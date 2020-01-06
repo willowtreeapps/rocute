@@ -10,14 +10,14 @@
             "command": "ukor make main"
         },
         {
-            "label": "ukorMakeScreensaver1",
+            "label": "ukorMakeBouncingLogoScreensaver",
             "type": "shell",
-            "command": "ukor make Screensaver1"
+            "command": "ukor make BouncingLogoScreensaver"
         },
         {
-            "label": "ukorMakeScreensaver2",
+            "label": "ukorMakeExpandingLogoScreensaver",
             "type": "shell",
-            "command": "ukor make Screensaver2"
+            "command": "ukor make ExpandingLogoScreensaver"
         }
     ]
 }

@@ -29,7 +29,7 @@
         {
             "type": "brightscript",
             "request": "launch",
-            "name": "BrightScript Debug: Launch Screensaver1",
+            "name": "BouncingLogoScreensaver",
             "stopOnEntry": false,
             "host": "${input:rokuHost}",
             "password": "${input:rokuPassword}",
@@ -46,12 +46,12 @@
             ],
             "enableDebuggerAutoRecovery": false,
             "stopDebuggerOnAppExit": false,
-            "preLaunchTask": "ukorMakeScreensaver1",
+            "preLaunchTask": "ukorMakeBouncingLogoScreensaver",
         },
         {
             "type": "brightscript",
             "request": "launch",
-            "name": "BrightScript Debug: Launch Screensaver2",
+            "name": "ExpandingLogoScreensaver",
             "stopOnEntry": false,
             "host": "${input:rokuHost}",
             "password": "${input:rokuPassword}",
@@ -68,7 +68,7 @@
             ],
             "enableDebuggerAutoRecovery": false,
             "stopDebuggerOnAppExit": false,
-            "preLaunchTask": "ukorMakeScreensaver2",
+            "preLaunchTask": "ukorMakeExpandingLogoScreensaver",
         }
     ],
     "inputs":[
