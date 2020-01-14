@@ -1,4 +1,6 @@
 sub RunUserInterface(params as object)
+  ' set up tests
+  if (type(Rooibos__Init) = "Function") then Rooibos__Init()
   ' set up your screen
   screen = CreateObject("roSGScreen")
   m.port = CreateObject("roMessagePort")
