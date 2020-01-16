@@ -4,8 +4,8 @@
   <script type="text/brightscript" uri="pkg:/components/examples/ClockExample/ClockExample.brs"/>
   <children>
     <Clock
-    id="clock"
-    fontUrl="pkg:/images/fonts/Allerta-Regular.ttf"
-    fontSize="24" />
+      id="clock"
+      fontUrl="pkg:/images/fonts/Allerta-Regular.ttf"
+      fontSize="24" />
   </children>
 </component>
