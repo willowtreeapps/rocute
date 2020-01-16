@@ -5,7 +5,6 @@
   <children>
     <Clock
       id="clock"
-      fontUrl="pkg:/images/fonts/Allerta-Regular.ttf"
-      fontSize="24" />
+      fontUrl="pkg:/images/fonts/Allerta-Regular.ttf" />
   </children>
 </component>

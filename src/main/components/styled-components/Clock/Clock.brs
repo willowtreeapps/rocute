@@ -30,6 +30,7 @@ end sub
 sub onDisplayLabelFontChanged(event as Object)
     fontUrl = event.getData()
     m.displayLabelFont.uri = fontUrl
+    m.displayLabelFont.size = m.top.fontSize
 end sub
 
 'Update font size
