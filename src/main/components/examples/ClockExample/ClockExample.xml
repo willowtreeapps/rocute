@@ -3,6 +3,9 @@
 <component name="ClockExample" extends="Panel" >
   <script type="text/brightscript" uri="pkg:/components/examples/ClockExample/ClockExample.brs"/>
   <children>
-    <Clock id="clock" />
+    <Clock
+    id="clock"
+    fontUrl="pkg:/images/fonts/Allerta-Regular.ttf"
+    fontSize="24" />
   </children>
 </component>
