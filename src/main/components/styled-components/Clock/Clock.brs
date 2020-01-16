@@ -26,12 +26,14 @@ sub init()
 end sub
 
 'Update font
+'@param event a roSGNodeEvent
 sub onDisplayLabelFontChanged(event as Object)
     fontUrl = event.getData()
     m.displayLabelFont.uri = fontUrl
 end sub
 
 'Update font size
+'@param event a roSGNodeEvent
 sub onDisplayLabelFontSizeChanged(event as Object)
     fontSize = event.getData()
     m.displayLabelFont.size = fontSize
