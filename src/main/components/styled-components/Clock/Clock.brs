@@ -6,10 +6,13 @@ sub init()
     m.dateTime.toLocalTime()
     m.displayLabel = m.top.findNode("timeLabel")
 
+    m.displayLabel.font = "font:MediumSystemFont"
+    m.displayLabelFont = m.displayLabel.font
+
     ' set the timer to update the clock every minute.
     m.timer = m.top.findNode("minuteTimer")
     m.timer.observeField("fire", "updateClock")
-    
+
     ' TODO: we could delay to start of second before doing this but it's not very necessary
     ' don't start the minute timer until we reach the top of the minute.
     ' in order to do this, check every second if we're at the top of the minute yet.
@@ -22,6 +25,21 @@ sub init()
     updateClock()
 end sub
 
+'Update font
+'@param event a roSGNodeEvent
+sub onDisplayLabelFontChanged(event as Object)
+    fontUrl = event.getData()
+    m.displayLabelFont.uri = fontUrl
+    m.displayLabelFont.size = m.top.fontSize
+end sub
+
+'Update font size
+'@param event a roSGNodeEvent
+sub onDisplayLabelFontSizeChanged(event as Object)
+    fontSize = event.getData()
+    m.displayLabelFont.size = fontSize
+end sub
+
 ' Updates the label with the correct time
 sub updateClock()
     m.dateTime.mark()
@@ -30,7 +48,7 @@ sub updateClock()
 end sub
 
 ' A function to get a string representation of m.dateTime in the appropriate format.
-' 
+'
 ' @return the time as a string
 function getTimeString() as string
     hours = m.dateTime.getHours()

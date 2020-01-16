@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8" ?>
 
 <component name="Clock" extends="Group" >
+  <interface>
+    <field id="fontUrl"   type="String"   alwaysNotify="true"   onChange="onDisplayLabelFontChanged" />
+    <field id="fontSize"  type="Integer"  alwaysNotify="true"   onChange="onDisplayLabelFontSizeChanged" value="24" />
+  </interface>
+
   <script type="text/brightscript" uri="pkg:/components/styled-components/Clock/Clock.brs"/>
   <children>
     <Label id="timeLabel" text="12:00 am" />
