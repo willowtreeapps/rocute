@@ -1,6 +1,6 @@
 '@TestSuite [Date_Picker] Unit Tests
 
-' @BeforeEach
+'@BeforeEach
 sub Date_Picker_create()
     m.datePicker = createObject("roSGNode", "DatePicker_TestLayer")
 end sub

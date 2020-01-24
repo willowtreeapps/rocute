@@ -22,7 +22,7 @@
         {
             "label": "ukorMakeTests",
             "type": "shell",
-            "command": "ukor make tests && rooibos-cli r .vscode/rooibosConfig.json"
+            "command": "rm -rf .ukor; ukor make tests; rooibos-cli r -p .ukor/ -t \"source/tests/**/*.brs\""
         }
     ]
 }
