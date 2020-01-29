@@ -14,5 +14,9 @@ flavors: {
   ExpandingLogoScreensaver: {
     base: 'main',
     src: ['ExpandingLogoScreensaver']
+  },
+  tests: {
+    base: 'main',
+    src: ['rooibos']
   }
 }
