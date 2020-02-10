@@ -12,11 +12,27 @@ end sub
 '@Test returns correct string given 24 hour format
 '@Params["2015-01-27T13:21:58", "13:21"]
 '@Params["2009-01-01T01:00:00", "01:00"]
+'@Params["2015-01-27T12:05:58", "12:05"]
+'@Params["2015-01-27T00:00:58", "00:00"]
 sub Clock_getTimeString_given24hFormat_Returns_ExpectedString(testTime as string, expected as string)
     dateTime = createObject("roDateTime")
     dateTime.fromISO8601String(testTime)
     m.clock.dateTime = dateTime.asSeconds()
     m.clock.clockFormat = "24h"
+    actual = m.clock.callFunc("getTimeString")
+    m.AssertEqual(expected, actual)
+end sub
+
+'@Test returns correct string given 12 hour format
+'@Params["2015-01-27T13:21:58", "1:21 pm"]
+'@Params["2009-01-01T01:00:00", "1:00 am"]
+'@Params["2015-01-27T12:05:58", "12:05 pm"]
+'@Params["2015-01-27T00:00:58", "12:00 am"]
+sub Clock_getTimeString_given12hFormat_Returns_ExpectedString(testTime as string, expected as string)
+    dateTime = createObject("roDateTime")
+    dateTime.fromISO8601String(testTime)
+    m.clock.dateTime = dateTime.asSeconds()
+    m.clock.clockFormat = "12h"
     actual = m.clock.callFunc("getTimeString")
     m.AssertEqual(expected, actual)
 end sub
