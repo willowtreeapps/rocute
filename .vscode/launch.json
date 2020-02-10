@@ -92,6 +92,28 @@
             "stopDebuggerOnAppExit": false,
             "preLaunchTask": "ukorMakeTests",
         },
+        {
+            "type": "brightscript",
+            "request": "launch",
+            "name": "CodeCoverage",
+            "stopOnEntry": false,
+            "host": "${input:rokuHost}",
+            "password": "${input:rokuPassword}",
+            "rootDir": "${workspaceFolder}/.ukor",
+            "sourceDirs": [
+                "${workspaceFolder}/.ukor",
+            ],
+            "files": [
+                "manifest",
+                "source/**/*.*",
+                "components/**/*.*",
+                "images/**/*.*",
+                "locale/**/*.*"
+            ],
+            "enableDebuggerAutoRecovery": false,
+            "stopDebuggerOnAppExit": false,
+            "preLaunchTask": "ukorMakeCodeCoverage",
+        },
     ],
     "inputs":[
         {
