@@ -1,4 +1,4 @@
-'@TestSuite [Date_Picker] Unit Tests
+'@TestSuite DatePicker Unit Tests
 
 '@BeforeEach
 sub Date_Picker_create()
