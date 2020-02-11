@@ -1,27 +1,27 @@
-function calcAngleWrapper(params as object) as double
+function calcAngleWrapper(params as object)
     return calcAngle(params[0], params[1])
 end function
 
-function getCircleCoordYWrapper(params as object) as double
+function getCircleCoordYWrapper(params as object)
     return getCircleCoordY(params[0], params[1], params[2], params[3], params[4], params[5])
 end function
 
-function getCircleCoordXWrapper(params as object) as double
+function getCircleCoordXWrapper(params as object)
     return getCircleCoordX(params[0], params[1], params[2], params[3], params[4], params[5])
 end function
 
-function getCenter() as object
+function getCenter()
     return m.center
 end function
 
-function getRadius() as double
+function getRadius()
     return m.radius
 end function
 
-function getStartAngle() as double
+function getStartAngle()
     return m.startAngle
 end function
 
-function getTotalAngle() as double
+function getTotalAngle()
     return m.totalAngle
 end function
