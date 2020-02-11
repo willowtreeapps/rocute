@@ -23,6 +23,11 @@
             "label": "ukorMakeTests",
             "type": "shell",
             "command": "rm -rf .ukor; ukor make tests; rooibos-cli r -p .ukor/ -t \"source/tests/**/*.brs\""
+        },
+        {
+            "label": "ukorMakeCodeCoverage",
+            "type": "shell",
+            "command": "rm -rf .ukor; ukor make tests; rooibos-cli r -p .ukor/ -t \"source/tests/**/*.brs\" -v -s \"components/**/**/*.brs,components/*.brs,!source/tests/**/*.brs\""
         }
     ]
 }

@@ -2246,8 +2246,8 @@ end function
     skipSuite:
   end for
   m.logger.PrintStatistic(totalStatObj)
-  if  RBS_CMN_IsFunction(Rooibos_ReportCodeCoverage)
-  Rooibos_ReportCodeCoverage()
+  if  RBS_CMN_IsFunction(RBS_ReportCodeCoverage)
+  RBS_ReportCodeCoverage()
   end if
   Rooibos_SendHomeKeypress()
 end sub

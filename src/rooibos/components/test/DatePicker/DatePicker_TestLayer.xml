@@ -4,5 +4,7 @@
   <script type="text/brightscript" uri="pkg:/components/styled-components/DatePicker/DatePicker.brs"/>
   <interface>
     <function name="getOffsetString" />
+    <function name="getTwoDigitString" />
+    <function name="isLeapYear" />
   </interface>
 </component>
