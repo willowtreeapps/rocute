@@ -25,3 +25,7 @@ end function
 function getTotalAngle()
     return m.totalAngle
 end function
+
+function getNodeToMove()
+    return m.nodeToMove
+end function

@@ -7,10 +7,12 @@
     <function name="calcAngleWrapper" />
     <function name="getCircleCoordYWrapper" />
     <function name="getCircleCoordXWrapper" />
+    <function name="findNodeToMove" />
     <function name="setValues" />
     <function name="getCenter" />
     <function name="getRadius" />
     <function name="getStartAngle" />
     <function name="getTotalAngle" />
+    <function name="getNodeToMove" />
   </interface>
 </component>

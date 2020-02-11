@@ -131,3 +131,54 @@ sub ArcInterpolator_setValues_SetsExpectedTotalAngleOnM(expected as double, star
     diff = abs(expected - actual)
     m.AssertTrue(diff < 0.000001)
 end sub
+
+'+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+'@It tests the findNodeToMove function
+'+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+'@Test sets expected value on m.nodeToMove when nodeToMove is a direct ancestor
+'@Params[1]
+'@Params[2]
+'@Params[5]
+sub ArcInterpolator_findNodeToMove_SetsNodeToMoveOnM_GivenNodeIsADirectAncestor(generationCount as integer)
+    ' Add the arcInterpol to the testsScene, with a bunch of parents and grandparents.
+    parent = m.global.testsScene
+    for i = 0 to generationCount - 1
+        parent = parent.createChild("Group")
+        parent.id = "Group" + stri(i)
+    end for
+    expected = m.global.testsScene.findNode("Group 0")
+    m.AssertNotInvalid(expected)
+
+    animation = parent.createChild("Animation")
+    animation.appendChild(m.arcInterpol)
+
+    m.arcInterpol.fieldToInterp="Group 0.translation"
+    actual = m.arcInterpol.callFunc("getNodeToMove")
+    m.AssertNotInvalid(actual)
+    m.AssertEqual(expected, actual)
+end sub
+
+'@Test sets expected value on m.nodeToMove when nodeToMove is a direct ancestor
+'@IgnoreParams[0]
+'@Params[2]
+'@Params[5]
+sub ArcInterpolator_findNodeToMove_SetsNodeToMoveOnM_GivenNodeIsNotADirectAncestor(generationCount as integer)
+    ' Add the arcInterpol to the testsScene, with a bunch of parents and grandparents.
+    parent = m.global.testsScene
+    for i = 0 to generationCount - 1
+        parent = parent.createChild("Group")
+    end for
+    chosen = parent.createChild("Group")
+    chosen.id = "TheChosenOne"
+    expected = m.global.testsScene.findNode("TheChosenOne")
+    m.AssertNotInvalid(expected)
+
+    animation = parent.createChild("Animation")
+    animation.appendChild(m.arcInterpol)
+
+    m.arcInterpol.fieldToInterp="TheChosenOne.translation"
+    actual = m.arcInterpol.callFunc("getNodeToMove")
+    m.AssertNotInvalid(actual)
+    m.AssertEqual(expected, actual)
+end sub
