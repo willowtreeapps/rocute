@@ -57,7 +57,6 @@ function getTimeString() as string
     hourString = toDoubleDigits(hours) ' default to 24 hour format
     ampm = ""
     if m.clockFormat <> "24h" then
-        ' do 12 hour format by default
         if hours < 12 then
             ampm = " am"
         else

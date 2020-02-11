@@ -27,7 +27,7 @@
         {
             "label": "ukorMakeCodeCoverage",
             "type": "shell",
-            "command": "rm -rf .ukor; ukor make tests; rooibos-cli r -p .ukor/ -t \"source/tests/**/*.brs\" -v -s \"components/**/**/*.brs,components/*.brs,!source/tests/**/*.brs\""
+            "command": "rm -rf .ukor; ukor make tests; rooibos-cli r -p .ukor/ -t \"source/tests/**/*.brs\" -v -s \"components/**/**/*.brs,components/*.brs,source/main.brs,!components/test/**/*.brs,!components/test/TestUtils.brs\""
         }
     ]
 }

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<component name="Clock_TestLayer" extends="Clock" >
+  <script type="text/brightscript" uri="pkg:/components/styled-components/Clock/Clock.brs"/>
+  <script type="text/brightscript" uri="pkg:/components/test/TestUtils.brs"/>
+  <interface>
+    <field id="dateTime" type="time" onChange="setDateTimeFieldOnM" />
+    <field id="clockFormat" type="string" onChange="setFieldOnM" />
+    <function name="getTimeString" />
+    <function name="toDoubleDigits" />
+    <function name="toSimpleString" />
+  </interface>
+</component>
