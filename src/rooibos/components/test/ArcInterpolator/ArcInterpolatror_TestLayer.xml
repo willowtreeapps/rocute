@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<component name="ArcInterpolator_TestLayer" extends="ArcInterpolator" >
+  <script type="text/brightscript" uri="pkg:/components/animations/ArcInterpolator/ArcInterpolator.brs"/>
+  <script type="text/brightscript" uri="pkg:/components/test/ArcInterpolator/ArcInterpolator_TestLayer.brs"/>
+  <interface>
+    <function name="calcAngleWrapper" />
+    <function name="getCircleCoordYWrapper" />
+    <function name="getCircleCoordXWrapper" />
+    <function name="setValues" />
+    <function name="getCenter" />
+    <function name="getRadius" />
+    <function name="getStartAngle" />
+    <function name="getTotalAngle" />
+  </interface>
+</component>
