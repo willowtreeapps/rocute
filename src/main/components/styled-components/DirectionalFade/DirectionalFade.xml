@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<component name="DirectionalFade" extends="Group" >
+  <script type="text/brightscript" uri="pkg:/components/styled-components/DirectionalFade/DirectionalFade.brs"/>
+  <interface >
+    <field id="imageUri" type="uri" onChange="setPath"/>
+    <field id="fadedSide" type="string" value="bottom" onChange="setMaskPath"/>
+    <field id="offset" type="int" onChange="dimensionMake"/>
+    <field id="height" type="int" onChange="dimensionMake"/>
+    <field id="width" type="int" onChange="dimensionMake"/>
+    <field id="translation" type="intarray" onChange="setTranslation"/>
+  </interface>
+  <children>
+    <MaskGroup
+      id = "directionalFadeMaskGroup"
+    >
+      <Poster
+        id = "directionalFadePoster"
+      />
+    </MaskGroup>
+  </children>
+</component>

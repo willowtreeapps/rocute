@@ -13,6 +13,7 @@
         <ContentNode title="CircularImageClip" />
         <ContentNode title="Clock" />
         <ContentNode title="DatePicker"/>
+        <ContentNode title="DirectionalFade" />
         <ContentNode title="DisappearingLogo" />
         <ContentNode title="DisappearingNavBar" />
         <ContentNode title="HorizontalCardRotator" />

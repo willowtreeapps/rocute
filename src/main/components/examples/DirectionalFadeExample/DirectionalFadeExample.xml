@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<component name="DirectionalFadeExample" extends="Panel" >
+  <children>
+    <DirectionalFade 
+        id="DirectionalFadeExample"
+        height="256"
+        width="256"
+        translation="[0, 0]"
+        fadedSide="left"
+        offset="100"
+        imageUri="pkg:/images/test.png"
+    />
+  </children>
+</component>
