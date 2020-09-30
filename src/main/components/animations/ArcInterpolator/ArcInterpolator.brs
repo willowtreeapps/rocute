@@ -70,7 +70,7 @@ end sub
 ' This calculates and sets the translation of the node being moved appropriately based off of the current fraction of the animation
 '
 ' @param event a roSGNodeEvent
-sub calculateValue(event as object)    
+sub calculateValue(event as object)
     fraction = event.getData()
     angle = fraction * m.totalAngle + m.startAngle
     dim position[1]

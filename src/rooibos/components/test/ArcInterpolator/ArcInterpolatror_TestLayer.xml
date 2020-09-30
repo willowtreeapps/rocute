@@ -9,6 +9,7 @@
     <function name="getCircleCoordXWrapper" />
     <function name="findNodeToMove" />
     <function name="setValues" />
+    <function name="calculateValue" />
     <function name="getCenter" />
     <function name="getRadius" />
     <function name="getStartAngle" />

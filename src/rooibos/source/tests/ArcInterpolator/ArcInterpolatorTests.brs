@@ -182,3 +182,44 @@ sub ArcInterpolator_findNodeToMove_SetsNodeToMoveOnM_GivenNodeIsNotADirectAncest
     m.AssertNotInvalid(actual)
     m.AssertEqual(expected, actual)
 end sub
+
+'+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+'@It tests the calculateValue function
+'+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+'@Test set expected value on m.nodeToMove.translation
+'@Params[[1, 0], 0]
+'@Params[[0, 1], 0.5]
+'@Params[[-1, 0], 1]
+sub ArcInterpolator_calculateValue_SetsExpectedTranslationOnNodeToMove(expected as object, fraction as float)
+    m.arcInterpol.start = [1, 0]
+    m.arcInterpol.middle = [0, 1]
+    m.arcInterpol.end = [-1, 0]
+
+    ' set up a node to move
+    parent = m.global.testsScene
+    parent = parent.createChild("Group")
+    chosen = parent.createChild("Group")
+    chosen.id = "TheChosenOne"
+    animation = parent.createChild("Animation")
+    animation.appendChild(m.arcInterpol)
+    m.arcInterpol.fieldToInterp="TheChosenOne.translation"
+    
+    ' set the fraction field on m.arcInterpol
+    event = createObject("roAssociativeArray")
+    event.getData = returnAThing
+    ? event
+    m.arcInterpol.callFunc("calculateValue", event)
+    actual = m.arcInterpol.callFunc("getNodeToMove").translation
+    m.AssertNotInvalid(actual)
+    dim diff[1]
+    ' check that they are equal to 6 decimal points
+    diff[0] = abs(expected[0] - actual[0])
+    m.AssertTrue(diff[0] < 0.000001)
+    diff[1] = abs(expected[1] - actual[1])
+    m.AssertTrue(diff[1] < 0.000001)
+end sub
+
+function returnAThing()
+    return 0
+end function
