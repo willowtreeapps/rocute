@@ -13,7 +13,7 @@ end sub
 sub Date_Picker_getOffsetString_Returns_Z()
     dateTime = createObject("roDateTime")
     actual = m.datePicker.callFunc("getOffsetString", dateTime)
-    m.AssertEqual("Z", actual)
+    m.AssertEqual("A", actual)
 end sub
 
 '+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
