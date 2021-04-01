@@ -7,26 +7,18 @@
       <ContentNode role="Content">
         <ContentNode title="ArcInterpolator" />
         <ContentNode title="BounceEffect" />
-        <ContentNode title="CardRotator" />
-        <ContentNode title="CardZoomDiagonal" />
-        <ContentNode title="CardZoomRotary" />
         <ContentNode title="CircularImageClip" />
         <ContentNode title="Clock" />
         <ContentNode title="DatePicker"/>
         <ContentNode title="DirectionalFade" />
         <ContentNode title="DisappearingLogo" />
         <ContentNode title="DisappearingNavBar" />
-        <ContentNode title="HorizontalCardRotator" />
         <ContentNode title="HorizontalNavBar" />
         <ContentNode title="LiveIcon" />
-        <ContentNode title="RandomColoredFontList" />
-        <ContentNode title="RandomColoredList" />
         <ContentNode title="RatingIcon"/>
-        <ContentNode title="ResizeList" />
         <ContentNode title="Ticker" />
         <ContentNode title="TiledBackground" />
         <ContentNode title="TriangularCornerClip" />
-        <ContentNode title="TriangularImageClip" />
         <!-- <ContentNode title="Next" /> -->
       </ContentNode>
     </LabelList>
