@@ -3,6 +3,7 @@
 <component name="DatePicker_TestLayer" extends="DatePicker" >
   <script type="text/brightscript" uri="pkg:/components/styled-components/DatePicker/DatePicker.brs"/>
   <interface>
+    <function name="setDate" />
     <function name="getOffsetString" />
     <function name="getTwoDigitString" />
     <function name="isLeapYear" />

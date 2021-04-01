@@ -1,4 +1,7 @@
-' initializes the DatePicker component.
+'''''''''
+' init: initializes the DatePicker component.
+' 
+'''''''''
 sub init()
     m.year = m.top.findNode("year")
     m.month = m.top.findNode("month")
@@ -13,24 +16,17 @@ sub init()
     m.top.observeField("focusedChild", "giveFocus")
 end sub
 
-' This method populates the interface fields "dateTimeISOString" and "dateTimeSeconds"
+'''''''''
+' setDate: This method populates the interface fields "dateTimeISOString" and "dateTimeSeconds"
+' 
+'''''''''
 sub setDate()
     yearIndex = m.year.itemFocused
     monthIndex = m.month.itemFocused
     dayIndex = m.day.itemFocused
     if yearIndex <= 0 or monthIndex <= 0 or dayIndex <= 0 then
-        m.top.dateTimeISOString = invalid
-        m.top.dateTimeSeconds = invalid
-        return
-    end if
-
-    yearCount = m.year.content.getChildCount()
-    monthCount = 12
-    dayCount = m.day.content.getChildCount()
-
-    if yearIndex >= yearCount or monthIndex >= monthCount or dayIndex >= dayCount then
-        m.top.dateTimeISOString = invalid
-        m.top.dateTimeSeconds = invalid
+        m.top.dateTimeISOString = ""
+        m.top.dateTimeSeconds = 0
         return
     end if
 
@@ -47,23 +43,25 @@ sub setDate()
     m.top.dateTimeSeconds = dateTime.asSeconds()
 end sub
 
-' a function to get the appropriate timezone offset string in the ISO format. Currently Roku does not support anything other than UTC, so UTC is always returned. 
-'
-' @param a ifDateTime object
-' @return the timezone offset as a string: "Z" for UTC offset
+'''''''''
+' getOffsetString: a function to get the appropriate timezone offset string in the ISO format. Currently Roku does not support anything other than UTC, so UTC is always returned. 
+' 
+' @param {object} dateTime a roDateTime object
+' @return {string} the timezone offset as a string: "Z" for UTC offset
+'''''''''
 function getOffsetString(dateTime as object) as string
     return "Z"
-    ' in the event that this is ever supported, delete the above line
-    offset = -dateTime.getTimeZoneOffset() ' have to negate this because roku returns the wrong thing. 
-    offsetHours = offset \ 60
-    offsetMins = abs(offset) mod 60
-    offsetStr = getTwoDigitString(offsetHours) + ":" + getTwoDigitString(offsetMins)
-    if offsetHours > 0 then
-        offsetStr = "+" + offsetStr
-    else if offsetHours < 0 and left(offsetStr, 1) <> "-" then ' this should only happen if the offset is -30 minutes, which is probably not a real timezone but you never know, it could be someday.
-        offsetStr = "-" + offsetStr
-    end if
-    return offsetStr
+    ' in the event that this is ever supported, delete the above line and uncomment code below
+    ' offset = -dateTime.getTimeZoneOffset() ' have to negate this because roku returns the wrong thing. 
+    ' offsetHours = offset \ 60
+    ' offsetMins = abs(offset) mod 60
+    ' offsetStr = getTwoDigitString(offsetHours) + ":" + getTwoDigitString(offsetMins)
+    ' if offsetHours > 0 then
+    ' offsetStr = "+" + offsetStr
+    ' else if offsetHours < 0 and left(offsetStr, 1) <> "-" then ' this should only happen if the offset is -30 minutes, which is probably not a real timezone but you never know, it could be someday.
+    ' offsetStr = "-" + offsetStr
+    ' end if
+    ' return offsetStr
 end function
 
 ' a function to get a (at least) two digit string from an integer. (example: 1 would return "01"). If the number is negative, returns a negative sign in front of the number. (example: -1 would return "-01").

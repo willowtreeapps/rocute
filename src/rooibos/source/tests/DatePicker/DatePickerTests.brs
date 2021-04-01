@@ -6,6 +6,42 @@ sub Date_Picker_create()
 end sub
 
 '+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+'@It tests the setDate function
+'+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+'@Test setDate sets an invalid date if any fields are not populated
+sub Date_Picker_setDate_setsInvalidDates_givenUnpopulatedInputs()
+    day = m.datePicker.findNode("day")
+    day.focusRow = 27
+    month = m.datePicker.findNode("month")
+    month.focusRow = 8
+    year = m.datePicker.findNode("year")
+    year.focusRow = 0
+
+    m.datePicker.dateTimeIsoString = "some string"
+    m.datePicker.dateTimeSeconds = 103020
+
+    m.datePicker.callFunc("setDate")
+    m.assertEqual(m.datePicker.dateTimeIsoString, "")
+    m.assertEqual(m.datePicker.dateTimeSeconds, 0&)
+end sub
+
+'@Test setDate sets dateTimeIsoString and dateTimeSeconds
+sub Date_Picker_setDate_setsDate_givenValidInputs()
+    day = m.datePicker.findNode("day")
+    day.focusRow = 28
+    month = m.datePicker.findNode("month")
+    month.focusRow = 4
+    year = m.datePicker.findNode("year")
+    year.focusRow = 5
+
+    m.datePicker.callFunc("setDate")
+
+    m.assertEqual(m.datePicker.dateTimeIsoString, "abc")
+    m.assertEqual(m.datePicker.dateTimeSeconds, 0)
+end sub
+
+'+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 '@It tests the getOffsetString function
 '+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
