@@ -144,6 +144,60 @@ sub Date_Picker_yearChanged_updatesDays_onlyInFebruaryOfALeapYear(yearTitle as s
 end sub
 
 '+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+'@It tests the updateDayContents function
+'+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+'@Test updateDayContents jumps to the appropriate day when the month changes
+'@Params["2021", 27, 10, 27]
+'@Params["2021", 29, 10, 29]
+'@Params["2021", 30, 10, 30]
+'@Params["2021", 31, 10, 31]
+'@Params["2021", 27, 4, 27]
+'@Params["2021", 29, 4, 29]
+'@Params["2021", 30, 4, 30]
+'@Params["2021", 31, 4, 0]
+'@Params["2021", 27, 2, 27]
+'@Params["2021", 29, 2, 0]
+'@Params["2021", 30, 2, 0]
+'@Params["2021", 31, 2, 0]
+'@Params["2020", 27, 10, 27]
+'@Params["2020", 29, 10, 29]
+'@Params["2020", 30, 10, 30]
+'@Params["2020", 31, 10, 31]
+'@Params["2020", 27, 4, 27]
+'@Params["2020", 29, 4, 29]
+'@Params["2020", 30, 4, 30]
+'@Params["2020", 31, 4, 0]
+'@Params["2020", 27, 2, 27]
+'@Params["2020", 29, 2, 29]
+'@Params["2020", 30, 2, 0]
+'@Params["2020", 31, 2, 0]
+sub Date_Picker_updateDayContents_adjustsFocusedIndex_whenMonthChanges(yearTitle as string, startDayIndex as integer, endMonthIndex as integer, endDayIndex as integer)
+    month = m.datePicker.findNode("month")
+    month.setFocus(true)
+    month.jumpToItem = 8 ' August has 31 days, start here.
+    year = m.datePicker.findNode("year")
+    year.setFocus(true)
+    for i = 0 to year.content.getChildCount() - 1 step 1
+        if year.content.getChild(i).title = yearTitle then
+            year.jumpToItem = i
+            exit for
+        end if
+    end for
+    if year.itemFocused < 1 then return ' year was not found, skip this test case
+    day = m.datePicker.findNode("day")
+    day.setFocus(true)
+    day.jumpToItem = startDayIndex
+
+    month.setFocus(true)
+    month.jumpToItem = endMonthIndex
+
+    day.setFocus(true)
+
+    m.assertEqual(day.itemFocused, endDayIndex)
+end sub
+
+'+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 '@It tests the isLeapYear function
 '+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 

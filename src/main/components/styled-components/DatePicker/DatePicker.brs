@@ -155,7 +155,10 @@ sub yearChanged(event as object)
     setDate()
 end sub
 
-' This method updates the number of days in the month appropriately according to what month and year it is. It preserves which day was selected, except in the case where the selected day does not exist in this month and year, in which case it reverts to the blank selection option.
+'''''''''
+' updateDayContents: This method updates the number of days in the month appropriately according to what month and year it is. It preserves which day was selected, except in the case where the selected day does not exist in this month and year, in which case it reverts to the blank selection option.
+' 
+'''''''''
 sub updateDayContents()
     selectedDay = m.day.itemFocused
     dayContents = getDayContents()
