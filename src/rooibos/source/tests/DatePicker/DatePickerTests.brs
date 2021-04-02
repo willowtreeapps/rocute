@@ -12,11 +12,14 @@ end sub
 '@Test setDate sets an invalid date if any fields are not populated
 sub Date_Picker_setDate_setsInvalidDates_givenUnpopulatedInputs()
     day = m.datePicker.findNode("day")
-    day.focusRow = 27
+    day.setFocus(true)
+    day.jumpToItem = 27
     month = m.datePicker.findNode("month")
-    month.focusRow = 8
+    month.setFocus(true)
+    month.jumpToItem = 8
     year = m.datePicker.findNode("year")
-    year.focusRow = 0
+    year.setFocus(true)
+    year.jumpToItem = 0
 
     m.datePicker.dateTimeIsoString = "some string"
     m.datePicker.dateTimeSeconds = 103020
@@ -29,16 +32,20 @@ end sub
 '@Test setDate sets dateTimeIsoString and dateTimeSeconds
 sub Date_Picker_setDate_setsDate_givenValidInputs()
     day = m.datePicker.findNode("day")
-    day.focusRow = 28
+    day.setFocus(true)
+    day.jumpToItem = 28
     month = m.datePicker.findNode("month")
-    month.focusRow = 4
+    month.setFocus(true)
+    month.jumpToItem = 4
     year = m.datePicker.findNode("year")
-    year.focusRow = 5
+    year.setFocus(true)
+    year.jumpToItem = 5
 
     m.datePicker.callFunc("setDate")
 
-    m.assertEqual(m.datePicker.dateTimeIsoString, "abc")
-    m.assertEqual(m.datePicker.dateTimeSeconds, 0)
+    ' this test will need to be updated yearly, or commented out
+    m.assertEqual(m.datePicker.dateTimeIsoString, "2017-04-28T00:00:00Z")
+    m.assertEqual(m.datePicker.dateTimeSeconds, 1493337600&)
 end sub
 
 '+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -67,6 +74,73 @@ end sub
 sub Date_Picker_getTwoDigitString_Returns_TwoDigitString(value as integer, expected as string)
     actual = m.datePicker.callFunc("getTwoDigitString", value)
     m.AssertEqual(expected, actual)
+end sub
+
+'+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+'@It tests the giveFocus function
+'+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+'@Test the first picker is given focus
+sub Date_Picker_giveFocus_focusesFirstPicker_givenNoneAreFocused()
+    m.datePicker.useISO = true
+    firstPicker = m.datePicker.findNode("year")
+    m.assertFalse(firstPicker.isInFocusChain())
+    m.datePicker.setFocus(true)
+    m.assertTrue(firstPicker.isInFocusChain())
+end sub
+
+'+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+'@It tests the setFormat function
+'+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+'@Test setFormat orders the pickers appropriately according to our local language settings. The other test cases are ignored.
+'@Params[true, "YMD", "year", "month", "day"]
+'@Params[false, "DMY", "day", "month", "year"]
+'@Params[false, "MDY", "month", "day", "year"]
+sub Date_Picker_setFormat_ordersPickers(useISOFormat as boolean, format as string, firstPickerId as string, secondPickerId as string, thirdPickerId as string)
+    m.datePicker.useIso = useISOFormat
+    m.datePicker.callFunc("setFormat")
+    dateOrder = m.datePicker.callFunc("getDateOrder")
+    if dateOrder <> format then return
+    firstPicker = m.datePicker.findNode(firstPickerId)
+    secondPicker = m.datePicker.findNode(secondPickerId)
+    thirdPicker = m.datePicker.findNode(thirdPickerId)
+    m.assertTrue(firstPicker.translation[0] < secondPicker.translation[0])
+    m.assertTrue(secondPicker.translation[0] < thirdPicker.translation[0])
+end sub
+
+'+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+'@It tests the yearChanged function
+'+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+'@Test yearChanged updates days in the month only for leap years in february
+'@Params["2020", 2, 29]
+'@Params["2020", 3, 31]
+'@Params["2019", 2, 28]
+'@Params["2019", 3, 31]
+sub Date_Picker_yearChanged_updatesDays_onlyInFebruaryOfALeapYear(yearTitle as string, monthIndex as integer, dayCount as integer)
+    m.datePicker.useIso = true
+    monthPicker = m.datePicker.findNode("month")
+    monthPicker.setFocus(true)
+    monthPicker.jumpToItem = monthIndex
+
+    yearPicker = m.datePicker.findNode("year")
+    yearIndex = -1
+    for i = 0 to yearPicker.content.getChildCount()-1 step 1
+        if yearPicker.content.getChild(i).title = yearTitle then
+            yearIndex = i
+            exit for
+        end if
+    end for
+    ' if given year is not in our picker, then return
+    if yearIndex = -1 then return
+
+    yearPicker.setFocus(true)
+    yearPicker.jumpToItem = yearIndex
+
+    dayPicker = m.datePicker.findNode("day")
+    actualDayCount = dayPicker.content.getChildCount() - 1
+    m.assertEqual(actualDayCount, dayCount)
 end sub
 
 '+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++

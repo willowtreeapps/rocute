@@ -64,10 +64,12 @@ function getOffsetString(dateTime as object) as string
     ' return offsetStr
 end function
 
-' a function to get a (at least) two digit string from an integer. (example: 1 would return "01"). If the number is negative, returns a negative sign in front of the number. (example: -1 would return "-01").
-'
-' @param number an integer number
-' @return a string representation of that number, padded to at least 2 digits.
+'''''''''
+' getTwoDigitString: a function to get a (at least) two digit string from an integer. (example: 1 would return "01"). If the number is negative, returns a negative sign in front of the number. (example: -1 would return "-01").
+' 
+' @param {integer} number any integer
+' @return {string} a string representation of that number, padded to at least 2 digits.
+'''''''''
 function getTwoDigitString(number as integer) as string
     numStr = stri(number, 10)
     if len(numStr) < 2 then
@@ -78,42 +80,21 @@ function getTwoDigitString(number as integer) as string
     return numStr
 end function
 
-' a function to handle key press events and give focus as needed
-'
-' @param key a string representing the key pressed
-' @param press a boolean representing whether this was a press (true) or release (false)
-' @return a boolean representing whether this key event was handled here (true) or it should bubble up (false)
-function onKeyEvent(key as string, press as boolean) as boolean
-    if m.top.isInFocusChain() = false or press = false then return false
-
-    if key = "left" or key = "back" then
-        if m.thirdPicker.hasFocus() then
-            m.secondPicker.setFocus(true)
-            return true
-        else if m.secondPicker.hasFocus() then
-            m.firstPicker.setFocus(true)
-            return true
-        end if
-    else if key = "right" then
-        if m.firstPicker.hasFocus() then
-            m.secondPicker.setFocus(true)
-            return true
-        else if m.secondPicker.hasFocus() then
-            m.thirdPicker.setFocus(true)
-            return true
-        end if
-    end if
-    return false
-end function
-
-' a helper method to handle focus.
+'''''''''
+' giveFocus: a helper method to handle focus.
+' 
+' @param {object} event
+'''''''''
 sub giveFocus(event as object)
-    if m.top.isInFocusChain() and m.firstPicker.hasFocus() = false and m.secondPicker.hasFocus() = false and m.thirdPicker.hasFocus() = false then
+    if m.top.hasFocus() and m.firstPicker.isInFocusChain() = false and m.secondPicker.isInFocusChain() = false and m.thirdPicker.isInFocusChain() = false then
         m.firstPicker.setFocus(true)
     end if
 end sub
 
-' Sets the order of the datePickers according to the date format.
+'''''''''
+' setFormat: Sets the order of the datePickers according to the date format.
+' 
+'''''''''
 sub setFormat()
     dateOrder = "YMD"
     if m.top.useISO = false then
@@ -153,9 +134,11 @@ sub setFormat()
     m.day.observeField("itemFocused", "dayChanged")
 end sub
 
-' a method called when the year changes. This checks if we have february selected as the month and changes the number of days if we are in a leap year
-'
-' @param event a roSGNodeEvent
+'''''''''
+' yearChanged: a method called when the year changes. This checks if we have february selected as the month and changes the number of days if we are in a leap year
+' 
+' @param {object} event a roSGNodeEvent
+'''''''''
 sub yearChanged(event as object)
     if m.year.hasFocus() = false then return
     if m.month.itemFocused <> 2 then 
@@ -329,13 +312,45 @@ function getDayContents() as object
     return days
 end function
 
-' function to check if a year is a leap year according to the Gregorian Calendar.
-'
-' @param year the year to check
-' @return boolean true if the year is a leap year, false otherwise
+'''''''''
+' isLeapYear: function to check if a year is a leap year according to the Gregorian Calendar.
+' 
+' @param {integer} year the year to check
+' @return {boolean} true if the year is a leap year, false otherwise
+'''''''''
 function isLeapYear(year as integer) as boolean
     if year mod 4 <> 0 then return false ' years not divisible by 4 are not leap years. ex: 1999
     if year mod 100 <> 0 then return true ' years divisible by 4 and not divisible by 100 are leap years, ex: 1996
     if year mod 400 = 0 then return false ' years divisible by 400 are NOT leap years, ex: 2000
     return true ' years divisible by 4 and 100 but not 400 are leap years, ex: 1900
+end function
+
+'''''''''
+' onKeyEvent: a function to handle key press events and give focus as needed
+' 
+' @param {string} key a string representing the key pressed
+' @param {boolean} press a boolean representing whether this was a press (true) or release (false)
+' @return {boolean} a boolean representing whether this key event was handled here (true) or it should bubble up (false)
+'''''''''
+function onKeyEvent(key as string, press as boolean) as boolean
+    if m.top.isInFocusChain() = false or press = false then return false
+
+    if key = "left" or key = "back" then
+        if m.thirdPicker.hasFocus() then
+            m.secondPicker.setFocus(true)
+            return true
+        else if m.secondPicker.hasFocus() then
+            m.firstPicker.setFocus(true)
+            return true
+        end if
+    else if key = "right" then
+        if m.firstPicker.hasFocus() then
+            m.secondPicker.setFocus(true)
+            return true
+        else if m.secondPicker.hasFocus() then
+            m.thirdPicker.setFocus(true)
+            return true
+        end if
+    end if
+    return false
 end function

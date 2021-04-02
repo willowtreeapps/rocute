@@ -6,6 +6,8 @@
     <function name="setDate" />
     <function name="getOffsetString" />
     <function name="getTwoDigitString" />
+    <function name="setFormat" />
+    <function name="getDateOrder" />
     <function name="isLeapYear" />
   </interface>
 </component>
